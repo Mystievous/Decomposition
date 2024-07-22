@@ -1,42 +1,24 @@
-[gd_scene load_steps=9 format=3 uid="uid://bdiny0oaheofm"]
+[gd_scene load_steps=7 format=3 uid="uid://bdiny0oaheofm"]
 
 [ext_resource type="Script" path="res://players/player.gd" id="1_y6swo"]
-[ext_resource type="Texture2D" uid="uid://0qmrcgybdx68" path="res://assets/worm_sheet.png" id="2_jqu3o"]
+[ext_resource type="SpriteFrames" uid="uid://chjmkqxgrhbxi" path="res://players/skins/worm.tres" id="2_5ijc4"]
 [ext_resource type="PackedScene" uid="uid://bmn7ph7d8pufr" path="res://progressbar.tscn" id="3_jxdda"]
+[ext_resource type="SpriteFrames" uid="uid://b1h4mufqyuutm" path="res://players/skins/millipede.tres" id="3_sfcti"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cqwoj"]
 size = Vector2(64, 23)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_iuy8c"]
-atlas = ExtResource("2_jqu3o")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_a6dys"]
-atlas = ExtResource("2_jqu3o")
-region = Rect2(64, 0, 64, 64)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_buy4h"]
-animations = [{
-"frames": [{
-"duration": 2.0,
-"texture": SubResource("AtlasTexture_iuy8c")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_a6dys")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ch15d"]
 size = Vector2(64, 23)
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "health_bar")]
+collision_layer = 0
 motion_mode = 1
 script = ExtResource("1_y6swo")
 sprite = NodePath("AnimatedSprite2D")
 health_bar = NodePath("Healthbar")
+worm_skin = ExtResource("2_5ijc4")
+millipede_skin = ExtResource("3_sfcti")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(32, 11.5)
@@ -45,8 +27,8 @@ shape = SubResource("RectangleShape2D_cqwoj")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 position = Vector2(32, 7)
-sprite_frames = SubResource("SpriteFrames_buy4h")
-frame_progress = 0.246237
+sprite_frames = ExtResource("2_5ijc4")
+animation = &"idle"
 
 [node name="Area2D" type="Area2D" parent="."]
 

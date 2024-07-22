@@ -1,0 +1,37 @@
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://b1h4mufqyuutm"]
+
+[ext_resource type="Texture2D" uid="uid://bgd40smgnswvn" path="res://assets/millipede.png" id="1_hn6i6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yif57"]
+atlas = ExtResource("1_hn6i6")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d5aoe"]
+atlas = ExtResource("1_hn6i6")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k1fdo"]
+atlas = ExtResource("1_hn6i6")
+region = Rect2(128, 0, 64, 64)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yif57")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d5aoe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k1fdo")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]

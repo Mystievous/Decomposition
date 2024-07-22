@@ -1,0 +1,37 @@
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://chjmkqxgrhbxi"]
+
+[ext_resource type="Texture2D" uid="uid://0qmrcgybdx68" path="res://assets/worm_sheet.png" id="1_kktj3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n52u4"]
+atlas = ExtResource("1_kktj3")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a7jnf"]
+atlas = ExtResource("1_kktj3")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6lu8s"]
+atlas = ExtResource("1_kktj3")
+region = Rect2(64, 0, 64, 64)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n52u4")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_a7jnf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6lu8s")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]

@@ -7,6 +7,9 @@ extends CharacterBody2D
 @export var max_health: float = 100
 @export var curr_health: float = max_health
 
+@export var worm_skin: SpriteFrames
+@export var millipede_skin: SpriteFrames
+
 var _current_interact_cooldown := 0.0;
 
 const SPEED := 150.0
@@ -14,7 +17,7 @@ const SPEED := 150.0
 var current_interactables: Array[Node2D] = []
 
 func _ready():
-	health_bar.set_progress(1.0)
+	health_bar.set_progress(max_health / curr_health)
 
 func _process(delta):
 	if (_current_interact_cooldown > 0):
@@ -31,23 +34,26 @@ func _physics_process(_delta):
 	var move = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	if move:
 		velocity = move * SPEED
-		if (!sprite.is_playing()):
-			sprite.set_frame_and_progress(0, 1)
-			sprite.play()
 	else:
 		velocity = Vector2(0, 0)
-		if (sprite.is_playing()):
-			sprite.stop()
 	
-	_check_flip()
+	_check_sprite()
 	move_and_slide()
 
-func _check_flip():
-	if (velocity.x != 0):
-		if (velocity.x < 0):
-			sprite.flip_h = true
-		else:
-			sprite.flip_h = false
+func _check_sprite():
+	var is_moving := velocity.length_squared() > 0
+	if (is_moving):
+		if (velocity.x != 0):
+			if (velocity.x < 0):
+				sprite.flip_h = true
+			else:
+				sprite.flip_h = false
+		if (sprite.animation != "walk"):
+			sprite.play("walk")
+			sprite.set_frame_and_progress(0, 1)
+	else:
+		if (sprite.animation != "idle"):
+			sprite.play("idle")
 
 func on_interact():
 	for interactable in current_interactables:
@@ -59,18 +65,32 @@ func on_interact():
 func _on_area_2d_area_entered(area):
 	if (area.has_method("interact") && !current_interactables.has(area)):
 		current_interactables.append(area)
+		
+	if (area.has_method("heal") && curr_health < max_health):
+		change_health(area.heal_amount)
+		area.heal()
 
 func _on_area_2d_area_exited(area):
 	if (current_interactables.has(area)):
 		current_interactables.erase(area)
 
+func _input(event):
+	if (event.is_action_pressed("skin_worm")):
+		sprite.sprite_frames = worm_skin
+		sprite.play()
+		_check_sprite()
+	if (event.is_action_pressed("skin_millipede")):
+		sprite.sprite_frames = millipede_skin
+		sprite.play()
+		_check_sprite()
+
 func change_health(amount: float):
 	curr_health += amount
-	if (curr_health <= 0):
+	if curr_health <= 0:
 		#Game over
 		pass
 	else:
-		if (curr_health + amount) > max_health:
+		if curr_health > max_health:
 			#prevents health bar over flowing
 			health_bar.set_progress(1.0)
 		else:
