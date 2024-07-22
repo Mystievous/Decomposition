@@ -3,12 +3,18 @@ extends CharacterBody2D
 @export var sprite: AnimatedSprite2D
 @export var interact_damage: float = 5
 @export var interact_cooldown := 0.5;
+@export var health_bar: Node2D
+@export var max_health: float = 100
+@export var curr_health: float = max_health
 
 var _current_interact_cooldown := 0.0;
 
 const SPEED := 150.0
 
 var current_interactables: Array[Node2D] = []
+
+func _ready():
+	health_bar.set_progress(1.0)
 
 func _process(delta):
 	if (_current_interact_cooldown > 0):
@@ -46,6 +52,9 @@ func _check_flip():
 func on_interact():
 	for interactable in current_interactables:
 		interactable.interact(interact_damage)
+		##testing start##
+		change_health(-25)
+		##testing end##
 
 func _on_area_2d_area_entered(area):
 	if (area.has_method("interact") && !current_interactables.has(area)):
@@ -54,3 +63,16 @@ func _on_area_2d_area_entered(area):
 func _on_area_2d_area_exited(area):
 	if (current_interactables.has(area)):
 		current_interactables.erase(area)
+
+func change_health(amount: float):
+	curr_health += amount
+	if (curr_health <= 0):
+		#Game over
+		pass
+	else:
+		if (curr_health + amount) > max_health:
+			#prevents health bar over flowing
+			health_bar.set_progress(1.0)
+		else:
+			health_bar.set_progress(curr_health / max_health);
+	pass

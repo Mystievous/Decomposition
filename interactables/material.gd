@@ -1,6 +1,7 @@
 extends Area2D
 
-@export var health: float = 30
+@export var max_health: float = 30
+@export var curr_health: float = max_health
 @export var progress_bar: Node2D
 
 # Called when the node enters the scene tree for the first time.
@@ -14,8 +15,8 @@ func _process(delta):
 	pass
 
 func interact(damage: float):
-	health -= damage
-	if (health <= 0):
+	curr_health -= damage
+	if (curr_health <= 0):
 		queue_free()
-	progress_bar.set_progress(health / 30);
+	progress_bar.set_progress(curr_health / max_health);
 	pass
