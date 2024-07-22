@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+@export var sounds: Array[AudioStreamWAV]
+
 @export var sprite: AnimatedSprite2D
 @export var navigation_agent: NavigationAgent2D
 @export var interact_damage: float = 5
@@ -77,6 +79,9 @@ func _check_sprite():
 			sprite.play("idle")
 
 func on_interact():
+	var sound: AudioStreamWAV = sounds.pick_random()
+	$AudioStreamPlayer2D.stream = sound
+	$AudioStreamPlayer2D.play()
 	for interactable in current_interactables:
 		interactable.interact(interact_damage)
 

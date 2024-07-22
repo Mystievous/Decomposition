@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+@export var sounds: Array[AudioStreamWAV]
+
 @export var sprite: AnimatedSprite2D
 @export var interact_damage: float = 5
 @export var interact_cooldown := 0.5;
@@ -62,8 +64,12 @@ func _check_sprite():
 			sprite.play("idle")
 
 func on_interact():
-	for interactable in current_interactables:
-		interactable.interact(interact_damage)
+	if not current_interactables.is_empty():
+		var sound: AudioStreamWAV = sounds.pick_random()
+		$AudioStreamPlayer2D.stream = sound
+		$AudioStreamPlayer2D.play()
+		for interactable in current_interactables:
+			interactable.interact(interact_damage)
 
 func _on_area_2d_area_entered(area):
 	if (area.has_method("interact") && !current_interactables.has(area)):
