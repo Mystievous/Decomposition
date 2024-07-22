@@ -5,29 +5,14 @@ extends CharacterBody2D
 @export var sprite: AnimatedSprite2D
 @export var navigation_agent: NavigationAgent2D
 @export var interact_damage: float = 5
-@export var interact_cooldown := 0.5;
 
-var _current_interact_cooldown := 0.0;
-
-const SPEED := 75
+var movement_speed := 75
 
 var current_interactables: Array[Node2D] = []
 
 func _ready():
-	# These values need to be adjusted for the actor's speed
-	# and the navigation layout.
-	navigation_agent.path_desired_distance = 4.0
-	navigation_agent.target_desired_distance = 4.0
-
-	# Make sure to not await during _ready.
-	call_deferred("actor_setup")
-	
-func actor_setup():
-	# Wait for the first physics frame so the NavigationServer can sync.
-	await get_tree().physics_frame
-
-	# Now that the navigation map is no longer empty, set the movement target.
-	#refresh_target()
+	SelectedSkin.skin_changed.connect(_skin_changed)
+	_skin_changed()
 	
 func refresh_target():
 	var interactions := get_tree().get_nodes_in_group("minion_interact")
@@ -42,26 +27,22 @@ func refresh_target():
 		navigation_agent.target_position = closest.position
 
 func _process(delta):
-	if (_current_interact_cooldown > 0):
-		_current_interact_cooldown = maxf(_current_interact_cooldown - (1 * delta), 0.0)
-	
 	if current_interactables.is_empty():
 		refresh_target()
-	elif (_current_interact_cooldown == 0.0 and !current_interactables.is_empty()):
+	elif ($Timer.is_stopped() and !current_interactables.is_empty()):
 		on_interact()
-		_current_interact_cooldown += interact_cooldown
+		$Timer.start()
 
 func _physics_process(_delta):
 	if navigation_agent.is_navigation_finished():
-		velocity = Vector2(0, 0)
-		_check_sprite()
+		navigation_agent.velocity = Vector2(0, 0)
 		return
 
 	var current_agent_position: Vector2 = global_position
 	var next_path_position: Vector2 = navigation_agent.get_next_path_position()
 
 	var move = current_agent_position.direction_to(next_path_position)
-	navigation_agent.velocity = move * SPEED
+	navigation_agent.velocity = move * movement_speed
 
 func _check_sprite():
 	var is_moving := velocity.length_squared() > 0
@@ -78,6 +59,17 @@ func _check_sprite():
 		if (sprite.animation != "idle"):
 			sprite.play("idle")
 
+func _skin_changed():
+	#var health_percent: float = $Healthbar.percent_health
+	var skin: SkinResource = SelectedSkin.selected_skin
+	sprite.sprite_frames = skin.minion_sprite
+	sprite.play()
+	_check_sprite()
+	#$Healthbar.set_max_health(skin.stats.minion_health)
+	movement_speed = skin.stats.minion_speed
+	interact_damage = skin.stats.minion_damage
+	#$Healthbar.percent_health = health_percent
+
 func eat_sound():
 	var sound: AudioStreamWAV = sounds.pick_random()
 	$AudioStreamPlayer2D.stream = sound
@@ -88,12 +80,11 @@ func on_interact():
 		interactable.interact(self)
 
 func _on_area_2d_area_entered(area):
-	if (area.has_method("interact") && !current_interactables.has(area)):
+	if (area.is_in_group("minion_interact") && !current_interactables.has(area)):
 		current_interactables.append(area)
 
 func _on_area_2d_area_exited(area):
-	if (current_interactables.has(area)):
-		current_interactables.erase(area)
+	current_interactables.erase(area)
 
 func _on_navigation_agent_2d_velocity_computed(safe_velocity):
 	velocity = safe_velocity

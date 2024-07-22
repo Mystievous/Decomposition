@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://52tkii5ed4an"
-path="res://.godot/imported/minion_worms.png-0a4fce7e284db64df7039941678c959f.ctex"
+uid="uid://0qmrcgybdx68"
+path="res://.godot/imported/worm.png-eae3070bcbe24eca5d5cb3d4bdb640d5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/minion_worms.png"
-dest_files=["res://.godot/imported/minion_worms.png-0a4fce7e284db64df7039941678c959f.ctex"]
+source_file="res://assets/players/worm.png"
+dest_files=["res://.godot/imported/worm.png-eae3070bcbe24eca5d5cb3d4bdb640d5.ctex"]
 
 [params]
 

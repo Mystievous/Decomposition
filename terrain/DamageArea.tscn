@@ -6,6 +6,7 @@
 size = Vector2(40, 40)
 
 [node name="DamageArea" type="Area2D"]
+collision_mask = 3
 script = ExtResource("1_q176v")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -16,3 +17,6 @@ color = Color(1, 0, 0, 1)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(20, 20)
 shape = SubResource("RectangleShape2D_1x45v")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

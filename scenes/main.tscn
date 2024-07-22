@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://c8o5kterpyx03"]
+
+[ext_resource type="PackedScene" uid="uid://wj2kk0glf0q4" path="res://interactables/material.tscn" id="1_ifwu5"]
+[ext_resource type="PackedScene" uid="uid://dv33ktyaxcywa" path="res://terrain/HealingArea.tscn" id="2_p5i3k"]
+[ext_resource type="PackedScene" uid="uid://s4d6n6jumbdv" path="res://terrain/DamageArea.tscn" id="3_yxmdj"]
+[ext_resource type="PackedScene" uid="uid://bdiny0oaheofm" path="res://players/player.tscn" id="4_v633p"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Materials" type="Node2D" parent="."]
+position = Vector2(40, 50)
+
+[node name="Material" parent="Materials" instance=ExtResource("1_ifwu5")]
+position = Vector2(196, 15)
+
+[node name="Material2" parent="Materials" instance=ExtResource("1_ifwu5")]
+position = Vector2(187, 187)
+
+[node name="Material3" parent="Materials" instance=ExtResource("1_ifwu5")]
+position = Vector2(459, 109)
+
+[node name="Material4" parent="Materials" instance=ExtResource("1_ifwu5")]
+position = Vector2(430, 225)
+
+[node name="Material5" parent="Materials" instance=ExtResource("1_ifwu5")]
+position = Vector2(348, -1)
+
+[node name="Material6" parent="Materials" instance=ExtResource("1_ifwu5")]
+position = Vector2(164, 8)
+
+[node name="HealingArea" parent="." instance=ExtResource("2_p5i3k")]
+position = Vector2(104, 95)
+
+[node name="DamageArea" parent="." instance=ExtResource("3_yxmdj")]
+position = Vector2(181, 95)
+
+[node name="Player" parent="." instance=ExtResource("4_v633p")]
+position = Vector2(40, 50)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+zoom = Vector2(2, 2)

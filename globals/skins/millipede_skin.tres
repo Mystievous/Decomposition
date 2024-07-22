@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="SkinResource" load_steps=6 format=3 uid="uid://cn45ipwwhi20w"]
+
+[ext_resource type="SpriteFrames" uid="uid://byh2n6wri7r8v" path="res://assets/minions/millipede_minion.tres" id="1_fory4"]
+[ext_resource type="SpriteFrames" uid="uid://b1h4mufqyuutm" path="res://assets/players/millipede.tres" id="2_i6r48"]
+[ext_resource type="Script" path="res://resources/skin_resource.gd" id="3_eg3al"]
+[ext_resource type="Script" path="res://resources/stats_resource.gd" id="4_wg1a0"]
+
+[sub_resource type="Resource" id="Resource_t2ca8"]
+script = ExtResource("4_wg1a0")
+player_health = 100.0
+player_damage = 5.0
+player_speed = 200.0
+minion_health = 100.0
+minion_damage = 5.0
+minion_speed = 100.0
+
+[resource]
+script = ExtResource("3_eg3al")
+player_sprite = ExtResource("2_i6r48")
+minion_sprite = ExtResource("1_fory4")
+stats = SubResource("Resource_t2ca8")

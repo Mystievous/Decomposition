@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bgd40smgnswvn"
-path="res://.godot/imported/millipede.png-63b9d3af8fe60e6bd95de610af73d9a9.ctex"
+uid="uid://52tkii5ed4an"
+path="res://.godot/imported/worm_minion.png-72a9bbc84ce19b38cbf0fc1494f0bf7e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/millipede.png"
-dest_files=["res://.godot/imported/millipede.png-63b9d3af8fe60e6bd95de610af73d9a9.ctex"]
+source_file="res://assets/minions/worm_minion.png"
+dest_files=["res://.godot/imported/worm_minion.png-72a9bbc84ce19b38cbf0fc1494f0bf7e.ctex"]
 
 [params]
 

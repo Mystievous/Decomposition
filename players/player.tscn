@@ -1,14 +1,15 @@
-[gd_scene load_steps=12 format=3 uid="uid://bdiny0oaheofm"]
+[gd_scene load_steps=13 format=3 uid="uid://bdiny0oaheofm"]
 
 [ext_resource type="Script" path="res://players/player.gd" id="1_y6swo"]
-[ext_resource type="SpriteFrames" uid="uid://chjmkqxgrhbxi" path="res://players/skins/worm.tres" id="2_5ijc4"]
 [ext_resource type="AudioStream" uid="uid://clug50d07lfl7" path="res://assets/sounds/bite1.wav" id="2_abkly"]
 [ext_resource type="AudioStream" uid="uid://7dnlua5imsbf" path="res://assets/sounds/bite2.wav" id="3_63orn"]
-[ext_resource type="PackedScene" uid="uid://bmn7ph7d8pufr" path="res://progressbar.tscn" id="3_jxdda"]
-[ext_resource type="SpriteFrames" uid="uid://b1h4mufqyuutm" path="res://players/skins/millipede.tres" id="3_sfcti"]
 [ext_resource type="AudioStream" uid="uid://bl4mw6qq1yg6c" path="res://assets/sounds/bite3.wav" id="4_qvm5s"]
 [ext_resource type="AudioStream" uid="uid://bqdlqicv0j6nd" path="res://assets/sounds/bite4.wav" id="5_4bfw8"]
 [ext_resource type="AudioStream" uid="uid://b1gpeckn0u17h" path="res://assets/sounds/bite5.wav" id="6_2h7m1"]
+[ext_resource type="SpriteFrames" uid="uid://chjmkqxgrhbxi" path="res://assets/players/worm.tres" id="7_o3j1h"]
+[ext_resource type="Resource" uid="uid://dj1oh05ouwyvu" path="res://globals/skins/worm_skin.tres" id="7_wun7x"]
+[ext_resource type="Resource" uid="uid://cn45ipwwhi20w" path="res://globals/skins/millipede_skin.tres" id="8_cko1b"]
+[ext_resource type="PackedScene" uid="uid://bmn7ph7d8pufr" path="res://ui/healthbar.tscn" id="9_cobj4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cqwoj"]
 size = Vector2(64, 23)
@@ -16,16 +17,15 @@ size = Vector2(64, 23)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ch15d"]
 size = Vector2(64, 23)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "health_bar")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite")]
 scale = Vector2(0.986124, 1)
-collision_layer = 0
+collision_layer = 2
 motion_mode = 1
 script = ExtResource("1_y6swo")
 sounds = Array[AudioStreamWAV]([ExtResource("2_abkly"), ExtResource("3_63orn"), ExtResource("4_qvm5s"), ExtResource("5_4bfw8"), ExtResource("6_2h7m1")])
 sprite = NodePath("AnimatedSprite2D")
-health_bar = NodePath("Healthbar")
-worm_skin = ExtResource("2_5ijc4")
-millipede_skin = ExtResource("3_sfcti")
+worm_skin = ExtResource("7_wun7x")
+millipede_skin = ExtResource("8_cko1b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(32, 11.5)
@@ -34,7 +34,7 @@ shape = SubResource("RectangleShape2D_cqwoj")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 position = Vector2(32, 7)
-sprite_frames = ExtResource("2_5ijc4")
+sprite_frames = ExtResource("7_o3j1h")
 animation = &"idle"
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -43,10 +43,16 @@ animation = &"idle"
 position = Vector2(32, 11.5)
 shape = SubResource("RectangleShape2D_ch15d")
 
-[node name="Healthbar" parent="." instance=ExtResource("3_jxdda")]
-position = Vector2(10, -10)
+[node name="Healthbar" parent="." instance=ExtResource("9_cobj4")]
+position = Vector2(7.97186, -10)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(32, 11.5)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
+[connection signal="health_empty" from="Healthbar" to="." method="_on_healthbar_health_empty"]

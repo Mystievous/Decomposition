@@ -11,14 +11,17 @@ config_version=5
 [application]
 
 config/name="Decomposition"
-run/main_scene="res://level_select.tscn"
+run/main_scene="res://scenes/level_select.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
+
+[autoload]
+
+SelectedSkin="*res://globals/selected_skin.gd"
 
 [display]
 
 window/stretch/mode="viewport"
-window/stretch/aspect="keep_height"
 
 [editor]
 

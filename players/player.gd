@@ -4,44 +4,30 @@ extends CharacterBody2D
 
 @export var sprite: AnimatedSprite2D
 @export var interact_damage: float = 5
-@export var interact_cooldown := 0.5;
-@export var health_bar: Node2D
-@export var max_health: float = 100
-@export var curr_health: float = max_health
 
-@export var worm_skin: SpriteFrames
-@export var millipede_skin: SpriteFrames
+@export var worm_skin: SkinResource
+@export var millipede_skin: SkinResource
 
-var _current_interact_cooldown := 0.0;
-var is_in_damage_area = false
-var damage_taken: float = 0
-
-const SPEED := 150.0
+var movement_speed := 150.0
 
 var current_interactables: Array[Node2D] = []
 
 func _ready():
-	health_bar.set_progress(curr_health / max_health)
+	SelectedSkin.skin_changed.connect(_skin_changed)
+	_skin_changed()
 
 func _process(delta):
-	if (_current_interact_cooldown > 0):
-		_current_interact_cooldown = maxf(_current_interact_cooldown - (1 * delta), 0.0)
-		
 	if Input.is_action_pressed("interact"):
-		if (_current_interact_cooldown == 0.0):
+		if ($Timer.is_stopped()):
 			on_interact()
-			_current_interact_cooldown += interact_cooldown
-		
-	#if player is in damage area takes health away
-	if is_in_damage_area:
-		change_health(damage_taken*delta)
+			$Timer.start()
 
 func _physics_process(_delta):
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var move = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	if move:
-		velocity = move * SPEED
+		velocity = move * movement_speed
 	else:
 		velocity = Vector2(0, 0)
 	
@@ -73,46 +59,38 @@ func on_interact():
 		for interactable in current_interactables:
 			interactable.interact(self)
 
+func damage(amount: float):
+	$Healthbar.decrement(amount)
+
+func heal(amount: float) -> bool:
+	if not $Healthbar.is_max_health():
+		$Healthbar.increment(amount)
+		return true
+	return false
+
 func _on_area_2d_area_entered(area):
 	if (area.has_method("interact") && !current_interactables.has(area)):
 		current_interactables.append(area)
-		
-	if (area.has_method("heal") && curr_health < max_health):
-		change_health(area.heal_amount)
-		area.heal()
-		
-	if (area.has_method("damage")):
-		is_in_damage_area = true
-		damage_taken = area.damage_given
 
 func _on_area_2d_area_exited(area):
-	if (current_interactables.has(area)):
-		current_interactables.erase(area)
-		
-	if (area.has_method("damage")):
-		is_in_damage_area = false
-		damage_taken = 0
+	current_interactables.erase(area)
 
 func _input(event):
 	if (event.is_action_pressed("skin_worm")):
-		sprite.sprite_frames = worm_skin
-		sprite.play()
-		_check_sprite()
+		SelectedSkin.selected_skin = worm_skin
 	if (event.is_action_pressed("skin_millipede")):
-		sprite.sprite_frames = millipede_skin
-		sprite.play()
-		_check_sprite()
+		SelectedSkin.selected_skin = millipede_skin
+		
+func _skin_changed():
+	var health_percent: float = $Healthbar.percent_health
+	var skin: SkinResource = SelectedSkin.selected_skin
+	sprite.sprite_frames = skin.player_sprite
+	sprite.play()
+	_check_sprite()
+	$Healthbar.set_max_health(skin.stats.player_health)
+	movement_speed = skin.stats.player_speed
+	interact_damage = skin.stats.player_damage
+	$Healthbar.percent_health = health_percent
 
-func change_health(amount: float):
-	curr_health += amount
-	if curr_health <= 0:
-		#Game over
-		pass
-	else:
-		if curr_health > max_health:
-			#prevents health bar over flowing
-			health_bar.set_progress(1.0)
-			curr_health = max_health
-		else:
-			health_bar.set_progress(curr_health / max_health);
-	pass
+func _on_healthbar_health_empty():
+	queue_free()

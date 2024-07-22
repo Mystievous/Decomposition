@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmn7ph7d8pufr"]
+
+[ext_resource type="Script" path="res://ui/healthbar.gd" id="1_kbavy"]
+[ext_resource type="Texture2D" uid="uid://c6jsmk40f4gmg" path="res://assets/loading_bar.png" id="2_tejhp"]
+
+[node name="Healthbar" type="Node2D"]
+script = ExtResource("1_kbavy")
+
+[node name="LoadingBar" type="Sprite2D" parent="."]
+position = Vector2(24, 16)
+texture = ExtResource("2_tejhp")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(1, 1)
+scale = Vector2(1e-05, 1.5)
+color = Color(0.172549, 0.654902, 0.223529, 1)
+polygon = PackedVector2Array(0, 0, 0, 2, 46, 2, 46, 0)

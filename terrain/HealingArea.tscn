@@ -6,6 +6,7 @@
 size = Vector2(38, 39)
 
 [node name="HealingArea" type="Area2D"]
+collision_mask = 3
 script = ExtResource("1_rud3n")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -16,3 +17,5 @@ color = Color(0, 0.615686, 0, 1)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(20, 20.5)
 shape = SubResource("RectangleShape2D_wkg8t")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://wj2kk0glf0q4" path="res://interactables/material.tscn" id="1_5lc0p"]
 [ext_resource type="PackedScene" uid="uid://bdiny0oaheofm" path="res://players/player.tscn" id="3_picsf"]
-[ext_resource type="PackedScene" uid="uid://cscp7nrt1dgxn" path="res://minion_spawner.tscn" id="4_0abp3"]
+[ext_resource type="PackedScene" uid="uid://cscp7nrt1dgxn" path="res://ui/minion_spawner.tscn" id="4_0abp3"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_fjcaq"]
 vertices = PackedVector2Array(566, 314, 10, 314, 10, 10, 566, 10)

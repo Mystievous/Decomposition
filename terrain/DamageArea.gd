@@ -1,15 +1,16 @@
 extends Area2D
 
-var damage_given: float = -25
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
+var damage_given: float = 25
+var damage_nodes: Array[Node2D] = []
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	for node in damage_nodes:
+		node.damage(damage_given * delta)
 
-func damage():
-	pass
+func _on_body_entered(body):
+	if body.has_method("damage"):
+		damage_nodes.append(body)
+
+func _on_body_exited(body):
+	damage_nodes.erase(body)
