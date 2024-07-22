@@ -71,9 +71,13 @@ func heal(amount: float) -> bool:
 func _on_area_2d_area_entered(area):
 	if (area.has_method("interact") && !current_interactables.has(area)):
 		current_interactables.append(area)
+		if (area.has_method("set_outline")):
+			area.set_outline(true)
 
 func _on_area_2d_area_exited(area):
 	current_interactables.erase(area)
+	if (area.has_method("set_outline")):
+		area.set_outline(false)
 
 func _input(event):
 	if (event.is_action_pressed("skin_worm")):

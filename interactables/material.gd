@@ -13,3 +13,6 @@ func interact(node: Node2D):
 
 func _on_healthbar_health_empty():
 	queue_free()
+
+func set_outline(enabled: bool):
+	$Outline.visible = enabled

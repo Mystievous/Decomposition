@@ -1,26 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://4x6bq6bunn15"]
+[gd_scene load_steps=6 format=3 uid="uid://4x6bq6bunn15"]
 
 [ext_resource type="PackedScene" uid="uid://bdiny0oaheofm" path="res://players/player.tscn" id="1_4yxic"]
+[ext_resource type="PackedScene" uid="uid://dq46tamd7u53f" path="res://ui/pause_menu.tscn" id="1_triiu"]
 [ext_resource type="PackedScene" uid="uid://ccenlgxufauo2" path="res://interactables/level.tscn" id="2_vytpa"]
 [ext_resource type="PackedScene" uid="uid://c8o5kterpyx03" path="res://scenes/main.tscn" id="3_cjwm1"]
 [ext_resource type="PackedScene" uid="uid://bw5ekoqlrfoye" path="res://scenes/click_spawn.tscn" id="4_xe2ws"]
 
 [node name="LevelSelect" type="Node2D"]
 
+[node name="PauseMenu" parent="." instance=ExtResource("1_triiu")]
+
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
 zoom = Vector2(2, 2)
-
-[node name="Main" parent="." instance=ExtResource("2_vytpa")]
-position = Vector2(205, 108)
-scene = ExtResource("3_cjwm1")
-
-[node name="PlaceMinions" parent="." instance=ExtResource("2_vytpa")]
-position = Vector2(341, 110)
-scene = ExtResource("4_xe2ws")
-
-[node name="Player" parent="." instance=ExtResource("1_4yxic")]
-position = Vector2(70, 73)
 
 [node name="MainLabel" type="RichTextLabel" parent="."]
 offset_left = 199.0
@@ -36,12 +28,24 @@ offset_right = 422.0
 offset_bottom = 163.0
 text = "Place Minions"
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="Controls" type="RichTextLabel" parent="."]
 offset_left = 69.0
 offset_top = 196.0
 offset_right = 559.0
-offset_bottom = 306.0
+offset_bottom = 316.0
 text = "WASD to move
 E to interact/enter
 Click to place minion
-1/2 to switch between worm and millipede"
+1 or 2 to switch between worm and millipede
+Escape to return to level select"
+
+[node name="Main" parent="." instance=ExtResource("2_vytpa")]
+position = Vector2(205, 108)
+scene = ExtResource("3_cjwm1")
+
+[node name="PlaceMinions" parent="." instance=ExtResource("2_vytpa")]
+position = Vector2(341, 110)
+scene = ExtResource("4_xe2ws")
+
+[node name="Player" parent="." instance=ExtResource("1_4yxic")]
+position = Vector2(70, 73)

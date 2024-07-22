@@ -4,4 +4,6 @@ extends Area2D
 
 func interact(_node):
 	get_tree().change_scene_to_packed(scene)
-	pass
+
+func set_outline(enabled: bool):
+	$Outline.visible = enabled
