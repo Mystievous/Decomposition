@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://c8o5kterpyx03"]
+[gd_scene load_steps=5 format=3 uid="uid://c8o5kterpyx03"]
 
 [ext_resource type="PackedScene" uid="uid://wj2kk0glf0q4" path="res://interactables/material.tscn" id="1_j1x0e"]
 [ext_resource type="PackedScene" uid="uid://bdiny0oaheofm" path="res://players/player.tscn" id="2_n5bjs"]
 [ext_resource type="PackedScene" uid="uid://dv33ktyaxcywa" path="res://interactables/HealingArea.tscn" id="3_4lvh7"]
+[ext_resource type="PackedScene" uid="uid://s4d6n6jumbdv" path="res://terrain/DamageArea.tscn" id="3_2048q"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -29,6 +30,9 @@ position = Vector2(164, 8)
 
 [node name="HealingArea" parent="." instance=ExtResource("3_4lvh7")]
 position = Vector2(104, 95)
+
+[node name="DamageArea" parent="." instance=ExtResource("3_2048q")]
+position = Vector2(181, 95)
 
 [node name="Player" parent="." instance=ExtResource("2_n5bjs")]
 position = Vector2(40, 50)
