@@ -28,3 +28,7 @@ position = Vector2(140, 137)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
+zoom = Vector2(1.67, 1.67)
+
+[node name="Material" parent="." instance=ExtResource("1_j1x0e")]
+position = Vector2(310, 151)
