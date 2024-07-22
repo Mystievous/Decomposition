@@ -1,10 +1,19 @@
 extends CharacterBody2D
 
 @export var sprite: AnimatedSprite2D
+@export var damage: float = 5
+@export var attack_cooldown := 1.0;
+
+var _current_attack_cooldown := 0.0;
 
 const SPEED := 150.0
 
-var current_interactable: Node2D
+var current_interactables: Array[Node2D] = []
+
+func _process(delta):
+	if (_current_attack_cooldown > 0):
+		_current_attack_cooldown = maxf(_current_attack_cooldown - (1 * delta), 0.0)
+	pass
 
 func _physics_process(_delta):
 	# Get the input direction and handle the movement/deceleration.
@@ -27,16 +36,18 @@ func _check_flip():
 
 func _input(event):
 	if event.is_action_pressed("interact"):
-		on_interact()
+		if (_current_attack_cooldown == 0.0):
+			on_interact()
+			_current_attack_cooldown += attack_cooldown
 
 func on_interact():
-	if (current_interactable):
-		current_interactable.interact()
+	for interactable in current_interactables:
+		interactable.interact(damage)
 
 func _on_area_2d_area_entered(area):
-	if (area.has_method("interact")):
-		current_interactable = area
+	if (area.has_method("interact") && !current_interactables.has(area)):
+		current_interactables.append(area)
 
 func _on_area_2d_area_exited(area):
-	if (current_interactable == area):
-		current_interactable = null
+	if (current_interactables.has(area)):
+		current_interactables.erase(area)
