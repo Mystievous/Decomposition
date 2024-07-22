@@ -59,6 +59,10 @@ func on_interact():
 func _on_area_2d_area_entered(area):
 	if (area.has_method("interact") && !current_interactables.has(area)):
 		current_interactables.append(area)
+		
+	if (area.has_method("heal") && curr_health < max_health):
+		change_health(area.heal_amount)
+		area.heal()
 
 func _on_area_2d_area_exited(area):
 	if (current_interactables.has(area)):
@@ -66,11 +70,11 @@ func _on_area_2d_area_exited(area):
 
 func change_health(amount: float):
 	curr_health += amount
-	if (curr_health <= 0):
+	if curr_health <= 0:
 		#Game over
 		pass
 	else:
-		if (curr_health + amount) > max_health:
+		if curr_health > max_health:
 			#prevents health bar over flowing
 			health_bar.set_progress(1.0)
 		else:
