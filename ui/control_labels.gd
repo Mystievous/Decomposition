@@ -1,8 +1,5 @@
 extends Node2D
 
-@export var move_cursor: CompressedTexture2D
-@export var summon_cursor: CompressedTexture2D
-
 @export var player: Node2D
 
 @export var show_interact: bool :
@@ -16,10 +13,6 @@ extends Node2D
 		return $Summon.visible
 	set(value):
 		$Summon.visible = value
-		if (value):
-			Input.set_custom_mouse_cursor(summon_cursor, 0, Vector2(24, 24))
-		else:
-			Input.set_custom_mouse_cursor(move_cursor, 0, Vector2(24, 24))
 		
 func _ready():
 	$Summon.visible = show_summon

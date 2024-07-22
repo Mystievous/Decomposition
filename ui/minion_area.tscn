@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://cbndlk88l6e6g"]
+
+[ext_resource type="Script" path="res://ui/minion_area.gd" id="1_oa4wg"]
+[ext_resource type="Texture2D" uid="uid://bnu1lod5xpn3c" path="res://assets/cursors/move.png" id="2_ol7nb"]
+[ext_resource type="Texture2D" uid="uid://fqmc3lxw51ry" path="res://assets/cursors/place.png" id="3_y2b0d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7wq6w"]
+
+[node name="MinionArea" type="Area2D"]
+script = ExtResource("1_oa4wg")
+move_cursor = ExtResource("2_ol7nb")
+summon_cursor = ExtResource("3_y2b0d")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(0.521569, 0.372549, 0.682353, 0.713726)
+polygon = PackedVector2Array(0, 0, 20, 0, 20, 20, 0, 20)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(10, 10)
+shape = SubResource("RectangleShape2D_7wq6w")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

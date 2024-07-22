@@ -1,6 +1,24 @@
-[gd_scene load_steps=2 format=3 uid="uid://cscp7nrt1dgxn"]
+[gd_scene load_steps=2 format=3 uid="uid://b7xdhg7os4phd"]
 
-[ext_resource type="Script" path="res://ui/minion_spawner.gd" id="1_6fkkg"]
+[sub_resource type="GDScript" id="GDScript_0byp7"]
+script/source = "extends Node2D
+
+var minion_load := preload(\"res://players/minion.tscn\")
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	if (Input.is_action_just_pressed(\"spawn_minion\")):
+		var minion_position: Vector2 = Vector2(0, 0)
+		minion_position = get_local_mouse_position()
+		
+		var minion = minion_load.instantiate()
+		add_child(minion)
+		minion.position = minion_position - Vector2(19, 4)
+"
 
 [node name="MinionSpawner" type="Node2D"]
-script = ExtResource("1_6fkkg")
+script = SubResource("GDScript_0byp7")

@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dq46tamd7u53f" path="res://ui/pause_menu.tscn" id="1_3ofx6"]
 [ext_resource type="PackedScene" uid="uid://wj2kk0glf0q4" path="res://interactables/material.tscn" id="1_5lc0p"]
 [ext_resource type="PackedScene" uid="uid://bdiny0oaheofm" path="res://players/player.tscn" id="3_picsf"]
-[ext_resource type="PackedScene" uid="uid://cscp7nrt1dgxn" path="res://ui/minion_spawner.tscn" id="4_0abp3"]
+[ext_resource type="PackedScene" uid="uid://cbndlk88l6e6g" path="res://ui/minion_area.tscn" id="5_icxkb"]
 [ext_resource type="PackedScene" uid="uid://24n17t0xxk5w" path="res://ui/control_labels.tscn" id="5_t425n"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_fjcaq"]
@@ -23,6 +23,24 @@ zoom = Vector2(2, 2)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_fjcaq")
+
+[node name="MinionArea" parent="." node_paths=PackedStringArray("minions", "control_labels") instance=ExtResource("5_icxkb")]
+position = Vector2(255, 70)
+scale = Vector2(5.22059, 10.4153)
+minions = NodePath("../Minions")
+control_labels = NodePath("../ControlLabels")
+
+[node name="MinionArea3" parent="." node_paths=PackedStringArray("minions", "control_labels") instance=ExtResource("5_icxkb")]
+position = Vector2(27, 170)
+scale = Vector2(7.00489, 5.58096)
+minions = NodePath("../Minions")
+control_labels = NodePath("../ControlLabels")
+
+[node name="MinionArea2" parent="." node_paths=PackedStringArray("minions", "control_labels") instance=ExtResource("5_icxkb")]
+position = Vector2(419, 27)
+scale = Vector2(6.29388, 4.19693)
+minions = NodePath("../Minions")
+control_labels = NodePath("../ControlLabels")
 
 [node name="Materials" type="Node2D" parent="."]
 
@@ -44,10 +62,10 @@ position = Vector2(350, 35)
 [node name="Material6" parent="Materials" instance=ExtResource("1_5lc0p")]
 position = Vector2(166, 44)
 
-[node name="MinionSpawner" parent="." instance=ExtResource("4_0abp3")]
-
-[node name="ControlLabels" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_t425n")]
-player = NodePath("../Player")
+[node name="Minions" type="Node2D" parent="."]
 
 [node name="Player" parent="." instance=ExtResource("3_picsf")]
 position = Vector2(20, 111)
+
+[node name="ControlLabels" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_t425n")]
+player = NodePath("../Player")

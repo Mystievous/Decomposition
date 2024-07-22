@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://b4t152sgy6j6u"]
+[gd_scene load_steps=7 format=3 uid="uid://b4t152sgy6j6u"]
 
 [ext_resource type="PackedScene" uid="uid://dq46tamd7u53f" path="res://ui/pause_menu.tscn" id="1_3rwof"]
 [ext_resource type="PackedScene" uid="uid://wj2kk0glf0q4" path="res://interactables/material.tscn" id="2_e7v1s"]
 [ext_resource type="Texture2D" uid="uid://drmrjjxgpoljt" path="res://assets/light.webp" id="2_hhe77"]
-[ext_resource type="PackedScene" uid="uid://cscp7nrt1dgxn" path="res://ui/minion_spawner.tscn" id="3_b34p1"]
 [ext_resource type="PackedScene" uid="uid://bdiny0oaheofm" path="res://players/player.tscn" id="4_xg68c"]
 [ext_resource type="PackedScene" uid="uid://24n17t0xxk5w" path="res://ui/control_labels.tscn" id="6_1cuut"]
 
@@ -49,8 +48,6 @@ position = Vector2(350, 35)
 [node name="Material6" parent="Materials" instance=ExtResource("2_e7v1s")]
 position = Vector2(166, 44)
 
-[node name="MinionSpawner" parent="." instance=ExtResource("3_b34p1")]
-
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.60933, 0.60933, 0.60933, 1)
 
@@ -60,8 +57,8 @@ color = Color(0, 0.878431, 0.239216, 1)
 energy = 1.6
 texture = ExtResource("2_hhe77")
 
-[node name="ControlLabels" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_1cuut")]
-player = NodePath("../Player")
-
 [node name="Player" parent="." instance=ExtResource("4_xg68c")]
 position = Vector2(20, 111)
+
+[node name="ControlLabels" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_1cuut")]
+player = NodePath("../Player")
