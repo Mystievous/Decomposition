@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://c8o5kterpyx03"]
+[gd_scene load_steps=7 format=3 uid="uid://c8o5kterpyx03"]
 
 [ext_resource type="PackedScene" uid="uid://dq46tamd7u53f" path="res://ui/pause_menu.tscn" id="1_grht4"]
 [ext_resource type="PackedScene" uid="uid://wj2kk0glf0q4" path="res://interactables/material.tscn" id="1_ifwu5"]
 [ext_resource type="PackedScene" uid="uid://dv33ktyaxcywa" path="res://terrain/HealingArea.tscn" id="2_p5i3k"]
 [ext_resource type="PackedScene" uid="uid://s4d6n6jumbdv" path="res://terrain/DamageArea.tscn" id="3_yxmdj"]
 [ext_resource type="PackedScene" uid="uid://bdiny0oaheofm" path="res://players/player.tscn" id="4_v633p"]
+[ext_resource type="PackedScene" uid="uid://24n17t0xxk5w" path="res://ui/control_labels.tscn" id="6_dhv4h"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -37,9 +38,12 @@ position = Vector2(104, 95)
 [node name="DamageArea" parent="." instance=ExtResource("3_yxmdj")]
 position = Vector2(181, 95)
 
-[node name="Player" parent="." instance=ExtResource("4_v633p")]
-position = Vector2(40, 50)
-
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
 zoom = Vector2(2, 2)
+
+[node name="ControlLabels" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_dhv4h")]
+player = NodePath("../Player")
+
+[node name="Player" parent="." instance=ExtResource("4_v633p")]
+position = Vector2(40, 50)

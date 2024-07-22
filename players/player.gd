@@ -12,6 +12,8 @@ var movement_speed := 150.0
 
 var current_interactables: Array[Node2D] = []
 
+signal interact_change(state)
+
 func _ready():
 	SelectedSkin.skin_changed.connect(_skin_changed)
 	_skin_changed()
@@ -25,7 +27,13 @@ func _process(delta):
 func _physics_process(_delta):
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var move = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	var x = Input.get_axis("move_left", "move_right")
+	var y = Input.get_axis("move_up", "move_down")
+	if (absf(x) < 0.05): 
+		x = 0.0
+	if (absf(y) < 0.05): 
+		y = 0.0
+	var move = Vector2(x, y)
 	if move:
 		velocity = move * movement_speed
 	else:
@@ -70,12 +78,16 @@ func heal(amount: float) -> bool:
 
 func _on_area_2d_area_entered(area):
 	if (area.has_method("interact") && !current_interactables.has(area)):
+		if (current_interactables.is_empty()):
+			interact_change.emit(true)
 		current_interactables.append(area)
 		if (area.has_method("set_outline")):
 			area.set_outline(true)
 
 func _on_area_2d_area_exited(area):
 	current_interactables.erase(area)
+	if (current_interactables.is_empty()):
+		interact_change.emit(false)
 	if (area.has_method("set_outline")):
 		area.set_outline(false)
 

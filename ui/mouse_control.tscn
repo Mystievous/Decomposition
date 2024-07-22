@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://cfotu3k08dnpw"]
+
+[node name="MouseControl" type="Node2D"]

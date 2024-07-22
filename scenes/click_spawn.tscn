@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bw5ekoqlrfoye"]
+[gd_scene load_steps=7 format=3 uid="uid://bw5ekoqlrfoye"]
 
 [ext_resource type="PackedScene" uid="uid://dq46tamd7u53f" path="res://ui/pause_menu.tscn" id="1_3ofx6"]
 [ext_resource type="PackedScene" uid="uid://wj2kk0glf0q4" path="res://interactables/material.tscn" id="1_5lc0p"]
 [ext_resource type="PackedScene" uid="uid://bdiny0oaheofm" path="res://players/player.tscn" id="3_picsf"]
 [ext_resource type="PackedScene" uid="uid://cscp7nrt1dgxn" path="res://ui/minion_spawner.tscn" id="4_0abp3"]
+[ext_resource type="PackedScene" uid="uid://24n17t0xxk5w" path="res://ui/control_labels.tscn" id="5_t425n"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_fjcaq"]
 vertices = PackedVector2Array(566, 314, 10, 314, 10, 10, 566, 10)
@@ -44,6 +45,9 @@ position = Vector2(350, 35)
 position = Vector2(166, 44)
 
 [node name="MinionSpawner" parent="." instance=ExtResource("4_0abp3")]
+
+[node name="ControlLabels" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_t425n")]
+player = NodePath("../Player")
 
 [node name="Player" parent="." instance=ExtResource("3_picsf")]
 position = Vector2(20, 111)

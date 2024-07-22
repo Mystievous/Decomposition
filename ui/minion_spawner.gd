@@ -8,15 +8,10 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
-
-func _input(event):
-	if (event.is_action_pressed("spawn_minion")):
+	if (Input.is_action_just_pressed("spawn_minion")):
 		var minion_position: Vector2 = Vector2(0, 0)
-		if event is InputEventMouseButton:
-			minion_position = get_local_mouse_position()
+		minion_position = get_local_mouse_position()
 		
 		var minion = minion_load.instantiate()
 		add_child(minion)
 		minion.position = minion_position - Vector2(19, 4)
-		pass
