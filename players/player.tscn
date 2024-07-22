@@ -44,7 +44,6 @@ shape = SubResource("RectangleShape2D_cqwoj")
 texture_filter = 1
 position = Vector2(32, 7)
 sprite_frames = SubResource("SpriteFrames_buy4h")
-autoplay = "default"
 frame_progress = 0.246237
 
 [node name="Area2D" type="Area2D" parent="."]

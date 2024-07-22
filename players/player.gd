@@ -13,7 +13,11 @@ var current_interactables: Array[Node2D] = []
 func _process(delta):
 	if (_current_interact_cooldown > 0):
 		_current_interact_cooldown = maxf(_current_interact_cooldown - (1 * delta), 0.0)
-	pass
+		
+	if Input.is_action_pressed("interact"):
+		if (_current_interact_cooldown == 0.0):
+			on_interact()
+			_current_interact_cooldown += interact_cooldown
 
 func _physics_process(_delta):
 	# Get the input direction and handle the movement/deceleration.
@@ -21,8 +25,13 @@ func _physics_process(_delta):
 	var move = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	if move:
 		velocity = move * SPEED
+		if (!sprite.is_playing()):
+			sprite.set_frame_and_progress(0, 1)
+			sprite.play()
 	else:
 		velocity = Vector2(0, 0)
+		if (sprite.is_playing()):
+			sprite.stop()
 	
 	_check_flip()
 	move_and_slide()
@@ -33,12 +42,6 @@ func _check_flip():
 			sprite.flip_h = true
 		else:
 			sprite.flip_h = false
-
-func _input(event):
-	if event.is_action_pressed("interact"):
-		if (_current_interact_cooldown == 0.0):
-			on_interact()
-			_current_interact_cooldown += interact_cooldown
 
 func on_interact():
 	for interactable in current_interactables:
