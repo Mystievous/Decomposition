@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://wj2kk0glf0q4" path="res://interactables/material.tscn" id="1_j1x0e"]
 [ext_resource type="PackedScene" uid="uid://bdiny0oaheofm" path="res://players/player.tscn" id="2_n5bjs"]
-[ext_resource type="PackedScene" uid="uid://dv33ktyaxcywa" path="res://interactables/HealingArea.tscn" id="3_4lvh7"]
+[ext_resource type="PackedScene" uid="uid://dv33ktyaxcywa" path="res://terrain/HealingArea.tscn" id="3_4lvh7"]
 [ext_resource type="PackedScene" uid="uid://s4d6n6jumbdv" path="res://terrain/DamageArea.tscn" id="3_2048q"]
 
 [node name="Node2D" type="Node2D"]

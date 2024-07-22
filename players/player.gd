@@ -63,13 +63,15 @@ func _check_sprite():
 		if (sprite.animation != "idle"):
 			sprite.play("idle")
 
+func eat_sound():
+	var sound: AudioStreamWAV = sounds.pick_random()
+	$AudioStreamPlayer2D.stream = sound
+	$AudioStreamPlayer2D.play()
+
 func on_interact():
 	if not current_interactables.is_empty():
-		var sound: AudioStreamWAV = sounds.pick_random()
-		$AudioStreamPlayer2D.stream = sound
-		$AudioStreamPlayer2D.play()
 		for interactable in current_interactables:
-			interactable.interact(interact_damage)
+			interactable.interact(self)
 
 func _on_area_2d_area_entered(area):
 	if (area.has_method("interact") && !current_interactables.has(area)):

@@ -14,8 +14,9 @@ func _ready():
 func _process(delta):
 	pass
 
-func interact(damage: float):
-	curr_health -= damage
+func interact(node: Node2D):
+	node.eat_sound()
+	curr_health -= node.interact_damage
 	if (curr_health <= 0):
 		queue_free()
 	progress_bar.set_progress(curr_health / max_health);

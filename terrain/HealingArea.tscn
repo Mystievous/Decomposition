@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dv33ktyaxcywa"]
 
-[ext_resource type="Script" path="res://interactables/HealingArea.gd" id="1_rud3n"]
+[ext_resource type="Script" path="res://terrain/HealingArea.gd" id="1_rud3n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wkg8t"]
 size = Vector2(38, 39)
