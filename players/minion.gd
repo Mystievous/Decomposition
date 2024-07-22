@@ -11,8 +11,6 @@ const SPEED := 75
 
 var current_interactables: Array[Node2D] = []
 
-var run := false
-
 func _ready():
 	# These values need to be adjusted for the actor's speed
 	# and the navigation layout.
@@ -30,8 +28,6 @@ func actor_setup():
 	#refresh_target()
 	
 func refresh_target():
-	if not run:
-		return
 	var interactions := get_tree().get_nodes_in_group("minion_interact")
 	var closest = null
 	var closest_distance = null
@@ -97,8 +93,3 @@ func _on_navigation_agent_2d_velocity_computed(safe_velocity):
 	
 	_check_sprite()
 	move_and_slide()
-
-
-func _on_timer_timeout():
-	run = true
-	refresh_target()

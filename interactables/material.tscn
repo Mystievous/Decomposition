@@ -5,7 +5,7 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ub8h1"]
 
-[node name="Material" type="Area2D" node_paths=PackedStringArray("progress_bar")]
+[node name="Material" type="Area2D" node_paths=PackedStringArray("progress_bar") groups=["minion_interact"]]
 script = ExtResource("1_45a7l")
 progress_bar = NodePath("Progressbar")
 
