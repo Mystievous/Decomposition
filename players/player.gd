@@ -29,12 +29,12 @@ func _physics_process(_delta):
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var x = Input.get_axis("move_left", "move_right")
 	var y = Input.get_axis("move_up", "move_down")
-	if (absf(x) < 0.05): 
-		x = 0.0
-	if (absf(y) < 0.05): 
-		y = 0.0
-	var move = Vector2(x, y)
+	var move = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	if move:
+		if (absf(x) < 0.025): 
+			move.x = 0.0
+		if (absf(y) < 0.025): 
+			move.y = 0.0
 		velocity = move * movement_speed
 	else:
 		velocity = Vector2(0, 0)
