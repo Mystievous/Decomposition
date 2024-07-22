@@ -6,7 +6,7 @@
 [node name="Node2D" type="Node2D"]
 
 [node name="Materials" type="Node2D" parent="."]
-position = Vector2(140, 137)
+position = Vector2(40, 50)
 
 [node name="Material" parent="Materials" instance=ExtResource("1_j1x0e")]
 position = Vector2(196, 15)
@@ -24,11 +24,11 @@ position = Vector2(430, 225)
 position = Vector2(348, -1)
 
 [node name="Player" parent="." instance=ExtResource("2_n5bjs")]
-position = Vector2(140, 137)
+position = Vector2(40, 50)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
-zoom = Vector2(1.67, 1.67)
+zoom = Vector2(2, 2)
 
 [node name="Material" parent="." instance=ExtResource("1_j1x0e")]
-position = Vector2(310, 151)
+position = Vector2(204, 58)

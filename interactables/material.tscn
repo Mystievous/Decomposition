@@ -19,5 +19,4 @@ shape = SubResource("RectangleShape2D_ub8h1")
 debug_color = Color(0.791007, 0.0863483, 1, 0.42)
 
 [node name="Progressbar" parent="." instance=ExtResource("2_luoca")]
-visible = false
 position = Vector2(-14, -14)
