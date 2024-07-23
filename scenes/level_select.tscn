@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://4x6bq6bunn15"]
+[gd_scene load_steps=9 format=3 uid="uid://4x6bq6bunn15"]
 
 [ext_resource type="PackedScene" uid="uid://bdiny0oaheofm" path="res://players/player.tscn" id="1_4yxic"]
 [ext_resource type="PackedScene" uid="uid://dq46tamd7u53f" path="res://ui/pause_menu.tscn" id="1_triiu"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c8o5kterpyx03" path="res://scenes/main.tscn" id="3_cjwm1"]
 [ext_resource type="PackedScene" uid="uid://bw5ekoqlrfoye" path="res://scenes/click_spawn.tscn" id="4_xe2ws"]
 [ext_resource type="PackedScene" uid="uid://b4t152sgy6j6u" path="res://scenes/light.tscn" id="5_6tvxu"]
+[ext_resource type="PackedScene" uid="uid://vhkqqh4xyhin" path="res://scenes/maze.tscn" id="6_c7w1w"]
 [ext_resource type="PackedScene" uid="uid://24n17t0xxk5w" path="res://ui/control_labels.tscn" id="7_witwl"]
 
 [node name="LevelSelect" type="Node2D"]
@@ -22,6 +23,13 @@ offset_top = 127.0
 offset_right = 249.0
 offset_bottom = 159.0
 text = "Main"
+
+[node name="MainLabel2" type="RichTextLabel" parent="."]
+offset_left = 260.0
+offset_top = 182.0
+offset_right = 313.0
+offset_bottom = 214.0
+text = "Maze"
 
 [node name="PlaceMinionsLabel" type="RichTextLabel" parent="."]
 offset_left = 302.0
@@ -59,6 +67,10 @@ scene = ExtResource("4_xe2ws")
 [node name="Light" parent="." instance=ExtResource("2_vytpa")]
 position = Vector2(438, 181)
 scene = ExtResource("5_6tvxu")
+
+[node name="Maze" parent="." instance=ExtResource("2_vytpa")]
+position = Vector2(272, 162)
+scene = ExtResource("6_c7w1w")
 
 [node name="ControlLabels" parent="." node_paths=PackedStringArray("player") instance=ExtResource("7_witwl")]
 player = NodePath("../Player")
