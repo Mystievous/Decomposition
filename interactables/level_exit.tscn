@@ -1,11 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://bpl778fa7d2q3"]
 
-[ext_resource type="Script" path="res://interactables/level.gd" id="1_ip6op"]
+[ext_resource type="Script" path="res://interactables/level_exit.gd" id="1_rksjk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ub8h1"]
 
-[node name="LevelExit" type="Area2D" groups=["minion_interact"]]
-script = ExtResource("1_ip6op")
+[node name="LevelExit" type="Area2D" groups=["level_exit"]]
+script = ExtResource("1_rksjk")
 
 [node name="Outline" type="ColorRect" parent="."]
 visible = false

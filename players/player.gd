@@ -110,3 +110,4 @@ func _skin_changed():
 
 func _on_healthbar_health_empty():
 	queue_free()
+	Transitions.transition_to("res://scenes/level_select.tscn")

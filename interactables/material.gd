@@ -12,6 +12,11 @@ func interact(node: Node2D):
 	$Healthbar.decrement(node.interact_damage)
 
 func _on_healthbar_health_empty():
+	var size = get_parent().get_children().size()
+	if (size == 1):
+		var exits := get_tree().get_nodes_in_group("level_exit")
+		for exit in exits:
+			exit.visible = true
 	queue_free()
 
 func set_outline(enabled: bool):

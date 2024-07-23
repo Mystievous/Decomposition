@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://4x6bq6bunn15"]
+[gd_scene load_steps=6 format=3 uid="uid://4x6bq6bunn15"]
 
 [ext_resource type="PackedScene" uid="uid://bdiny0oaheofm" path="res://players/player.tscn" id="1_4yxic"]
 [ext_resource type="PackedScene" uid="uid://dq46tamd7u53f" path="res://ui/pause_menu.tscn" id="1_triiu"]
+[ext_resource type="PackedScene" uid="uid://dmq02gv70lruc" path="res://terrain/walls.tscn" id="2_evtug"]
 [ext_resource type="PackedScene" uid="uid://ccenlgxufauo2" path="res://interactables/level.tscn" id="2_vytpa"]
 [ext_resource type="PackedScene" uid="uid://24n17t0xxk5w" path="res://ui/control_labels.tscn" id="7_witwl"]
 
@@ -12,6 +13,8 @@
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
 zoom = Vector2(2, 2)
+
+[node name="Walls" parent="." instance=ExtResource("2_evtug")]
 
 [node name="MainLabel" type="RichTextLabel" parent="."]
 offset_left = 196.0
