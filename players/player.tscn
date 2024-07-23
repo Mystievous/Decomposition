@@ -19,7 +19,7 @@ size = Vector2(64, 23)
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite")]
 scale = Vector2(0.986124, 1)
-collision_layer = 2
+collision_layer = 3
 motion_mode = 1
 script = ExtResource("1_y6swo")
 sounds = Array[AudioStreamWAV]([ExtResource("2_abkly"), ExtResource("3_63orn"), ExtResource("4_qvm5s"), ExtResource("5_4bfw8"), ExtResource("6_2h7m1")])
