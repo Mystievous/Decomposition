@@ -9,6 +9,8 @@ func _ready():
 
 func interact(node: Node2D):
 	node.eat_sound()
+	if not $Healthbar.visible:
+		$Healthbar.visible = true
 	$Healthbar.decrement(node.interact_damage)
 
 func _on_healthbar_health_empty():

@@ -40,8 +40,7 @@ position = Vector2(19, 4.5)
 shape = SubResource("RectangleShape2D_ch15d")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-path_desired_distance = 4.0
-target_desired_distance = 4.0
+path_desired_distance = 10.0
 avoidance_enabled = true
 radius = 5.0
 avoidance_priority = 0.25
@@ -61,3 +60,4 @@ position = Vector2(-5, -10)
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
 [connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
+[connection signal="health_empty" from="Healthbar" to="." method="_on_healthbar_health_empty"]

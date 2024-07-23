@@ -1,6 +1,6 @@
 extends Area2D
 
-var damage_given: float = 25
+@export var damage_given: float = 40
 var damage_nodes: Array[Node2D] = []
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -7,12 +7,12 @@
 
 [sub_resource type="Resource" id="Resource_t2ca8"]
 script = ExtResource("4_wg1a0")
-player_health = 100.0
+player_health = 60.0
 player_damage = 5.0
-player_speed = 200.0
-minion_health = 100.0
-minion_damage = 5.0
-minion_speed = 100.0
+player_speed = 150.0
+minion_health = 30.0
+minion_damage = 4.0
+minion_speed = 75.0
 
 [resource]
 script = ExtResource("3_eg3al")

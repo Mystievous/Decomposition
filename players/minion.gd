@@ -61,15 +61,15 @@ func _check_sprite():
 			sprite.play("idle")
 
 func _skin_changed():
-	#var health_percent: float = $Healthbar.percent_health
+	var health_percent: float = $Healthbar.percent_health
 	var skin: SkinResource = SelectedSkin.selected_skin
 	sprite.sprite_frames = skin.minion_sprite
 	sprite.play()
 	_check_sprite()
-	#$Healthbar.set_max_health(skin.stats.minion_health)
+	$Healthbar.set_max_health(skin.stats.minion_health)
 	movement_speed = skin.stats.minion_speed
 	interact_damage = skin.stats.minion_damage
-	#$Healthbar.percent_health = health_percent
+	$Healthbar.percent_health = health_percent
 
 func eat_sound():
 	var sound: AudioStreamWAV = sounds.pick_random()
@@ -81,6 +81,8 @@ func on_interact():
 		interactable.interact(self)
 		
 func damage(amount):
+	if not $Healthbar.visible:
+		$Healthbar.visible = true
 	$Healthbar.decrement(amount)
 
 func _on_area_2d_area_entered(area):
@@ -95,3 +97,7 @@ func _on_navigation_agent_2d_velocity_computed(safe_velocity):
 	
 	_check_sprite()
 	move_and_slide()
+
+
+func _on_healthbar_health_empty():
+	queue_free()
