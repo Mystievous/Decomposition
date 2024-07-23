@@ -1,8 +1,55 @@
-[gd_scene load_steps=37 format=3 uid="uid://dsulabhu8dd4f"]
+[gd_scene load_steps=55 format=3 uid="uid://dsulabhu8dd4f"]
 
 [ext_resource type="Texture2D" uid="uid://o1nmc8o74pm8" path="res://assets/backstory1.png" id="1_gvkbr"]
 [ext_resource type="Texture2D" uid="uid://bjr7c4nd2vo0s" path="res://assets/backstory2.png" id="2_8wdga"]
 [ext_resource type="Texture2D" uid="uid://4m48o5inhxnm" path="res://assets/backstory3.png" id="3_r1blo"]
+[ext_resource type="PackedScene" uid="uid://bdiny0oaheofm" path="res://players/player.tscn" id="4_whtrl"]
+[ext_resource type="Texture2D" uid="uid://co348eduhgmhp" path="res://assets/ui/play.png" id="5_o0spx"]
+[ext_resource type="Texture2D" uid="uid://cvk28wumr8uua" path="res://assets/ui/mainmenu_bg.png" id="5_yesia"]
+[ext_resource type="PackedScene" uid="uid://cl7it17h7mfnr" path="res://interactables/interact_button.tscn" id="6_hw1cq"]
+[ext_resource type="Texture2D" uid="uid://dd7enul4q5cdm" path="res://assets/ui/play_outline.png" id="6_s7e41"]
+[ext_resource type="Texture2D" uid="uid://ruthxy3h7fiu" path="res://assets/ui/settings.png" id="7_j06kk"]
+[ext_resource type="Texture2D" uid="uid://bpl6o823nqr4f" path="res://assets/ui/credits.png" id="7_wgk6w"]
+[ext_resource type="Texture2D" uid="uid://dajl0fnxorumf" path="res://assets/ui/credits_outline.png" id="8_aaetk"]
+[ext_resource type="Texture2D" uid="uid://dhjnesfr4p2ba" path="res://assets/ui/settings_outline.png" id="8_hrcmo"]
+[ext_resource type="PackedScene" uid="uid://24n17t0xxk5w" path="res://ui/control_labels.tscn" id="10_vp4j5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3f34r"]
+atlas = ExtResource("5_yesia")
+region = Rect2(0, 0, 1280, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wadxk"]
+atlas = ExtResource("5_yesia")
+region = Rect2(1280, 0, 1280, 720)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_psepq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3f34r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wadxk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0gh0b"]
+size = Vector2(96, 83)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hrqrv"]
+size = Vector2(114, 149.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_53ew2"]
+size = Vector2(116.188, 103.875)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ypfkl"]
+size = Vector2(461, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ywtir"]
+size = Vector2(20, 78)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7ek34"]
 atlas = ExtResource("1_gvkbr")
@@ -235,21 +282,138 @@ animations = [{
 [sub_resource type="GDScript" id="GDScript_2t1dn"]
 script/source = "extends AnimatedSprite2D
 
+func _ready():
+	get_tree().paused = true
+
 func _on_animation_finished():
+	get_tree().paused = false
 	queue_free()
 "
 
 [node name="MainMenu" type="Node2D"]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(288, 162)
-scale = Vector2(0.45, 0.45)
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+zoom = Vector2(2.502, 2.502)
+
+[node name="Background" type="AnimatedSprite2D" parent="."]
+process_mode = 3
+position = Vector2(230.222, 129.5)
+scale = Vector2(0.359722, 0.359722)
+sprite_frames = SubResource("SpriteFrames_psepq")
+autoplay = "default"
+frame_progress = 0.138366
+
+[node name="InteractButton" parent="." node_paths=PackedStringArray("outline") instance=ExtResource("6_hw1cq")]
+outline = NodePath("Outline")
+scene = "res://scenes/level_select.tscn"
+
+[node name="Button" type="Sprite2D" parent="InteractButton"]
+position = Vector2(0, -2.98023e-07)
+scale = Vector2(0.36, 0.36)
+texture = ExtResource("7_j06kk")
+centered = false
+
+[node name="Outline" type="Sprite2D" parent="InteractButton"]
+visible = false
+position = Vector2(0, -2.98023e-07)
+scale = Vector2(0.36, 0.36)
+texture = ExtResource("8_hrcmo")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 409.196, 720.321)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractButton"]
+position = Vector2(51, 206.5)
+shape = SubResource("RectangleShape2D_0gh0b")
+
+[node name="PlayButton" parent="." node_paths=PackedStringArray("outline") instance=ExtResource("6_hw1cq")]
+outline = NodePath("Outline")
+scene = "res://scenes/level_select.tscn"
+
+[node name="Button" type="Sprite2D" parent="PlayButton"]
+position = Vector2(0, -2.98023e-07)
+scale = Vector2(0.36, 0.36)
+texture = ExtResource("5_o0spx")
+centered = false
+
+[node name="Outline" type="Sprite2D" parent="PlayButton"]
+visible = false
+position = Vector2(0, -2.98023e-07)
+scale = Vector2(0.36, 0.36)
+texture = ExtResource("6_s7e41")
+centered = false
+region_rect = Rect2(0, 0, 1261.51, 720.321)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayButton"]
+position = Vector2(221, 173.125)
+shape = SubResource("RectangleShape2D_hrqrv")
+
+[node name="Credits" parent="." node_paths=PackedStringArray("outline") instance=ExtResource("6_hw1cq")]
+outline = NodePath("Outline")
+scene = "res://scenes/level_select.tscn"
+
+[node name="Button" type="Sprite2D" parent="Credits"]
+position = Vector2(0, -2.98023e-07)
+scale = Vector2(0.36, 0.36)
+texture = ExtResource("7_wgk6w")
+centered = false
+
+[node name="Outline" type="Sprite2D" parent="Credits"]
+visible = false
+position = Vector2(0, -2.98023e-07)
+scale = Vector2(0.36, 0.36)
+texture = ExtResource("8_aaetk")
+centered = false
+region_rect = Rect2(0, 0, 1261.51, 720.321)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Credits"]
+position = Vector2(400.906, 199.063)
+shape = SubResource("RectangleShape2D_53ew2")
+
+[node name="Player" parent="." instance=ExtResource("4_whtrl")]
+position = Vector2(192, 213)
+
+[node name="Cage" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Cage"]
+position = Vector2(10, 192)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cage/StaticBody2D"]
+position = Vector2(220.5, 0)
+shape = SubResource("RectangleShape2D_ypfkl")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Cage"]
+position = Vector2(10, 250)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cage/StaticBody2D2"]
+position = Vector2(220.5, 0)
+shape = SubResource("RectangleShape2D_ypfkl")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Cage"]
+position = Vector2(-10, 192)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cage/StaticBody2D3"]
+position = Vector2(0, 29)
+shape = SubResource("RectangleShape2D_ywtir")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Cage"]
+position = Vector2(471, 192)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cage/StaticBody2D4"]
+position = Vector2(0, 29)
+shape = SubResource("RectangleShape2D_ywtir")
+
+[node name="ControlLabels" parent="." node_paths=PackedStringArray("player") instance=ExtResource("10_vp4j5")]
+position = Vector2(0, 207)
+player = NodePath("../Player")
+
+[node name="Intro" type="AnimatedSprite2D" parent="."]
+process_mode = 3
+position = Vector2(230.222, 129.5)
+scale = Vector2(0.359722, 0.359722)
 sprite_frames = SubResource("SpriteFrames_2wa6e")
 autoplay = "default"
 script = SubResource("GDScript_2t1dn")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-anchor_mode = 0
-zoom = Vector2(2, 2)
-
-[connection signal="animation_finished" from="AnimatedSprite2D" to="AnimatedSprite2D" method="_on_animation_finished"]
+[connection signal="animation_finished" from="Intro" to="Intro" method="_on_animation_finished"]

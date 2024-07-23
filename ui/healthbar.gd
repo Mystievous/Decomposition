@@ -39,5 +39,5 @@ func _refresh_health():
 
 # Takes in float 0-1 of progress percentage
 func _set_progress(progress: float):
-	visible = true
+	#visible = true
 	$Polygon2D.scale.x = progress

@@ -16,6 +16,7 @@ signal interact_change(state)
 
 func _ready():
 	SelectedSkin.skin_changed.connect(_skin_changed)
+	$Healthbar.visible = false
 	_skin_changed()
 
 func _process(delta):
@@ -68,6 +69,8 @@ func on_interact():
 			interactable.interact(self)
 
 func damage(amount: float):
+	if not $Healthbar.visible:
+		$Healthbar.visible = true
 	$Healthbar.decrement(amount)
 
 func heal(amount: float) -> bool:
