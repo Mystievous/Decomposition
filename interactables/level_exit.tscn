@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpl778fa7d2q3"]
+
+[ext_resource type="Script" path="res://interactables/level.gd" id="1_ip6op"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ub8h1"]
+
+[node name="LevelExit" type="Area2D" groups=["minion_interact"]]
+script = ExtResource("1_ip6op")
+
+[node name="Outline" type="ColorRect" parent="."]
+visible = false
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 21.0
+offset_bottom = 21.0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 20.0
+offset_bottom = 20.0
+color = Color(0.594584, 0.31297, 0.00593077, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(10, 10)
+shape = SubResource("RectangleShape2D_ub8h1")
+debug_color = Color(0.791007, 0.0863483, 1, 0.42)

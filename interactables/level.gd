@@ -1,9 +1,9 @@
 extends Area2D
 
-@export var scene: PackedScene
+@export_file("*.tscn") var scene: String
 
 func interact(_node):
-	get_tree().change_scene_to_packed(scene)
+	Transitions.transition_to(scene)
 
 func set_outline(enabled: bool):
 	$Outline.visible = enabled

@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 SelectedSkin="*res://globals/selected_skin.gd"
 ControllerIcons="*res://addons/controller_icons/ControllerIcons.gd"
+Transitions="*res://globals/transitions.gd"
 
 [display]
 

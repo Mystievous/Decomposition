@@ -1,5 +1,7 @@
 extends Node2D
 
+@export_file("*.tscn") var level_select: String
+
 func _input(event):
 	if (event.is_action_pressed("pause")):
-		get_tree().change_scene_to_file("res://scenes/level_select.tscn")
+		Transitions.transition_to(level_select)
