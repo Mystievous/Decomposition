@@ -18,12 +18,7 @@ position = Vector2(73, 24)
 scale = Vector2(2, 2)
 texture = ExtResource("1_2mfdc")
 
-[node name="ButtonRoot" type="Node2D" parent="."]
-position = Vector2(76, 0)
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(89, 14)
 scale = Vector2(0.25, 0.25)
-
-[node name="Button" type="Button" parent="ButtonRoot"]
-offset_right = 108.0
-offset_bottom = 108.0
-icon = SubResource("Texture2D_rv1jm")
-flat = true
+texture = SubResource("Texture2D_rv1jm")

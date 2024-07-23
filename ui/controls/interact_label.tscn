@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://b2xx2k1ikfsnr" path="res://assets/text/interact.png" id="1_0mtbl"]
 [ext_resource type="Script" path="res://addons/controller_icons/objects/ControllerIconTexture.gd" id="2_6ah8x"]
 
-[sub_resource type="Texture2D" id="Texture2D_rv1jm"]
+[sub_resource type="Texture2D" id="Texture2D_e4s0n"]
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("2_6ah8x")
@@ -18,12 +18,7 @@ position = Vector2(73, 24)
 scale = Vector2(2, 2)
 texture = ExtResource("1_0mtbl")
 
-[node name="ButtonRoot" type="Node2D" parent="."]
-position = Vector2(91, 0)
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(104, 14)
 scale = Vector2(0.25, 0.25)
-
-[node name="Button" type="Button" parent="ButtonRoot"]
-offset_right = 108.0
-offset_bottom = 108.0
-icon = SubResource("Texture2D_rv1jm")
-flat = true
+texture = SubResource("Texture2D_e4s0n")
