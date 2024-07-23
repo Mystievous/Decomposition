@@ -11,6 +11,7 @@ var movement_speed := 75
 var current_interactables: Array[Node2D] = []
 
 func _ready():
+	$Healthbar.visible = false
 	SelectedSkin.skin_changed.connect(_skin_changed)
 	_skin_changed()
 	
@@ -78,6 +79,9 @@ func eat_sound():
 func on_interact():
 	for interactable in current_interactables:
 		interactable.interact(self)
+		
+func damage(amount):
+	$Healthbar.decrement(amount)
 
 func _on_area_2d_area_entered(area):
 	if (area.is_in_group("minion_interact") && !current_interactables.has(area)):

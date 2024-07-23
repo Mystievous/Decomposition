@@ -1,0 +1,95 @@
+[gd_scene load_steps=14 format=3 uid="uid://co1o6eetmhurn"]
+
+[ext_resource type="Script" path="res://terrain/pressure_plate.gd" id="1_m3fpv"]
+[ext_resource type="Texture2D" uid="uid://ccksqllu85rdn" path="res://assets/text/numbers.png" id="2_88ifp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qoxmo"]
+atlas = ExtResource("2_88ifp")
+region = Rect2(20, 6, 5, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kmiw4"]
+atlas = ExtResource("2_88ifp")
+region = Rect2(0, 0, 5, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0n81f"]
+atlas = ExtResource("2_88ifp")
+region = Rect2(5, 0, 5, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_guj3j"]
+atlas = ExtResource("2_88ifp")
+region = Rect2(10, 0, 5, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yqykp"]
+atlas = ExtResource("2_88ifp")
+region = Rect2(15, 0, 5, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2keyq"]
+atlas = ExtResource("2_88ifp")
+region = Rect2(20, 0, 5, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6v81w"]
+atlas = ExtResource("2_88ifp")
+region = Rect2(0, 6, 5, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dvlx7"]
+atlas = ExtResource("2_88ifp")
+region = Rect2(5, 6, 5, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e5py2"]
+atlas = ExtResource("2_88ifp")
+region = Rect2(10, 6, 5, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pwnd1"]
+atlas = ExtResource("2_88ifp")
+region = Rect2(15, 6, 5, 6)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3urwa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qoxmo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kmiw4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0n81f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_guj3j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yqykp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2keyq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6v81w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dvlx7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e5py2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pwnd1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="PressurePlate" type="Area2D"]
+collision_mask = 3
+script = ExtResource("1_m3fpv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(4.76837e-07, 0)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_3urwa")
+centered = false
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

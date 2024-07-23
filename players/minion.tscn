@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://nkworfmivp77"]
+[gd_scene load_steps=11 format=3 uid="uid://nkworfmivp77"]
 
 [ext_resource type="Script" path="res://players/minion.gd" id="1_qubk3"]
 [ext_resource type="AudioStream" uid="uid://clug50d07lfl7" path="res://assets/sounds/bite1.wav" id="2_4eu7c"]
@@ -6,7 +6,8 @@
 [ext_resource type="AudioStream" uid="uid://bl4mw6qq1yg6c" path="res://assets/sounds/bite3.wav" id="4_6roo0"]
 [ext_resource type="AudioStream" uid="uid://bqdlqicv0j6nd" path="res://assets/sounds/bite4.wav" id="5_akwvy"]
 [ext_resource type="AudioStream" uid="uid://b1gpeckn0u17h" path="res://assets/sounds/bite5.wav" id="6_8amy6"]
-[ext_resource type="SpriteFrames" uid="uid://byh2n6wri7r8v" path="res://assets/minions/millipede_minion.tres" id="7_i43jl"]
+[ext_resource type="SpriteFrames" uid="uid://dih0e36r5a8hl" path="res://assets/minions/worm_minion.tres" id="7_de7xr"]
+[ext_resource type="PackedScene" uid="uid://bmn7ph7d8pufr" path="res://ui/healthbar.tscn" id="8_q1vbw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cqwoj"]
 size = Vector2(38, 9)
@@ -29,9 +30,8 @@ shape = SubResource("RectangleShape2D_cqwoj")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 position = Vector2(19, -7)
-sprite_frames = ExtResource("7_i43jl")
+sprite_frames = ExtResource("7_de7xr")
 animation = &"idle"
-frame_progress = 0.549286
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -54,6 +54,9 @@ pitch_scale = 2.0
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
+
+[node name="Healthbar" parent="." instance=ExtResource("8_q1vbw")]
+position = Vector2(-5, -10)
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

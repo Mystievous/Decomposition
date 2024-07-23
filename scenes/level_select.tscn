@@ -23,7 +23,14 @@ offset_right = 249.0
 offset_bottom = 159.0
 text = "Main"
 
-[node name="MainLabel2" type="RichTextLabel" parent="."]
+[node name="OrderMatters" type="RichTextLabel" parent="."]
+offset_left = 209.0
+offset_top = 57.0
+offset_right = 343.0
+offset_bottom = 89.0
+text = "Order Matters"
+
+[node name="Maze3" type="RichTextLabel" parent="."]
 offset_left = 260.0
 offset_top = 182.0
 offset_right = 313.0
@@ -70,6 +77,10 @@ scene = "res://scenes/light.tscn"
 [node name="Maze" parent="." instance=ExtResource("2_vytpa")]
 position = Vector2(272, 162)
 scene = "res://scenes/maze.tscn"
+
+[node name="OrderMattersTP" parent="." instance=ExtResource("2_vytpa")]
+position = Vector2(256, 34)
+scene = "res://scenes/order_matters.tscn"
 
 [node name="ControlLabels" parent="." node_paths=PackedStringArray("player") instance=ExtResource("7_witwl")]
 player = NodePath("../Player")
