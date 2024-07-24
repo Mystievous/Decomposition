@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://dh8tjap4tc08r"]
+
+[ext_resource type="Texture2D" uid="uid://bj6c3jgk786y6" path="res://assets/ui/menus.png" id="1_nys7f"]
+[ext_resource type="Texture2D" uid="uid://b8a7wbfm0m6jj" path="res://assets/text/credits.png" id="2_esso3"]
+[ext_resource type="Texture2D" uid="uid://bgunn54leocw" path="res://assets/text/thanks.png" id="3_wpv6i"]
+
+[sub_resource type="GDScript" id="GDScript_l8rip"]
+script/source = "extends Node2D
+
+func _input(event):
+	if event.is_action_pressed(\"pause\"):
+		Transitions.transition_to(\"res://scenes/main_menu.tscn\")
+"
+
+[node name="Settings" type="Node2D"]
+script = SubResource("GDScript_l8rip")
+
+[node name="Menus" type="Sprite2D" parent="."]
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("1_nys7f")
+centered = false
+
+[node name="Credits" type="Sprite2D" parent="."]
+position = Vector2(581, 268)
+scale = Vector2(8, 8)
+texture = ExtResource("2_esso3")
+
+[node name="Thanks" type="Sprite2D" parent="."]
+position = Vector2(580, 522)
+scale = Vector2(8, 8)
+texture = ExtResource("3_wpv6i")

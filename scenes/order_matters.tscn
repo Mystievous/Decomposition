@@ -1,7 +1,8 @@
-[gd_scene load_steps=26 format=3 uid="uid://cnlg8q6j0fdq6"]
+[gd_scene load_steps=32 format=3 uid="uid://cnlg8q6j0fdq6"]
 
 [ext_resource type="PackedScene" uid="uid://dq46tamd7u53f" path="res://ui/pause_menu.tscn" id="1_3vwtr"]
 [ext_resource type="PackedScene" uid="uid://dmq02gv70lruc" path="res://terrain/walls.tscn" id="2_8ece2"]
+[ext_resource type="PackedScene" uid="uid://je24kdeaqk27" path="res://ui/game_over_menu.tscn" id="2_usxje"]
 [ext_resource type="PackedScene" uid="uid://b5w05w6pqtnyy" path="res://terrain/nature_background.tscn" id="2_v3jve"]
 [ext_resource type="PackedScene" uid="uid://cbndlk88l6e6g" path="res://ui/minion_area.tscn" id="3_fptt5"]
 [ext_resource type="PackedScene" uid="uid://bpl778fa7d2q3" path="res://interactables/level_exit.tscn" id="5_xee24"]
@@ -14,6 +15,12 @@
 [ext_resource type="PackedScene" uid="uid://cmpftm8qv5m03" path="res://interactables/food/food_2.tscn" id="13_bvhnm"]
 [ext_resource type="PackedScene" uid="uid://b4stent4ww4qk" path="res://interactables/food/food_1.tscn" id="13_jklrx"]
 [ext_resource type="PackedScene" uid="uid://l8ad4qginv0h" path="res://interactables/food/food_3.tscn" id="14_6dxah"]
+[ext_resource type="Texture2D" uid="uid://btbakgdj4ddel" path="res://assets/sprites/food/2.3.png" id="15_08oqq"]
+[ext_resource type="Texture2D" uid="uid://bt2y110viw746" path="res://assets/sprites/blockades/rubble1.png" id="15_ib35w"]
+[ext_resource type="Texture2D" uid="uid://dtxu2o15c8f72" path="res://assets/sprites/blockades/rubble2.png" id="16_r232r"]
+[ext_resource type="Texture2D" uid="uid://bmpn8ktn3awdu" path="res://assets/sprites/food/food1.png" id="17_kv8ea"]
+[ext_resource type="Texture2D" uid="uid://bvwe1u6jyx7lv" path="res://assets/sprites/blockades/rubble3.png" id="17_xuvp7"]
+[ext_resource type="Texture2D" uid="uid://bmfitxyldfqnn" path="res://assets/sprites/blockades/rubble4.png" id="18_8ah5l"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_fjcaq"]
 vertices = PackedVector2Array(416, 295, 383, 295, 384, 169, 417, 168, 133, 169, 133, 134, 456, 134, 573, 168, 573, 3, 456, 3)
@@ -32,13 +39,10 @@ size = Vector2(266, 150)
 size = Vector2(156, 126)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cqurn"]
-size = Vector2(15, 43)
+size = Vector2(52, 43)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8koof"]
 size = Vector2(198, 24)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_aid4e"]
-size = Vector2(31, 109)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o350w"]
 size = Vector2(76, 42.9873)
@@ -55,6 +59,8 @@ size = Vector2(40, 41)
 [node name="Node2D" type="Node2D"]
 
 [node name="PauseMenu" parent="." instance=ExtResource("1_3vwtr")]
+
+[node name="LoseMenu" parent="." instance=ExtResource("2_usxje")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 scale = Vector2(-0.0793781, 1.37947)
@@ -77,23 +83,12 @@ navigation_polygon = SubResource("NavigationPolygon_fjcaq")
 position = Vector2(281.5, 65.5)
 shape = SubResource("RectangleShape2D_18m41")
 
-[node name="ColorRect" type="ColorRect" parent="NavWalls/StaticBody2D"]
-offset_left = 112.0
-offset_right = 451.0
-offset_bottom = 131.0
-
 [node name="StaticBody2D2" type="StaticBody2D" parent="NavWalls"]
 position = Vector2(0, 60)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NavWalls/StaticBody2D2"]
 position = Vector2(245, 189)
 shape = SubResource("RectangleShape2D_7jjvn")
-
-[node name="ColorRect" type="ColorRect" parent="NavWalls/StaticBody2D2"]
-offset_left = 112.0
-offset_top = 114.0
-offset_right = 378.0
-offset_bottom = 264.0
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="NavWalls"]
 position = Vector2(282, 60)
@@ -102,24 +97,12 @@ position = Vector2(282, 60)
 position = Vector2(216, 177)
 shape = SubResource("RectangleShape2D_e4u31")
 
-[node name="ColorRect" type="ColorRect" parent="NavWalls/StaticBody2D3"]
-offset_left = 138.0
-offset_top = 114.0
-offset_right = 294.0
-offset_bottom = 240.0
-
 [node name="StaticBody2D5" type="StaticBody2D" parent="NavWalls"]
 position = Vector2(-26, 17)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NavWalls/StaticBody2D5"]
-position = Vector2(145.5, 135.5)
+position = Vector2(164, 135.5)
 shape = SubResource("RectangleShape2D_cqurn")
-
-[node name="ColorRect" type="ColorRect" parent="NavWalls/StaticBody2D5"]
-offset_left = 138.0
-offset_top = 114.0
-offset_right = 153.0
-offset_bottom = 157.0
 
 [node name="StaticBody2D6" type="StaticBody2D" parent="NavWalls"]
 position = Vector2(240, 186)
@@ -128,27 +111,11 @@ position = Vector2(240, 186)
 position = Vector2(237, 126)
 shape = SubResource("RectangleShape2D_8koof")
 
-[node name="ColorRect" type="ColorRect" parent="NavWalls/StaticBody2D6"]
-offset_left = 138.0
-offset_top = 114.0
-offset_right = 336.0
-offset_bottom = 138.0
-
 [node name="StaticBody2D4" type="StaticBody2D" parent="NavWalls"]
 position = Vector2(209, 60)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="NavWalls/StaticBody2D4"]
-position = Vector2(153.5, 185.5)
-shape = SubResource("RectangleShape2D_aid4e")
-
-[node name="ColorRect" type="ColorRect" parent="NavWalls/StaticBody2D4"]
-offset_left = 138.0
-offset_top = 131.0
-offset_right = 169.0
-offset_bottom = 240.0
-
 [node name="MinionArea" parent="." node_paths=PackedStringArray("minions", "control_labels") instance=ExtResource("3_fptt5")]
-position = Vector2(138, 138)
+position = Vector2(175, 138)
 max_minions = 3
 minions = NodePath("../Minions")
 control_labels = NodePath("../ControlLabels")
@@ -164,7 +131,7 @@ offset_top = -7.0
 offset_right = 65.0
 offset_bottom = 36.0
 mouse_filter = 2
-color = Color(0.94902, 0.568627, 0.964706, 0.698039)
+color = Color(0.94902, 0.568627, 0.964706, 0.431373)
 
 [node name="MinionArea2" parent="." node_paths=PackedStringArray("minions", "control_labels") instance=ExtResource("3_fptt5")]
 position = Vector2(386, 258)
@@ -179,7 +146,7 @@ offset_top = -8.0
 offset_right = 34.0
 offset_bottom = 42.0
 mouse_filter = 2
-color = Color(0.94902, 0.568627, 0.964706, 0.698039)
+color = Color(0.94902, 0.568627, 0.964706, 0.431373)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MinionArea2"]
 position = Vector2(13, 17.0064)
@@ -196,6 +163,7 @@ shape = SubResource("RectangleShape2D_mup2y")
 [node name="Polygon2D" type="Polygon2D" parent="Door"]
 position = Vector2(1, -1)
 scale = Vector2(0.96875, 1.09756)
+color = Color(0.201482, 0.265051, 0.502763, 1)
 polygon = PackedVector2Array(0, 0, 32, 0, 32, 41, 0, 41, 0, 22.2963)
 
 [node name="Door2" parent="." node_paths=PackedStringArray("trigger") instance=ExtResource("9_thhbm")]
@@ -210,7 +178,137 @@ shape = SubResource("RectangleShape2D_mup2y")
 [node name="Polygon2D" type="Polygon2D" parent="Door2"]
 position = Vector2(-1.57952e-05, 0)
 scale = Vector2(1.01976, 1.04878)
+color = Color(0.2, 0.266667, 0.501961, 1)
 polygon = PackedVector2Array(0, 0, 32, 0, 32, 41, 0, 41)
+
+[node name="Rubble" type="Node2D" parent="."]
+
+[node name="Rubble1" type="Sprite2D" parent="Rubble"]
+position = Vector2(139, 194)
+texture = ExtResource("15_ib35w")
+
+[node name="Rubble2" type="Sprite2D" parent="Rubble"]
+position = Vector2(190, 184)
+texture = ExtResource("16_r232r")
+
+[node name="Rubble3" type="Sprite2D" parent="Rubble"]
+position = Vector2(296, 194)
+texture = ExtResource("17_xuvp7")
+
+[node name="Rubble4" type="Sprite2D" parent="Rubble"]
+position = Vector2(241, 190)
+texture = ExtResource("18_8ah5l")
+
+[node name="Rubble5" type="Sprite2D" parent="Rubble"]
+position = Vector2(138, 301)
+texture = ExtResource("15_ib35w")
+
+[node name="Rubble7" type="Sprite2D" parent="Rubble"]
+position = Vector2(142, 264)
+texture = ExtResource("17_xuvp7")
+
+[node name="Rubble6" type="Sprite2D" parent="Rubble"]
+position = Vector2(347, 182)
+texture = ExtResource("16_r232r")
+
+[node name="Rubble8" type="Sprite2D" parent="Rubble"]
+position = Vector2(140, 223)
+texture = ExtResource("16_r232r")
+
+[node name="Rubble9" type="Sprite2D" parent="Rubble"]
+position = Vector2(352, 223)
+texture = ExtResource("17_xuvp7")
+
+[node name="Rubble10" type="Sprite2D" parent="Rubble"]
+position = Vector2(351, 262)
+texture = ExtResource("18_8ah5l")
+
+[node name="Rubble11" type="Sprite2D" parent="Rubble"]
+position = Vector2(353, 300)
+texture = ExtResource("15_ib35w")
+
+[node name="Rubble12" type="Sprite2D" parent="Rubble"]
+position = Vector2(417, 306)
+scale = Vector2(1.1875, 1.1875)
+texture = ExtResource("16_r232r")
+flip_h = true
+
+[node name="Rubble13" type="Sprite2D" parent="Rubble"]
+position = Vector2(499, 196)
+texture = ExtResource("17_xuvp7")
+
+[node name="Rubble14" type="Sprite2D" parent="Rubble"]
+position = Vector2(447, 278)
+texture = ExtResource("18_8ah5l")
+flip_h = true
+
+[node name="Rubble15" type="Sprite2D" parent="Rubble"]
+position = Vector2(448, 195)
+texture = ExtResource("15_ib35w")
+
+[node name="Rubble16" type="Sprite2D" parent="Rubble"]
+position = Vector2(449, 240)
+texture = ExtResource("17_xuvp7")
+
+[node name="Rubble17" type="Sprite2D" parent="Rubble"]
+position = Vector2(548, 191)
+texture = ExtResource("15_ib35w")
+
+[node name="Rubble18" type="Sprite2D" parent="Rubble"]
+position = Vector2(137, 109)
+texture = ExtResource("15_ib35w")
+
+[node name="Rubble31" type="Sprite2D" parent="Rubble"]
+position = Vector2(138, 151)
+texture = ExtResource("15_ib35w")
+
+[node name="Rubble19" type="Sprite2D" parent="Rubble"]
+position = Vector2(189, 107)
+texture = ExtResource("17_xuvp7")
+
+[node name="Rubble20" type="Sprite2D" parent="Rubble"]
+position = Vector2(238, 111)
+texture = ExtResource("18_8ah5l")
+
+[node name="Rubble21" type="Sprite2D" parent="Rubble"]
+position = Vector2(289, 110)
+texture = ExtResource("16_r232r")
+
+[node name="Rubble23" type="Sprite2D" parent="Rubble"]
+position = Vector2(380, 107)
+texture = ExtResource("18_8ah5l")
+
+[node name="Rubble22" type="Sprite2D" parent="Rubble"]
+position = Vector2(345, 109)
+texture = ExtResource("17_xuvp7")
+
+[node name="Rubble24" type="Sprite2D" parent="Rubble"]
+position = Vector2(425, 108)
+texture = ExtResource("15_ib35w")
+
+[node name="Rubble25" type="Sprite2D" parent="Rubble"]
+position = Vector2(424, 72)
+texture = ExtResource("16_r232r")
+
+[node name="Rubble26" type="Sprite2D" parent="Rubble"]
+position = Vector2(429, 47)
+texture = ExtResource("18_8ah5l")
+
+[node name="Rubble27" type="Sprite2D" parent="Rubble"]
+position = Vector2(427, 14)
+texture = ExtResource("15_ib35w")
+
+[node name="Rubble28" type="Sprite2D" parent="Rubble"]
+position = Vector2(139, 6)
+texture = ExtResource("16_r232r")
+
+[node name="Rubble29" type="Sprite2D" parent="Rubble"]
+position = Vector2(138, 44)
+texture = ExtResource("17_xuvp7")
+
+[node name="Rubble30" type="Sprite2D" parent="Rubble"]
+position = Vector2(133, 73)
+texture = ExtResource("18_8ah5l")
 
 [node name="PressurePlate" parent="." instance=ExtResource("6_4mvt8")]
 position = Vector2(386, 137)
@@ -227,7 +325,7 @@ offset_top = -5.0
 offset_right = 33.0
 offset_bottom = 36.0
 mouse_filter = 2
-color = Color(0.0542307, 0.820231, 0.938502, 0.698039)
+color = Color(0.054902, 0.819608, 0.937255, 0.431373)
 
 [node name="DamageArea" parent="." instance=ExtResource("6_jgf51")]
 position = Vector2(379, 193)
@@ -251,11 +349,17 @@ position = Vector2(314, 135)
 [node name="Food2" parent="Materials" instance=ExtResource("13_bvhnm")]
 position = Vector2(460, 70)
 
+[node name="Food" parent="Materials/Food2" index="3"]
+texture = ExtResource("15_08oqq")
+
 [node name="Food3" parent="Materials" instance=ExtResource("14_6dxah")]
 position = Vector2(518, 52)
 
 [node name="Food4" parent="Materials" instance=ExtResource("13_jklrx")]
 position = Vector2(458, 11)
+
+[node name="Food" parent="Materials/Food4" index="3"]
+texture = ExtResource("17_kv8ea")
 
 [node name="LevelExit" parent="." instance=ExtResource("5_xee24")]
 position = Vector2(38, 30)
@@ -268,4 +372,17 @@ position = Vector2(20, 230)
 [node name="ControlLabels" parent="." node_paths=PackedStringArray("player") instance=ExtResource("7_10jkh")]
 player = NodePath("../Player")
 
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(120, 176)
+scale = Vector2(0.115462, 0.115462)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Node2D"]
+offset_right = 1630.0
+offset_bottom = 458.0
+theme_override_font_sizes/normal_font_size = 146
+text = "Click the pink areas to 
+spawn minions"
+
 [editable path="DamageArea"]
+[editable path="Materials/Food2"]
+[editable path="Materials/Food4"]

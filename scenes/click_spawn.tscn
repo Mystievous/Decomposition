@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://bw5ekoqlrfoye"]
+[gd_scene load_steps=16 format=3 uid="uid://bw5ekoqlrfoye"]
 
 [ext_resource type="PackedScene" uid="uid://dq46tamd7u53f" path="res://ui/pause_menu.tscn" id="1_3ofx6"]
 [ext_resource type="PackedScene" uid="uid://b5w05w6pqtnyy" path="res://terrain/nature_background.tscn" id="1_v2ssf"]
+[ext_resource type="PackedScene" uid="uid://je24kdeaqk27" path="res://ui/game_over_menu.tscn" id="3_i2tgm"]
 [ext_resource type="PackedScene" uid="uid://bdiny0oaheofm" path="res://players/player.tscn" id="3_picsf"]
 [ext_resource type="PackedScene" uid="uid://cmpftm8qv5m03" path="res://interactables/food/food_2.tscn" id="5_4phqk"]
 [ext_resource type="PackedScene" uid="uid://cbndlk88l6e6g" path="res://ui/minion_area.tscn" id="5_icxkb"]
@@ -31,6 +32,8 @@ size = Vector2(133, 94)
 [node name="NatureLvl" parent="." instance=ExtResource("1_v2ssf")]
 
 [node name="PauseMenu" parent="." instance=ExtResource("1_3ofx6")]
+
+[node name="LoseMenu" parent="." instance=ExtResource("3_i2tgm")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 scale = Vector2(-0.0793781, 1.37947)

@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://cysy26gh5coe7"]
+[gd_scene load_steps=12 format=3 uid="uid://cysy26gh5coe7"]
 
 [ext_resource type="PackedScene" uid="uid://dmq02gv70lruc" path="res://terrain/walls.tscn" id="1_jtagk"]
 [ext_resource type="PackedScene" uid="uid://dq46tamd7u53f" path="res://ui/pause_menu.tscn" id="2_30moa"]
 [ext_resource type="PackedScene" uid="uid://b5w05w6pqtnyy" path="res://terrain/nature_background.tscn" id="2_hqbmp"]
 [ext_resource type="PackedScene" uid="uid://bdiny0oaheofm" path="res://players/player.tscn" id="2_i4tef"]
 [ext_resource type="PackedScene" uid="uid://bpl778fa7d2q3" path="res://interactables/level_exit.tscn" id="2_o6o86"]
+[ext_resource type="PackedScene" uid="uid://je24kdeaqk27" path="res://ui/game_over_menu.tscn" id="3_dbfm2"]
 [ext_resource type="PackedScene" uid="uid://s4d6n6jumbdv" path="res://terrain/DamageArea.tscn" id="4_nqjc1"]
 [ext_resource type="PackedScene" uid="uid://dv33ktyaxcywa" path="res://terrain/HealingArea.tscn" id="5_4bw76"]
 [ext_resource type="PackedScene" uid="uid://cr8q8bgpogqxh" path="res://players/EnemyBase.tscn" id="6_0qbvk"]
@@ -18,6 +19,8 @@ position = Vector2(380.667, 216.5)
 scale = Vector2(0.604167, 0.604167)
 
 [node name="PauseMenu" parent="." instance=ExtResource("2_30moa")]
+
+[node name="LoseMenu" parent="." instance=ExtResource("3_dbfm2")]
 
 [node name="Walls2" parent="." instance=ExtResource("1_jtagk")]
 position = Vector2(-3, 0)
@@ -34,36 +37,38 @@ position = Vector2(507, 402)
 [node name="Damage Walls" type="Node" parent="."]
 
 [node name="DamageArea" parent="Damage Walls" instance=ExtResource("4_nqjc1")]
+y_sort_enabled = true
 position = Vector2(86, 97)
 scale = Vector2(0.353899, 8.33655)
-damage_given = 10.0
+damage_given = 20.0
 
 [node name="DamageArea4" parent="Damage Walls" instance=ExtResource("4_nqjc1")]
 position = Vector2(284, 0)
 scale = Vector2(0.37931, 5.29692)
-damage_given = 10.0
+damage_given = 20.0
 
 [node name="DamageArea9" parent="Damage Walls" instance=ExtResource("4_nqjc1")]
 position = Vector2(515, -0.999992)
 scale = Vector2(0.37931, 4.37692)
-damage_given = 10.0
+damage_given = 20.0
 
 [node name="DamageArea13" parent="Damage Walls" instance=ExtResource("4_nqjc1")]
 position = Vector2(610, 236)
 scale = Vector2(0.37931, 1.53692)
-damage_given = 10.0
+damage_given = 20.0
 
 [node name="DamageArea7" parent="Damage Walls" instance=ExtResource("4_nqjc1")]
 position = Vector2(445, 253)
 scale = Vector2(0.37931, 4.45692)
-damage_given = 10.0
+damage_given = 20.0
 
 [node name="DamageArea11" parent="Damage Walls" instance=ExtResource("4_nqjc1")]
 position = Vector2(577, 381)
 scale = Vector2(0.37931, 1.25693)
-damage_given = 10.0
+damage_given = 20.0
 
 [node name="DamageArea2" parent="Damage Walls" instance=ExtResource("4_nqjc1")]
+z_index = -5
 position = Vector2(85, 97)
 rotation = -1.57316
 scale = Vector2(0.37931, 2.41589)
@@ -73,37 +78,37 @@ damage_given = 10.0
 position = Vector2(669, 120)
 rotation = -1.57316
 scale = Vector2(0.37931, 2.41589)
-damage_given = 10.0
+damage_given = 20.0
 
 [node name="DamageArea12" parent="Damage Walls" instance=ExtResource("4_nqjc1")]
 position = Vector2(577, 380)
 rotation = -1.57316
 scale = Vector2(0.37931, 2.41589)
-damage_given = 10.0
+damage_given = 20.0
 
 [node name="DamageArea3" parent="Damage Walls" instance=ExtResource("4_nqjc1")]
 position = Vector2(101, 253)
 rotation = -1.57316
 scale = Vector2(0.37931, 1.89551)
-damage_given = 10.0
+damage_given = 20.0
 
 [node name="DamageArea5" parent="Damage Walls" instance=ExtResource("4_nqjc1")]
 position = Vector2(209, 161)
 rotation = -1.57316
 scale = Vector2(0.37932, 4.57422)
-damage_given = 10.0
+damage_given = 20.0
 
 [node name="DamageArea8" parent="Damage Walls" instance=ExtResource("4_nqjc1")]
 position = Vector2(443, 252)
 rotation = -1.57316
 scale = Vector2(0.37932, 4.17384)
-damage_given = 10.0
+damage_given = 20.0
 
 [node name="DamageArea6" parent="Damage Walls" instance=ExtResource("4_nqjc1")]
 position = Vector2(261, 354)
 rotation = -1.57316
 scale = Vector2(0.37932, 4.57422)
-damage_given = 10.0
+damage_given = 20.0
 
 [node name="Healing Areas" type="Node" parent="."]
 
@@ -166,7 +171,8 @@ position = Vector2(482, 275)
 progress_bar = NodePath("../Material/Healthbar")
 
 [node name="Player" parent="." instance=ExtResource("2_i4tef")]
-position = Vector2(19, 17)
+z_index = 1
+position = Vector2(24, 25)
 
 [node name="ControlLabels" parent="." node_paths=PackedStringArray("player") instance=ExtResource("8_qakrm")]
 position = Vector2(0, 347)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ccenlgxufauo2"]
 
-[ext_resource type="Script" path="res://interactables/level.gd" id="1_xeous"]
+[ext_resource type="Script" path="res://interactables/level_entrances/level.gd" id="1_xeous"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ub8h1"]
 

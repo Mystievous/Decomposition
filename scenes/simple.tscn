@@ -1,0 +1,84 @@
+[gd_scene load_steps=15 format=3 uid="uid://23lal5u4yt25"]
+
+[ext_resource type="PackedScene" uid="uid://b5w05w6pqtnyy" path="res://terrain/nature_background.tscn" id="1_jqgu6"]
+[ext_resource type="PackedScene" uid="uid://dq46tamd7u53f" path="res://ui/pause_menu.tscn" id="2_co5lw"]
+[ext_resource type="PackedScene" uid="uid://je24kdeaqk27" path="res://ui/game_over_menu.tscn" id="3_kep3m"]
+[ext_resource type="PackedScene" uid="uid://dmq02gv70lruc" path="res://terrain/walls.tscn" id="3_uoc68"]
+[ext_resource type="Texture2D" uid="uid://cbwom0gw2t8a" path="res://assets/sprites/food/1.3.png" id="5_2fc3k"]
+[ext_resource type="PackedScene" uid="uid://b4stent4ww4qk" path="res://interactables/food/food_1.tscn" id="5_3vcnq"]
+[ext_resource type="PackedScene" uid="uid://cmpftm8qv5m03" path="res://interactables/food/food_2.tscn" id="6_ikevy"]
+[ext_resource type="PackedScene" uid="uid://l8ad4qginv0h" path="res://interactables/food/food_3.tscn" id="7_8htst"]
+[ext_resource type="Texture2D" uid="uid://ch4lpu8y07t5a" path="res://assets/sprites/food/3.3.png" id="8_tjoe2"]
+[ext_resource type="PackedScene" uid="uid://bpl778fa7d2q3" path="res://interactables/level_exit.tscn" id="8_w3eni"]
+[ext_resource type="PackedScene" uid="uid://bdiny0oaheofm" path="res://players/player.tscn" id="9_lnwi8"]
+[ext_resource type="Texture2D" uid="uid://bas14rw1em5w5" path="res://assets/sprites/food/food2.png" id="9_rvusp"]
+[ext_resource type="PackedScene" uid="uid://24n17t0xxk5w" path="res://ui/control_labels.tscn" id="10_rslde"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_fjcaq"]
+vertices = PackedVector2Array(566, 314, 10, 314, 10, 10, 566, 10)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(576, 0, 576, 324, 0, 324, 0, 0)])
+source_geometry_group_name = &"navigation_polygon_source_group"
+
+[node name="Node2D" type="Node2D"]
+
+[node name="NatureLvl" parent="." instance=ExtResource("1_jqgu6")]
+
+[node name="PauseMenu" parent="." instance=ExtResource("2_co5lw")]
+
+[node name="LoseMenu" parent="." instance=ExtResource("3_kep3m")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+scale = Vector2(-0.0793781, 1.37947)
+anchor_mode = 0
+zoom = Vector2(2, 2)
+
+[node name="Walls" parent="." instance=ExtResource("3_uoc68")]
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_fjcaq")
+
+[node name="Materials" type="Node2D" parent="."]
+
+[node name="Food1" parent="Materials" instance=ExtResource("5_3vcnq")]
+position = Vector2(164, 76)
+
+[node name="Food" parent="Materials/Food1" index="3"]
+texture = ExtResource("5_2fc3k")
+
+[node name="Food2" parent="Materials" instance=ExtResource("6_ikevy")]
+position = Vector2(304, 74)
+
+[node name="Food3" parent="Materials" instance=ExtResource("7_8htst")]
+position = Vector2(246, 132)
+
+[node name="Food" parent="Materials/Food3" index="3"]
+texture = ExtResource("8_tjoe2")
+
+[node name="Food4" parent="Materials" instance=ExtResource("6_ikevy")]
+position = Vector2(201, 268)
+
+[node name="Food" parent="Materials/Food4" index="3"]
+texture = ExtResource("9_rvusp")
+
+[node name="Food5" parent="Materials" instance=ExtResource("7_8htst")]
+position = Vector2(138, 190)
+
+[node name="Food6" parent="Materials" instance=ExtResource("5_3vcnq")]
+position = Vector2(370, 189)
+
+[node name="LevelExit" parent="." instance=ExtResource("8_w3eni")]
+position = Vector2(322, 169)
+
+[node name="Minions" type="Node2D" parent="."]
+
+[node name="Player" parent="." instance=ExtResource("9_lnwi8")]
+position = Vector2(20, 111)
+collision_layer = 2
+
+[node name="ControlLabels" parent="." node_paths=PackedStringArray("player") instance=ExtResource("10_rslde")]
+player = NodePath("../Player")
+
+[editable path="Materials/Food1"]
+[editable path="Materials/Food3"]
+[editable path="Materials/Food4"]

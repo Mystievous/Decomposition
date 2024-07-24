@@ -1,10 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://4x6bq6bunn15"]
+[gd_scene load_steps=11 format=3 uid="uid://4x6bq6bunn15"]
 
 [ext_resource type="PackedScene" uid="uid://bdiny0oaheofm" path="res://players/player.tscn" id="1_4yxic"]
 [ext_resource type="PackedScene" uid="uid://dmq02gv70lruc" path="res://terrain/walls.tscn" id="2_evtug"]
-[ext_resource type="PackedScene" uid="uid://b5w05w6pqtnyy" path="res://terrain/nature_background.tscn" id="2_ky0bh"]
-[ext_resource type="PackedScene" uid="uid://ccenlgxufauo2" path="res://interactables/level.tscn" id="2_vytpa"]
+[ext_resource type="Texture2D" uid="uid://8s8cb1al2goq" path="res://assets/backgrounds/lvl_select.png" id="3_udwla"]
+[ext_resource type="PackedScene" uid="uid://twmibkg7fx38" path="res://interactables/level_entrances/level_3.tscn" id="5_a1t0h"]
+[ext_resource type="PackedScene" uid="uid://bux5qt1xeyiht" path="res://interactables/level_entrances/level_2.tscn" id="5_ffxlr"]
+[ext_resource type="PackedScene" uid="uid://expanbluqist" path="res://interactables/level_entrances/level_1.tscn" id="6_vo501"]
 [ext_resource type="PackedScene" uid="uid://24n17t0xxk5w" path="res://ui/control_labels.tscn" id="7_witwl"]
+[ext_resource type="PackedScene" uid="uid://b025vtbfpurlq" path="res://interactables/level_entrances/level_4.tscn" id="8_qjscb"]
+[ext_resource type="PackedScene" uid="uid://b0sxc47p3s8c8" path="res://interactables/level_entrances/level_5.tscn" id="9_onsbk"]
 
 [sub_resource type="GDScript" id="GDScript_7mw71"]
 script/source = "extends Node2D
@@ -23,88 +27,68 @@ zoom = Vector2(2, 2)
 
 [node name="Walls" parent="." instance=ExtResource("2_evtug")]
 
-[node name="NatureLvl" parent="." instance=ExtResource("2_ky0bh")]
-
-[node name="MainLabel" type="RichTextLabel" parent="."]
-offset_left = 196.0
-offset_top = 127.0
-offset_right = 249.0
-offset_bottom = 159.0
-text = "Main"
+[node name="Background" type="Sprite2D" parent="."]
+scale = Vector2(0.45, 0.45)
+texture = ExtResource("3_udwla")
+centered = false
 
 [node name="OrderMatters" type="RichTextLabel" parent="."]
-offset_left = 209.0
-offset_top = 57.0
-offset_right = 343.0
-offset_bottom = 89.0
-text = "Order Matters"
+offset_left = 364.0
+offset_top = 184.0
+offset_right = 521.0
+offset_bottom = 216.0
+text = "5: Order Matters"
 
-[node name="Maze3" type="RichTextLabel" parent="."]
-offset_left = 260.0
-offset_top = 182.0
-offset_right = 313.0
-offset_bottom = 214.0
-text = "Maze"
+[node name="OrderMatters3" type="RichTextLabel" parent="."]
+offset_left = 312.0
+offset_top = 286.0
+offset_right = 446.0
+offset_bottom = 318.0
+text = "4: Gatekeep"
 
-[node name="DamageMaze2" type="RichTextLabel" parent="."]
-offset_left = 406.0
-offset_top = 56.0
-offset_right = 485.0
-offset_bottom = 105.0
-text = "Damage
-Maze"
+[node name="SimpleStart" type="RichTextLabel" parent="."]
+offset_left = 73.0
+offset_top = 185.0
+offset_right = 207.0
+offset_bottom = 217.0
+text = "1: Simple Start"
 
-[node name="PlaceMinionsLabel" type="RichTextLabel" parent="."]
-offset_left = 302.0
-offset_top = 133.0
-offset_right = 429.0
-offset_bottom = 165.0
-text = "Place Minions"
+[node name="Maze" type="RichTextLabel" parent="."]
+offset_left = 182.0
+offset_top = 273.0
+offset_right = 246.0
+offset_bottom = 305.0
+text = "2: Maze"
 
-[node name="LightLabel" type="RichTextLabel" parent="."]
-offset_left = 428.0
-offset_top = 200.0
-offset_right = 555.0
-offset_bottom = 232.0
-text = "Light"
+[node name="DamageMaze" type="RichTextLabel" parent="."]
+offset_left = 222.0
+offset_top = 174.0
+offset_right = 378.0
+offset_bottom = 223.0
+text = "3: Damage Maze"
 
-[node name="Controls" type="RichTextLabel" parent="."]
-offset_left = 104.0
-offset_top = 179.0
-offset_right = 460.0
-offset_bottom = 299.0
-text = "WASD to move
-E to interact/enter
-Click to place minion
-1 or 2 to switch between worm and millipede
-Escape to return to level select"
+[node name="Level1" parent="." instance=ExtResource("6_vo501")]
+position = Vector2(99, 133)
+scene = "res://scenes/simple.tscn"
 
-[node name="Main" parent="." instance=ExtResource("2_vytpa")]
-position = Vector2(205, 108)
-scene = "res://scenes/main.tscn"
-
-[node name="PlaceMinions" parent="." instance=ExtResource("2_vytpa")]
-position = Vector2(341, 110)
-scene = "res://scenes/click_spawn.tscn"
-
-[node name="Light" parent="." instance=ExtResource("2_vytpa")]
-position = Vector2(438, 181)
-scene = "res://scenes/light.tscn"
-
-[node name="Maze" parent="." instance=ExtResource("2_vytpa")]
-position = Vector2(272, 162)
+[node name="Level2" parent="." instance=ExtResource("5_ffxlr")]
+position = Vector2(181, 213)
 scene = "res://scenes/maze.tscn"
 
-[node name="DamageMaze" parent="." instance=ExtResource("2_vytpa")]
-position = Vector2(429, 34)
+[node name="Level3" parent="." instance=ExtResource("5_a1t0h")]
+position = Vector2(255, 119)
 scene = "res://scenes/damage_maze.tscn"
-
-[node name="OrderMattersTP" parent="." instance=ExtResource("2_vytpa")]
-position = Vector2(256, 34)
-scene = "res://scenes/order_matters.tscn"
 
 [node name="ControlLabels" parent="." node_paths=PackedStringArray("player") instance=ExtResource("7_witwl")]
 player = NodePath("../Player")
 
 [node name="Player" parent="." instance=ExtResource("1_4yxic")]
-position = Vector2(70, 73)
+position = Vector2(40, 236)
+
+[node name="Level4" parent="." instance=ExtResource("8_qjscb")]
+position = Vector2(327, 227)
+scene = "res://scenes/gate.tscn"
+
+[node name="Level5" parent="." instance=ExtResource("9_onsbk")]
+position = Vector2(397, 128)
+scene = "res://scenes/order_matters.tscn"

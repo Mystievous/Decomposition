@@ -1,19 +1,22 @@
-[gd_scene load_steps=36 format=3 uid="uid://vhkqqh4xyhin"]
+[gd_scene load_steps=39 format=3 uid="uid://vhkqqh4xyhin"]
 
 [ext_resource type="PackedScene" uid="uid://b5w05w6pqtnyy" path="res://terrain/nature_background.tscn" id="1_d4p6f"]
 [ext_resource type="PackedScene" uid="uid://dq46tamd7u53f" path="res://ui/pause_menu.tscn" id="1_glb84"]
 [ext_resource type="PackedScene" uid="uid://wj2kk0glf0q4" path="res://interactables/food/material.tscn" id="3_g3mrj"]
 [ext_resource type="PackedScene" uid="uid://dmq02gv70lruc" path="res://terrain/walls.tscn" id="3_kujf2"]
+[ext_resource type="PackedScene" uid="uid://je24kdeaqk27" path="res://ui/game_over_menu.tscn" id="4_e6rha"]
 [ext_resource type="PackedScene" uid="uid://bdiny0oaheofm" path="res://players/player.tscn" id="4_ni57k"]
 [ext_resource type="PackedScene" uid="uid://24n17t0xxk5w" path="res://ui/control_labels.tscn" id="5_bj3sg"]
 [ext_resource type="Texture2D" uid="uid://h30bqp0js5n4" path="res://assets/maze_layout.png" id="6_62gyv"]
 [ext_resource type="PackedScene" uid="uid://bpl778fa7d2q3" path="res://interactables/level_exit.tscn" id="7_adk2n"]
+[ext_resource type="Texture2D" uid="uid://bt2y110viw746" path="res://assets/sprites/blockades/rubble1.png" id="9_e3hkk"]
+[ext_resource type="Texture2D" uid="uid://bvwe1u6jyx7lv" path="res://assets/sprites/blockades/rubble3.png" id="10_lggmp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wkq3e"]
-size = Vector2(311, 9)
+size = Vector2(311, 52.875)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fy7di"]
-size = Vector2(387, 9)
+size = Vector2(384.089, 52.875)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wsl6g"]
 size = Vector2(152, 9)
@@ -112,14 +115,16 @@ position = Vector2(-2, -45)
 position = Vector2(2, 45)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Maze/Walls/StaticBody2D"]
-position = Vector2(155.5, 4.5)
+position = Vector2(155.5, -17.4375)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_wkq3e")
 
 [node name="StaticBody2D11" type="StaticBody2D" parent="Maze/Walls"]
 position = Vector2(380, 45)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Maze/Walls/StaticBody2D11"]
-position = Vector2(194.5, 4.5)
+position = Vector2(195.956, -17.4375)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_fy7di")
 
 [node name="StaticBody2D5" type="StaticBody2D" parent="Maze/Walls"]
@@ -299,6 +304,8 @@ shape = SubResource("RectangleShape2D_ynku4")
 
 [node name="PauseMenu" parent="." instance=ExtResource("1_glb84")]
 
+[node name="LoseMenu" parent="." instance=ExtResource("4_e6rha")]
+
 [node name="Walls2" parent="." instance=ExtResource("3_kujf2")]
 scale = Vector2(1.33343, 1.33343)
 
@@ -338,3 +345,11 @@ position = Vector2(408, 379)
 [node name="ControlLabels" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_bj3sg")]
 position = Vector2(6, 367)
 player = NodePath("../Player")
+
+[node name="Rubble1" type="Sprite2D" parent="."]
+position = Vector2(286, 21)
+texture = ExtResource("9_e3hkk")
+
+[node name="Rubble3" type="Sprite2D" parent="."]
+position = Vector2(416, 21)
+texture = ExtResource("10_lggmp")

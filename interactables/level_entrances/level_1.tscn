@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://expanbluqist"]
+
+[ext_resource type="Script" path="res://interactables/level_entrances/level.gd" id="1_p314d"]
+[ext_resource type="Texture2D" uid="uid://bsa3godo5u6rg" path="res://assets/sprites/lvl_buttons/lvl1_outlined.png" id="2_0kkyg"]
+[ext_resource type="Texture2D" uid="uid://byf82gytdecy1" path="res://assets/sprites/lvl_buttons/lvl1.png" id="2_6priu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ub8h1"]
+size = Vector2(69, 53)
+
+[node name="Level1" type="Area2D"]
+script = ExtResource("1_p314d")
+
+[node name="Outline" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(34, 26)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_0kkyg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(34, 26)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_6priu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(34.5, 26.5)
+shape = SubResource("RectangleShape2D_ub8h1")
+debug_color = Color(0.791007, 0.0863483, 1, 0.42)

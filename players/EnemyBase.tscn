@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cr8q8bgpogqxh"]
+[gd_scene load_steps=10 format=3 uid="uid://cr8q8bgpogqxh"]
 
 [ext_resource type="Script" path="res://players/EnemyBase.gd" id="1_yqhxf"]
 [ext_resource type="PackedScene" uid="uid://bmn7ph7d8pufr" path="res://ui/healthbar.tscn" id="1_ysu4t"]
+[ext_resource type="Texture2D" uid="uid://ch42pfoqn87nf" path="res://assets/sprites/bacteria.png" id="3_uy37r"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_802ss"]
 radius = 68.0294
@@ -11,6 +12,28 @@ radius = 16.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nllp1"]
 size = Vector2(40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3wa2i"]
+atlas = ExtResource("3_uy37r")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6gq41"]
+atlas = ExtResource("3_uy37r")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f5vdt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3wa2i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6gq41")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="EnemyBase" type="CharacterBody2D"]
 position = Vector2(0, 1)
@@ -28,6 +51,7 @@ position = Vector2(-1, 0)
 shape = SubResource("CircleShape2D_802ss")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 offset_right = 40.0
 offset_bottom = 40.0
 metadata/_edit_use_anchors_ = true
@@ -48,6 +72,11 @@ shape = SubResource("CircleShape2D_sme7v")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(20, 20)
 shape = SubResource("RectangleShape2D_nllp1")
+
+[node name="Bacteria" type="AnimatedSprite2D" parent="."]
+position = Vector2(20, 20)
+sprite_frames = SubResource("SpriteFrames_f5vdt")
+autoplay = "default"
 
 [connection signal="area_entered" from="dectetion_area" to="." method="_on_dectetion_area_area_entered"]
 [connection signal="area_exited" from="dectetion_area" to="." method="_on_dectetion_area_area_exited"]

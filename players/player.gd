@@ -114,4 +114,3 @@ func _skin_changed():
 func _on_healthbar_health_empty():
 	queue_free()
 	get_tree().get_first_node_in_group("lose_menu").trigger()
-	#Transitions.transition_to("res://scenes/level_select.tscn")

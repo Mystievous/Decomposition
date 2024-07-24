@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://b4t152sgy6j6u"]
+[gd_scene load_steps=11 format=3 uid="uid://b4t152sgy6j6u"]
 
 [ext_resource type="PackedScene" uid="uid://dq46tamd7u53f" path="res://ui/pause_menu.tscn" id="1_3rwof"]
 [ext_resource type="PackedScene" uid="uid://b5w05w6pqtnyy" path="res://terrain/nature_background.tscn" id="2_cmwyc"]
 [ext_resource type="PackedScene" uid="uid://dmq02gv70lruc" path="res://terrain/walls.tscn" id="2_dwv3a"]
 [ext_resource type="PackedScene" uid="uid://wj2kk0glf0q4" path="res://interactables/food/material.tscn" id="2_e7v1s"]
 [ext_resource type="Texture2D" uid="uid://drmrjjxgpoljt" path="res://assets/light.webp" id="2_hhe77"]
+[ext_resource type="PackedScene" uid="uid://je24kdeaqk27" path="res://ui/game_over_menu.tscn" id="2_jor52"]
 [ext_resource type="PackedScene" uid="uid://bdiny0oaheofm" path="res://players/player.tscn" id="4_xg68c"]
 [ext_resource type="PackedScene" uid="uid://24n17t0xxk5w" path="res://ui/control_labels.tscn" id="6_1cuut"]
 [ext_resource type="PackedScene" uid="uid://bpl778fa7d2q3" path="res://interactables/level_exit.tscn" id="7_atawk"]
@@ -18,6 +19,8 @@ source_geometry_group_name = &"navigation_polygon_source_group"
 [node name="Node2D" type="Node2D"]
 
 [node name="PauseMenu" parent="." instance=ExtResource("1_3rwof")]
+
+[node name="LoseMenu" parent="." instance=ExtResource("2_jor52")]
 
 [node name="NatureLvl" parent="." instance=ExtResource("2_cmwyc")]
 

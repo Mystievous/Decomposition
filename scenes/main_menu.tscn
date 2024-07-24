@@ -296,12 +296,25 @@ animations = [{
 [sub_resource type="GDScript" id="GDScript_2t1dn"]
 script/source = "extends AnimatedSprite2D
 
+var time_begin
+var time_delay
+
+@export var sound: AudioStreamPlayer2D
+
 func _ready():
 	get_tree().paused = true
+	#time_begin = Time.get_ticks_usec()
+	#time_delay = AudioServer.get_time_to_next_mix() + AudioServer.get_output_latency()
+	#sound.play()
 
 func _on_animation_finished():
 	get_tree().paused = false
 	queue_free()
+
+func _input(event):
+	if event.is_action_pressed(\"spawn_minion\") and not is_playing():
+		play()
+		sound.play()
 "
 
 [node name="MainMenu" type="Node2D"]
@@ -309,7 +322,6 @@ func _on_animation_finished():
 [node name="IntroSound" type="AudioStreamPlayer2D" parent="."]
 process_mode = 3
 stream = ExtResource("1_glps3")
-autoplay = true
 attenuation = 1e-05
 panning_strength = 0.0
 bus = &"Music"
@@ -380,7 +392,7 @@ shape = SubResource("RectangleShape2D_hrqrv")
 
 [node name="Credits" parent="." node_paths=PackedStringArray("outline") instance=ExtResource("6_hw1cq")]
 outline = NodePath("Outline")
-scene = "res://scenes/level_select.tscn"
+scene = "res://scenes/credits.tscn"
 
 [node name="Button" type="Sprite2D" parent="Credits"]
 position = Vector2(0, -2.98023e-07)
@@ -437,12 +449,12 @@ shape = SubResource("RectangleShape2D_ywtir")
 position = Vector2(0, 207)
 player = NodePath("../Player")
 
-[node name="Intro" type="AnimatedSprite2D" parent="."]
+[node name="Intro" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("sound")]
 process_mode = 3
 position = Vector2(230.222, 129.5)
 scale = Vector2(0.359722, 0.359722)
 sprite_frames = SubResource("SpriteFrames_2wa6e")
-autoplay = "default"
 script = SubResource("GDScript_2t1dn")
+sound = NodePath("../IntroSound")
 
 [connection signal="animation_finished" from="Intro" to="Intro" method="_on_animation_finished"]
