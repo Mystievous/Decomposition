@@ -37,13 +37,12 @@ animations = [{
 
 [node name="EnemyBase" type="CharacterBody2D"]
 position = Vector2(0, 1)
-collision_layer = 4
+collision_layer = 6
 collision_mask = 5
 script = ExtResource("1_yqhxf")
 
 [node name="dectetion_area" type="Area2D" parent="."]
 position = Vector2(21, 20)
-collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="dectetion_area"]
@@ -61,11 +60,11 @@ position = Vector2(-3, -10)
 max_health = 50.0
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.5
 one_shot = true
 
 [node name="damage_zone" type="Area2D" parent="."]
 position = Vector2(20, 20)
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="damage_zone"]
 shape = SubResource("CircleShape2D_sme7v")

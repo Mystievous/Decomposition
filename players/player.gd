@@ -21,9 +21,9 @@ func _ready():
 
 func _process(delta):
 	if Input.is_action_pressed("interact"):
-		if ($Timer.is_stopped()):
+		if ($AttackTimer.is_stopped()):
 			on_interact()
-			$Timer.start()
+			$AttackTimer.start()
 
 func _physics_process(_delta):
 	# Get the input direction and handle the movement/deceleration.
@@ -60,8 +60,8 @@ func _check_sprite():
 
 func eat_sound():
 	var sound: AudioStreamWAV = sounds.pick_random()
-	$AudioStreamPlayer2D.stream = sound
-	$AudioStreamPlayer2D.play()
+	$Bite.stream = sound
+	$Bite.play()
 
 func on_interact():
 	if not current_interactables.is_empty():
@@ -72,6 +72,9 @@ func damage(amount: float):
 	if not $Healthbar.visible:
 		$Healthbar.visible = true
 	$Healthbar.decrement(amount)
+	if $HurtTimer.is_stopped():
+		$HurtTimer.start()
+		$Hurt.play()
 
 func heal(amount: float) -> bool:
 	if not $Healthbar.is_max_health():

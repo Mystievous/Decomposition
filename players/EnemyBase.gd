@@ -1,31 +1,39 @@
 extends CharacterBody2D
 
 @export var move_vertical = false
-@export var damage_amount = 5
+@export var damage_amount = 2
 
-var player_dectected = false
+var attack_player = null
 var player = null
 
 var movement_speed = 45
 
-func _physics_process(_delta):
-	if player_dectected:
-		self.position += (player.position - self.position)/movement_speed
+func _process(delta):
+	if attack_player and $Timer.is_stopped():
+		#player in range to damage
+		attack_player.damage(damage_amount)
+		$Timer.start()
+
+func _physics_process(delta):
+	if player:
+		self.position += ((player.position - self.position)/movement_speed) * delta * 50
+	move_and_slide()
 
 func _on_dectetion_area_body_entered(body):
-	player = body
-	player_dectected = true
+	if body.is_in_group("player"):
+		player = body
 
 func _on_dectetion_area_body_exited(body):
-	player = null
-	player_dectected = false
+	if body == player:
+		player = null
 
 func _on_damage_zone_body_entered(body):
-	if player_dectected and $Timer.is_stopped():
-		if player.has_method("damage"):
-			#player in range to damage
-			player.damage(damage_amount)
-			$Timer.start()
+	if body.is_in_group("player"):
+		attack_player = player
+
+func _on_damage_zone_body_exited(body):
+	if body == attack_player:
+		attack_player = null
 
 func damage(amount: float):
 	if not $Healthbar.visible:

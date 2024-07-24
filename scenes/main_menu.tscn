@@ -452,6 +452,7 @@ player = NodePath("../Player")
 
 [node name="Intro" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("sound")]
 process_mode = 3
+visible = false
 position = Vector2(230.222, 129.5)
 scale = Vector2(0.359722, 0.359722)
 sprite_frames = SubResource("SpriteFrames_2wa6e")

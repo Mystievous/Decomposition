@@ -416,13 +416,6 @@ player = NodePath("../Player")
 position = Vector2(120, 176)
 scale = Vector2(0.115462, 0.115462)
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Node2D"]
-offset_right = 1630.0
-offset_bottom = 458.0
-theme_override_font_sizes/normal_font_size = 146
-text = "Click the pink areas to 
-spawn minions"
-
 [editable path="DamageArea"]
 [editable path="Materials/Food2"]
 [editable path="Materials/Food4"]
