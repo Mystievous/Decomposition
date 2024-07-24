@@ -9,7 +9,7 @@ resource_name = ""
 script = ExtResource("2_6ah8x")
 path = "interact"
 show_mode = 0
-force_type = 0
+force_type = 1
 
 [node name="Interact" type="Node2D"]
 

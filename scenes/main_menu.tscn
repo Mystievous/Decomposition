@@ -1,7 +1,9 @@
-[gd_scene load_steps=55 format=3 uid="uid://dsulabhu8dd4f"]
+[gd_scene load_steps=58 format=3 uid="uid://dsulabhu8dd4f"]
 
+[ext_resource type="AudioStream" uid="uid://bbjsjqyjqnesw" path="res://assets/sounds/Intro_v0.4.wav" id="1_glps3"]
 [ext_resource type="Texture2D" uid="uid://o1nmc8o74pm8" path="res://assets/backgrounds/backstory1.png" id="1_gvkbr"]
 [ext_resource type="Texture2D" uid="uid://bjr7c4nd2vo0s" path="res://assets/backgrounds/backstory2.png" id="2_8wdga"]
+[ext_resource type="AudioStream" uid="uid://2jrvnifvv5yp" path="res://assets/sounds/MainMenu.ogg" id="2_ibx42"]
 [ext_resource type="Texture2D" uid="uid://4m48o5inhxnm" path="res://assets/backgrounds/backstory3.png" id="3_r1blo"]
 [ext_resource type="PackedScene" uid="uid://bdiny0oaheofm" path="res://players/player.tscn" id="4_whtrl"]
 [ext_resource type="Texture2D" uid="uid://co348eduhgmhp" path="res://assets/ui/play.png" id="5_o0spx"]
@@ -13,6 +15,11 @@
 [ext_resource type="Texture2D" uid="uid://dajl0fnxorumf" path="res://assets/ui/credits_outline.png" id="8_aaetk"]
 [ext_resource type="Texture2D" uid="uid://dhjnesfr4p2ba" path="res://assets/ui/settings_outline.png" id="8_hrcmo"]
 [ext_resource type="PackedScene" uid="uid://24n17t0xxk5w" path="res://ui/control_labels.tscn" id="10_vp4j5"]
+
+[sub_resource type="GDScript" id="GDScript_d4w6j"]
+script/source = "extends Node2D
+
+"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3f34r"]
 atlas = ExtResource("5_yesia")
@@ -185,6 +192,18 @@ animations = [{
 "texture": SubResource("AtlasTexture_h2yob")
 }, {
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_7ek34")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h2yob")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ek34")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h2yob")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_d3m1s")
 }, {
 "duration": 1.0,
@@ -291,6 +310,20 @@ func _on_animation_finished():
 "
 
 [node name="MainMenu" type="Node2D"]
+script = SubResource("GDScript_d4w6j")
+
+[node name="IntroSound" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+stream = ExtResource("1_glps3")
+autoplay = true
+attenuation = 1e-05
+panning_strength = 0.0
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_ibx42")
+autoplay = true
+attenuation = 1e-05
+panning_strength = 0.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
