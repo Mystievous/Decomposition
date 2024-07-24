@@ -1,0 +1,153 @@
+[gd_scene load_steps=12 format=3 uid="uid://wd4uj423ucoo"]
+
+[ext_resource type="Texture2D" uid="uid://bj6c3jgk786y6" path="res://assets/ui/menus.png" id="1_wtcs3"]
+[ext_resource type="Texture2D" uid="uid://ci2radcw0txpp" path="res://assets/text/Music.png" id="2_odhv6"]
+[ext_resource type="Texture2D" uid="uid://cgjv6get3y3ij" path="res://assets/text/SFX.png" id="3_ioiv6"]
+[ext_resource type="PackedScene" uid="uid://pabaxi8657mv" path="res://ui/numbers.tscn" id="4_2dwqk"]
+[ext_resource type="Texture2D" uid="uid://fpsvrhbae2qb" path="res://assets/text/minus.png" id="5_r6ffs"]
+[ext_resource type="Texture2D" uid="uid://blayka337ta4f" path="res://assets/text/plus.png" id="6_uhd4j"]
+
+[sub_resource type="GDScript" id="GDScript_l8rip"]
+script/source = "extends Node2D
+
+func _input(event):
+	if event.is_action_pressed(\"pause\"):
+		Transitions.transition_to(\"res://scenes/main_menu.tscn\")
+"
+
+[sub_resource type="GDScript" id="GDScript_mxun4"]
+script/source = "extends Node2D
+
+var sfx_index := AudioServer.get_bus_index(\"Music\")
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	var volume := AudioServer.get_bus_volume_db(sfx_index)
+	var linear := floori(db_to_linear(volume) * 9)
+	$MusicNumber.frame = linear
+
+func _on_music_minus_input_event(viewport, event, shape_idx):
+	if event.is_action_pressed(\"spawn_minion\"):
+		var value: float = $MusicNumber.frame - 1
+		$MusicNumber.frame = value
+		AudioServer.set_bus_volume_db(sfx_index, linear_to_db(value / 9))
+
+func _on_music_plus_input_event(viewport, event, shape_idx):
+	if event.is_action_pressed(\"spawn_minion\"):
+		var value: float = $MusicNumber.frame + 1
+		$MusicNumber.frame = value
+		AudioServer.set_bus_volume_db(sfx_index, linear_to_db(value / 9))
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bxhaa"]
+size = Vector2(42, 41)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_scy5o"]
+size = Vector2(42, 41)
+
+[sub_resource type="GDScript" id="GDScript_6emll"]
+script/source = "extends Node2D
+
+var sfx_index := AudioServer.get_bus_index(\"SFX\")
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	var volume := AudioServer.get_bus_volume_db(sfx_index)
+	var linear := floori(db_to_linear(volume) * 9)
+	$AnimatedSprite2D2.frame = linear
+
+func _on_sfx_minus_input_event(viewport, event, shape_idx):
+	if event.is_action_pressed(\"spawn_minion\"):
+		var value: float = $AnimatedSprite2D2.frame - 1
+		$AnimatedSprite2D2.frame = value
+		AudioServer.set_bus_volume_db(sfx_index, linear_to_db(value / 9))
+
+func _on_sfx_plus_input_event(viewport, event, shape_idx):
+	if event.is_action_pressed(\"spawn_minion\"):
+		var value: float = $AnimatedSprite2D2.frame + 1
+		$AnimatedSprite2D2.frame = value
+		AudioServer.set_bus_volume_db(sfx_index, linear_to_db(value / 9))
+"
+
+[node name="Settings" type="Node2D"]
+script = SubResource("GDScript_l8rip")
+
+[node name="Menus" type="Sprite2D" parent="."]
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("1_wtcs3")
+centered = false
+
+[node name="Music" type="Node2D" parent="."]
+position = Vector2(128, 24)
+script = SubResource("GDScript_mxun4")
+
+[node name="Music" type="Sprite2D" parent="Music"]
+position = Vector2(406, 271)
+scale = Vector2(8, 8)
+texture = ExtResource("2_odhv6")
+
+[node name="MusicNumber" parent="Music" instance=ExtResource("4_2dwqk")]
+position = Vector2(526, 207)
+scale = Vector2(8, 8)
+
+[node name="Minus" type="Sprite2D" parent="Music"]
+position = Vector2(498, 235)
+scale = Vector2(8, 8)
+texture = ExtResource("5_r6ffs")
+
+[node name="Plus" type="Sprite2D" parent="Music"]
+position = Vector2(586, 235)
+scale = Vector2(8, 8)
+texture = ExtResource("6_uhd4j")
+
+[node name="MusicMinus" type="Area2D" parent="Music"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Music/MusicMinus"]
+position = Vector2(498, 234.5)
+shape = SubResource("RectangleShape2D_bxhaa")
+
+[node name="MusicPlus" type="Area2D" parent="Music"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Music/MusicPlus"]
+position = Vector2(586, 234.5)
+shape = SubResource("RectangleShape2D_scy5o")
+
+[node name="SFX" type="Node2D" parent="."]
+position = Vector2(128, 24)
+script = SubResource("GDScript_6emll")
+
+[node name="Sfx" type="Sprite2D" parent="SFX"]
+position = Vector2(462, 367)
+scale = Vector2(8, 8)
+texture = ExtResource("3_ioiv6")
+
+[node name="AnimatedSprite2D2" parent="SFX" instance=ExtResource("4_2dwqk")]
+position = Vector2(526, 303)
+scale = Vector2(8, 8)
+
+[node name="Minus2" type="Sprite2D" parent="SFX"]
+position = Vector2(498, 331)
+scale = Vector2(8, 8)
+texture = ExtResource("5_r6ffs")
+
+[node name="Plus2" type="Sprite2D" parent="SFX"]
+position = Vector2(586, 331)
+scale = Vector2(8, 8)
+texture = ExtResource("6_uhd4j")
+
+[node name="SFXMinus" type="Area2D" parent="SFX"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SFX/SFXMinus"]
+position = Vector2(498, 330.5)
+shape = SubResource("RectangleShape2D_scy5o")
+
+[node name="SFXPlus" type="Area2D" parent="SFX"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SFX/SFXPlus"]
+position = Vector2(586, 330.5)
+shape = SubResource("RectangleShape2D_scy5o")
+
+[connection signal="input_event" from="Music/MusicMinus" to="Music" method="_on_music_minus_input_event"]
+[connection signal="input_event" from="Music/MusicPlus" to="Music" method="_on_music_plus_input_event"]
+[connection signal="input_event" from="SFX/SFXMinus" to="SFX" method="_on_sfx_minus_input_event"]
+[connection signal="input_event" from="SFX/SFXPlus" to="SFX" method="_on_sfx_plus_input_event"]
