@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://dsulabhu8dd4f"]
+[gd_scene load_steps=58 format=3 uid="uid://dsulabhu8dd4f"]
 
 [ext_resource type="AudioStream" uid="uid://bbjsjqyjqnesw" path="res://assets/sounds/Intro_v0.4.wav" id="1_glps3"]
 [ext_resource type="Texture2D" uid="uid://o1nmc8o74pm8" path="res://assets/backgrounds/backstory1.png" id="1_gvkbr"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://dajl0fnxorumf" path="res://assets/ui/credits_outline.png" id="8_aaetk"]
 [ext_resource type="Texture2D" uid="uid://dhjnesfr4p2ba" path="res://assets/ui/settings_outline.png" id="8_hrcmo"]
 [ext_resource type="PackedScene" uid="uid://24n17t0xxk5w" path="res://ui/control_labels.tscn" id="10_vp4j5"]
+[ext_resource type="Texture2D" uid="uid://dsxudjoh7e1ta" path="res://assets/text/skin.png" id="16_rf7g4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3f34r"]
 atlas = ExtResource("5_yesia")
@@ -344,7 +345,6 @@ position = Vector2(230.222, 129.5)
 scale = Vector2(0.359722, 0.359722)
 sprite_frames = SubResource("SpriteFrames_psepq")
 autoplay = "default"
-frame_progress = 0.138366
 
 [node name="SettingsButton" parent="." node_paths=PackedStringArray("outline") instance=ExtResource("6_hw1cq")]
 outline = NodePath("Outline")
@@ -450,9 +450,13 @@ shape = SubResource("RectangleShape2D_ywtir")
 position = Vector2(0, 207)
 player = NodePath("../Player")
 
+[node name="Skin" type="Sprite2D" parent="."]
+position = Vector2(378, 259)
+scale = Vector2(1.875, 1.875)
+texture = ExtResource("16_rf7g4")
+
 [node name="Intro" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("sound")]
 process_mode = 3
-visible = false
 position = Vector2(230.222, 129.5)
 scale = Vector2(0.359722, 0.359722)
 sprite_frames = SubResource("SpriteFrames_2wa6e")

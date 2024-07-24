@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cysy26gh5coe7"]
+[gd_scene load_steps=24 format=3 uid="uid://cysy26gh5coe7"]
 
 [ext_resource type="PackedScene" uid="uid://dqxuhnacgv5um" path="res://ui/level_music.tscn" id="1_jjwgl"]
 [ext_resource type="PackedScene" uid="uid://dmq02gv70lruc" path="res://terrain/walls.tscn" id="1_jtagk"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://b4stent4ww4qk" path="res://interactables/food/food_1.tscn" id="10_bfwth"]
 [ext_resource type="PackedScene" uid="uid://cmpftm8qv5m03" path="res://interactables/food/food_2.tscn" id="11_diuee"]
 [ext_resource type="Texture2D" uid="uid://cbwom0gw2t8a" path="res://assets/sprites/food/1.3.png" id="11_efgn6"]
+[ext_resource type="Texture2D" uid="uid://des535lrjkta8" path="res://assets/text/GreenPlus.png" id="11_ojtsv"]
 [ext_resource type="SpriteFrames" uid="uid://cejlmvj0ilfaf" path="res://assets/sprites/environmentals.tres" id="11_us77m"]
 [ext_resource type="PackedScene" uid="uid://l8ad4qginv0h" path="res://interactables/food/food_3.tscn" id="12_hccoy"]
 [ext_resource type="Texture2D" uid="uid://drmrjjxgpoljt" path="res://assets/light.webp" id="12_udse3"]
@@ -29,7 +30,6 @@
 color = Color(0.808998, 0.808998, 0.808998, 1)
 
 [node name="LevelMusic" parent="." instance=ExtResource("1_jjwgl")]
-bus = &"Master"
 
 [node name="NatureLvl" parent="." instance=ExtResource("2_hqbmp")]
 position = Vector2(380.667, 216.5)
@@ -529,10 +529,22 @@ position = Vector2(387, 376)
 [node name="ColorRect" parent="Healing Areas/HealingArea" index="0"]
 visible = false
 
+[node name="GreenPlus" type="Sprite2D" parent="Healing Areas/HealingArea"]
+position = Vector2(18.5, 17.5)
+scale = Vector2(2, 2)
+texture = ExtResource("11_ojtsv")
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Healing Areas/HealingArea"]
 position = Vector2(20, 23)
 sprite_frames = ExtResource("11_us77m")
 frame = 1
+
+[node name="PointLight2D" type="PointLight2D" parent="Healing Areas/HealingArea"]
+position = Vector2(20, 20)
+scale = Vector2(0.265625, 0.265105)
+color = Color(0.123312, 0.521064, 0, 1)
+energy = 2.43
+texture = ExtResource("12_udse3")
 
 [node name="HealingArea2" parent="Healing Areas" instance=ExtResource("5_4bw76")]
 position = Vector2(693, 31)
@@ -544,6 +556,18 @@ visible = false
 position = Vector2(20, 23)
 sprite_frames = ExtResource("11_us77m")
 
+[node name="PointLight2D" type="PointLight2D" parent="Healing Areas/HealingArea2"]
+position = Vector2(20, 20)
+scale = Vector2(0.265625, 0.265105)
+color = Color(0.123312, 0.521064, 0, 1)
+energy = 2.43
+texture = ExtResource("12_udse3")
+
+[node name="GreenPlus" type="Sprite2D" parent="Healing Areas/HealingArea2"]
+position = Vector2(15, 14)
+scale = Vector2(2, 2)
+texture = ExtResource("11_ojtsv")
+
 [node name="HealingArea3" parent="Healing Areas" instance=ExtResource("5_4bw76")]
 position = Vector2(318, 92)
 
@@ -554,6 +578,18 @@ visible = false
 position = Vector2(20, 23)
 sprite_frames = ExtResource("11_us77m")
 frame = 1
+
+[node name="PointLight2D" type="PointLight2D" parent="Healing Areas/HealingArea3"]
+position = Vector2(20, 20)
+scale = Vector2(0.265625, 0.265105)
+color = Color(0.123312, 0.521064, 0, 1)
+energy = 2.43
+texture = ExtResource("12_udse3")
+
+[node name="GreenPlus" type="Sprite2D" parent="Healing Areas/HealingArea3"]
+position = Vector2(18, 18)
+scale = Vector2(2, 2)
+texture = ExtResource("11_ojtsv")
 
 [node name="Enemies" type="Node" parent="."]
 

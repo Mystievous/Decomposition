@@ -57,7 +57,7 @@ bus = &"SFX"
 [node name="Hurt" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(32, 11.5)
 stream = ExtResource("11_44tg5")
-volume_db = -3.0
+volume_db = -6.0
 bus = &"SFX"
 
 [node name="AttackTimer" type="Timer" parent="."]
