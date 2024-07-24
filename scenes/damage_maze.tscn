@@ -3,10 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://dqxuhnacgv5um" path="res://ui/level_music.tscn" id="1_jjwgl"]
 [ext_resource type="PackedScene" uid="uid://dmq02gv70lruc" path="res://terrain/walls.tscn" id="1_jtagk"]
 [ext_resource type="PackedScene" uid="uid://dq46tamd7u53f" path="res://ui/pause_menu.tscn" id="2_30moa"]
-[ext_resource type="PackedScene" uid="uid://b5w05w6pqtnyy" path="res://terrain/nature_background.tscn" id="2_hqbmp"]
+[ext_resource type="PackedScene" path="res://terrain/nature_background.tscn" id="2_hqbmp"]
 [ext_resource type="PackedScene" uid="uid://bdiny0oaheofm" path="res://players/player.tscn" id="2_i4tef"]
 [ext_resource type="PackedScene" uid="uid://bpl778fa7d2q3" path="res://interactables/level_exit.tscn" id="2_o6o86"]
-[ext_resource type="PackedScene" uid="uid://je24kdeaqk27" path="res://ui/game_over_menu.tscn" id="3_dbfm2"]
+[ext_resource type="PackedScene" path="res://ui/game_over_menu.tscn" id="3_dbfm2"]
 [ext_resource type="PackedScene" uid="uid://s4d6n6jumbdv" path="res://terrain/DamageArea.tscn" id="4_nqjc1"]
 [ext_resource type="PackedScene" uid="uid://dv33ktyaxcywa" path="res://terrain/HealingArea.tscn" id="5_4bw76"]
 [ext_resource type="PackedScene" uid="uid://cr8q8bgpogqxh" path="res://players/EnemyBase.tscn" id="6_0qbvk"]
@@ -111,7 +111,7 @@ damage_given = 20.0
 visible = false
 
 [node name="DamageArea12" parent="Damage Walls" instance=ExtResource("4_nqjc1")]
-position = Vector2(577, 380)
+position = Vector2(577, 381)
 rotation = -1.57316
 scale = Vector2(0.337411, 2.06014)
 damage_given = 20.0
@@ -154,7 +154,7 @@ position = Vector2(19.434, 20.0365)
 scale = Vector2(0.971703, 1.04524)
 
 [node name="DamageArea6" parent="Damage Walls" instance=ExtResource("4_nqjc1")]
-position = Vector2(261, 354)
+position = Vector2(263, 351)
 rotation = -1.57316
 scale = Vector2(0.37932, 4.57422)
 damage_given = 20.0
