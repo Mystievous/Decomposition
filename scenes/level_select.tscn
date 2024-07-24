@@ -103,18 +103,11 @@ offset_right = 124.0
 offset_bottom = 88.0
 text = "5: Order Matters"
 
-[node name="Level6" parent="." instance=ExtResource("9_onsbk")]
+[node name="Level6" parent="." instance=ExtResource("9_eqasj")]
 visible = false
-position = Vector2(460, 229)
+position = Vector2(413, 213)
+scale = Vector2(1.74161, 1.74161)
 scene = "res://scenes/credits.tscn"
-
-[node name="Game Complete" type="RichTextLabel" parent="Level6"]
-offset_left = 13.0
-offset_top = 53.0
-offset_right = 170.0
-offset_bottom = 85.0
-text = "Finish
-"
 
 [node name="ControlLabels" parent="." node_paths=PackedStringArray("player") instance=ExtResource("7_witwl")]
 player = NodePath("../Player")

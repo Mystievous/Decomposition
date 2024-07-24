@@ -1,12 +1,12 @@
-[gd_scene load_steps=22 format=3 uid="uid://cysy26gh5coe7"]
+[gd_scene load_steps=23 format=3 uid="uid://cysy26gh5coe7"]
 
 [ext_resource type="PackedScene" uid="uid://dqxuhnacgv5um" path="res://ui/level_music.tscn" id="1_jjwgl"]
 [ext_resource type="PackedScene" uid="uid://dmq02gv70lruc" path="res://terrain/walls.tscn" id="1_jtagk"]
 [ext_resource type="PackedScene" uid="uid://dq46tamd7u53f" path="res://ui/pause_menu.tscn" id="2_30moa"]
-[ext_resource type="PackedScene" path="res://terrain/nature_background.tscn" id="2_hqbmp"]
+[ext_resource type="PackedScene" uid="uid://b5w05w6pqtnyy" path="res://terrain/nature_background.tscn" id="2_hqbmp"]
 [ext_resource type="PackedScene" uid="uid://bdiny0oaheofm" path="res://players/player.tscn" id="2_i4tef"]
 [ext_resource type="PackedScene" uid="uid://bpl778fa7d2q3" path="res://interactables/level_exit.tscn" id="2_o6o86"]
-[ext_resource type="PackedScene" path="res://ui/game_over_menu.tscn" id="3_dbfm2"]
+[ext_resource type="PackedScene" uid="uid://je24kdeaqk27" path="res://ui/game_over_menu.tscn" id="3_dbfm2"]
 [ext_resource type="PackedScene" uid="uid://s4d6n6jumbdv" path="res://terrain/DamageArea.tscn" id="4_nqjc1"]
 [ext_resource type="PackedScene" uid="uid://dv33ktyaxcywa" path="res://terrain/HealingArea.tscn" id="5_4bw76"]
 [ext_resource type="PackedScene" uid="uid://cr8q8bgpogqxh" path="res://players/EnemyBase.tscn" id="6_0qbvk"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://b4stent4ww4qk" path="res://interactables/food/food_1.tscn" id="10_bfwth"]
 [ext_resource type="PackedScene" uid="uid://cmpftm8qv5m03" path="res://interactables/food/food_2.tscn" id="11_diuee"]
 [ext_resource type="Texture2D" uid="uid://cbwom0gw2t8a" path="res://assets/sprites/food/1.3.png" id="11_efgn6"]
+[ext_resource type="SpriteFrames" uid="uid://cejlmvj0ilfaf" path="res://assets/sprites/environmentals.tres" id="11_us77m"]
 [ext_resource type="PackedScene" uid="uid://l8ad4qginv0h" path="res://interactables/food/food_3.tscn" id="12_hccoy"]
 [ext_resource type="Texture2D" uid="uid://drmrjjxgpoljt" path="res://assets/light.webp" id="12_udse3"]
 [ext_resource type="Texture2D" uid="uid://ch4lpu8y07t5a" path="res://assets/sprites/food/3.3.png" id="14_ady4t"]
@@ -524,11 +525,34 @@ texture = ExtResource("9_6lcex")
 [node name="HealingArea" parent="Healing Areas" instance=ExtResource("5_4bw76")]
 position = Vector2(387, 376)
 
+[node name="ColorRect" parent="Healing Areas/HealingArea" index="0"]
+visible = false
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Healing Areas/HealingArea"]
+position = Vector2(20, 23)
+sprite_frames = ExtResource("11_us77m")
+frame = 1
+
 [node name="HealingArea2" parent="Healing Areas" instance=ExtResource("5_4bw76")]
 position = Vector2(693, 31)
 
+[node name="ColorRect" parent="Healing Areas/HealingArea2" index="0"]
+visible = false
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Healing Areas/HealingArea2"]
+position = Vector2(20, 23)
+sprite_frames = ExtResource("11_us77m")
+
 [node name="HealingArea3" parent="Healing Areas" instance=ExtResource("5_4bw76")]
 position = Vector2(318, 92)
+
+[node name="ColorRect" parent="Healing Areas/HealingArea3" index="0"]
+visible = false
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Healing Areas/HealingArea3"]
+position = Vector2(20, 23)
+sprite_frames = ExtResource("11_us77m")
+frame = 1
 
 [node name="Enemies" type="Node" parent="."]
 
@@ -590,7 +614,7 @@ position = Vector2(602, 389)
 texture = ExtResource("14_ady4t")
 
 [node name="Food9" parent="Materials" instance=ExtResource("10_bfwth")]
-position = Vector2(686, 35)
+position = Vector2(636, 35)
 
 [node name="Player" parent="." instance=ExtResource("2_i4tef")]
 z_index = 1
@@ -631,6 +655,9 @@ texture = ExtResource("20_y714u")
 [editable path="Damage Walls/DamageArea5"]
 [editable path="Damage Walls/DamageArea8"]
 [editable path="Damage Walls/DamageArea6"]
+[editable path="Healing Areas/HealingArea"]
+[editable path="Healing Areas/HealingArea2"]
+[editable path="Healing Areas/HealingArea3"]
 [editable path="Materials/Food1"]
 [editable path="Materials/Food3"]
 [editable path="Materials/Food5"]
