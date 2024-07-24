@@ -1,6 +1,7 @@
 extends Area2D
 
 @export_file("*.tscn") var scene: String = "res://scenes/level_select.tscn"
+@export var level_number: int = 0
 
 var active := false
 var outlined := false
@@ -16,7 +17,7 @@ func _process(delta):
 func interact(_node):
 	if active:
 		Transitions.transition_to(scene)
-		if LevelProgress.current_level < LevelProgress.total_levels:
+		if LevelProgress.current_level < LevelProgress.total_levels and LevelProgress.current_level == level_number:
 			LevelProgress.avaible_levels[LevelProgress.current_level] = true
 			LevelProgress.current_level += 1
 		active = false

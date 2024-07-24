@@ -19,7 +19,6 @@ func refresh_bodies():
 		is_active = true
 
 func _on_body_entered(body):
-	print(body)
 	if not bodies.has(body):
 		bodies.append(body)
 		refresh_bodies()

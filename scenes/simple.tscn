@@ -1,5 +1,6 @@
-[gd_scene load_steps=15 format=3 uid="uid://23lal5u4yt25"]
+[gd_scene load_steps=16 format=3 uid="uid://23lal5u4yt25"]
 
+[ext_resource type="PackedScene" uid="uid://dqxuhnacgv5um" path="res://ui/level_music.tscn" id="1_ebbvt"]
 [ext_resource type="PackedScene" uid="uid://b5w05w6pqtnyy" path="res://terrain/nature_background.tscn" id="1_jqgu6"]
 [ext_resource type="PackedScene" uid="uid://dq46tamd7u53f" path="res://ui/pause_menu.tscn" id="2_co5lw"]
 [ext_resource type="PackedScene" uid="uid://je24kdeaqk27" path="res://ui/game_over_menu.tscn" id="3_kep3m"]
@@ -21,6 +22,8 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(576, 0, 576, 324, 0, 32
 source_geometry_group_name = &"navigation_polygon_source_group"
 
 [node name="Node2D" type="Node2D"]
+
+[node name="LevelMusic" parent="." instance=ExtResource("1_ebbvt")]
 
 [node name="NatureLvl" parent="." instance=ExtResource("1_jqgu6")]
 
@@ -69,6 +72,7 @@ position = Vector2(370, 189)
 
 [node name="LevelExit" parent="." instance=ExtResource("8_w3eni")]
 position = Vector2(322, 169)
+level_number = 1
 
 [node name="Minions" type="Node2D" parent="."]
 

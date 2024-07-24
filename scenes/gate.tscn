@@ -1,6 +1,7 @@
-[gd_scene load_steps=27 format=3 uid="uid://cuvj2eu8fam1b"]
+[gd_scene load_steps=28 format=3 uid="uid://cuvj2eu8fam1b"]
 
 [ext_resource type="PackedScene" uid="uid://dq46tamd7u53f" path="res://ui/pause_menu.tscn" id="1_fchnd"]
+[ext_resource type="PackedScene" uid="uid://dqxuhnacgv5um" path="res://ui/level_music.tscn" id="1_oc7wt"]
 [ext_resource type="PackedScene" uid="uid://je24kdeaqk27" path="res://ui/game_over_menu.tscn" id="2_shtd3"]
 [ext_resource type="PackedScene" uid="uid://b5w05w6pqtnyy" path="res://terrain/nature_background.tscn" id="2_vly0d"]
 [ext_resource type="PackedScene" uid="uid://dmq02gv70lruc" path="res://terrain/walls.tscn" id="3_kohp5"]
@@ -50,6 +51,8 @@ size = Vector2(112, 41)
 size = Vector2(40, 41)
 
 [node name="Node2D" type="Node2D"]
+
+[node name="LevelMusic" parent="." instance=ExtResource("1_oc7wt")]
 
 [node name="PauseMenu" parent="." instance=ExtResource("1_fchnd")]
 
@@ -283,6 +286,7 @@ texture = ExtResource("13_j4gfg")
 
 [node name="LevelExit" parent="." instance=ExtResource("18_m37iy")]
 position = Vector2(38, 30)
+level_number = 4
 
 [node name="Minions" type="Node2D" parent="."]
 

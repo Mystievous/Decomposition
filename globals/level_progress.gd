@@ -1,6 +1,6 @@
 extends Node
 
-var total_levels = 5
+var total_levels = 6
 var current_level = 1
 var avaible_levels: Array[bool]
 

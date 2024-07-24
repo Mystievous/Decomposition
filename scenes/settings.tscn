@@ -1,5 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://wd4uj423ucoo"]
+[gd_scene load_steps=13 format=3 uid="uid://wd4uj423ucoo"]
 
+[ext_resource type="PackedScene" uid="uid://8ys7bq3vv1nu" path="res://ui/menu_music.tscn" id="1_okq0h"]
 [ext_resource type="Texture2D" uid="uid://bj6c3jgk786y6" path="res://assets/ui/menus.png" id="1_wtcs3"]
 [ext_resource type="Texture2D" uid="uid://ci2radcw0txpp" path="res://assets/text/Music.png" id="2_odhv6"]
 [ext_resource type="Texture2D" uid="uid://cgjv6get3y3ij" path="res://assets/text/SFX.png" id="3_ioiv6"]
@@ -71,6 +72,8 @@ func _on_sfx_plus_input_event(viewport, event, shape_idx):
 
 [node name="Settings" type="Node2D"]
 script = SubResource("GDScript_l8rip")
+
+[node name="MenuMusic" parent="." instance=ExtResource("1_okq0h")]
 
 [node name="Menus" type="Sprite2D" parent="."]
 scale = Vector2(0.9, 0.9)

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqxuhnacgv5um"]
+
+[ext_resource type="AudioStream" uid="uid://bdfcjghm6jn1n" path="res://assets/sounds/LevelLow.ogg" id="1_yerm0"]
+
+[node name="LevelMusic" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_yerm0")
+autoplay = true
+attenuation = 1e-05
+panning_strength = 0.0
+bus = &"Music"

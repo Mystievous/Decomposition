@@ -1,5 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://cysy26gh5coe7"]
+[gd_scene load_steps=22 format=3 uid="uid://cysy26gh5coe7"]
 
+[ext_resource type="PackedScene" uid="uid://dqxuhnacgv5um" path="res://ui/level_music.tscn" id="1_jjwgl"]
 [ext_resource type="PackedScene" uid="uid://dmq02gv70lruc" path="res://terrain/walls.tscn" id="1_jtagk"]
 [ext_resource type="PackedScene" uid="uid://dq46tamd7u53f" path="res://ui/pause_menu.tscn" id="2_30moa"]
 [ext_resource type="PackedScene" uid="uid://b5w05w6pqtnyy" path="res://terrain/nature_background.tscn" id="2_hqbmp"]
@@ -9,10 +10,24 @@
 [ext_resource type="PackedScene" uid="uid://s4d6n6jumbdv" path="res://terrain/DamageArea.tscn" id="4_nqjc1"]
 [ext_resource type="PackedScene" uid="uid://dv33ktyaxcywa" path="res://terrain/HealingArea.tscn" id="5_4bw76"]
 [ext_resource type="PackedScene" uid="uid://cr8q8bgpogqxh" path="res://players/EnemyBase.tscn" id="6_0qbvk"]
-[ext_resource type="PackedScene" uid="uid://wj2kk0glf0q4" path="res://interactables/food/material.tscn" id="6_506cn"]
+[ext_resource type="Texture2D" uid="uid://bvh3kl1pm0lc0" path="res://assets/sprites/blockades/goo_end.png" id="8_jr0rw"]
 [ext_resource type="PackedScene" uid="uid://24n17t0xxk5w" path="res://ui/control_labels.tscn" id="8_qakrm"]
+[ext_resource type="Texture2D" uid="uid://ba8yfxtr3ankl" path="res://assets/sprites/blockades/goo_line.png" id="9_6lcex"]
+[ext_resource type="PackedScene" uid="uid://b4stent4ww4qk" path="res://interactables/food/food_1.tscn" id="10_bfwth"]
+[ext_resource type="PackedScene" uid="uid://cmpftm8qv5m03" path="res://interactables/food/food_2.tscn" id="11_diuee"]
+[ext_resource type="Texture2D" uid="uid://cbwom0gw2t8a" path="res://assets/sprites/food/1.3.png" id="11_efgn6"]
+[ext_resource type="PackedScene" uid="uid://l8ad4qginv0h" path="res://interactables/food/food_3.tscn" id="12_hccoy"]
+[ext_resource type="Texture2D" uid="uid://drmrjjxgpoljt" path="res://assets/light.webp" id="12_udse3"]
+[ext_resource type="Texture2D" uid="uid://ch4lpu8y07t5a" path="res://assets/sprites/food/3.3.png" id="14_ady4t"]
+[ext_resource type="Texture2D" uid="uid://bas14rw1em5w5" path="res://assets/sprites/food/food2.png" id="14_ssblp"]
+[ext_resource type="Texture2D" uid="uid://coeom4ljmclgm" path="res://assets/sprites/blockades/goo_corner.png" id="20_y714u"]
 
 [node name="Node2D" type="Node2D"]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.808998, 0.808998, 0.808998, 1)
+
+[node name="LevelMusic" parent="." instance=ExtResource("1_jjwgl")]
 
 [node name="NatureLvl" parent="." instance=ExtResource("2_hqbmp")]
 position = Vector2(380.667, 216.5)
@@ -33,6 +48,7 @@ zoom = Vector2(1.5, 1.5)
 
 [node name="LevelExit" parent="." instance=ExtResource("2_o6o86")]
 position = Vector2(507, 402)
+level_number = 3
 
 [node name="Damage Walls" type="Node" parent="."]
 
@@ -42,37 +58,48 @@ position = Vector2(86, 97)
 scale = Vector2(0.353899, 8.33655)
 damage_given = 20.0
 
+[node name="ColorRect" parent="Damage Walls/DamageArea" index="0"]
+visible = false
+
 [node name="DamageArea4" parent="Damage Walls" instance=ExtResource("4_nqjc1")]
 position = Vector2(284, 0)
 scale = Vector2(0.37931, 5.29692)
 damage_given = 20.0
+
+[node name="ColorRect" parent="Damage Walls/DamageArea4" index="0"]
+visible = false
 
 [node name="DamageArea9" parent="Damage Walls" instance=ExtResource("4_nqjc1")]
 position = Vector2(515, -0.999992)
 scale = Vector2(0.37931, 4.37692)
 damage_given = 20.0
 
+[node name="ColorRect" parent="Damage Walls/DamageArea9" index="0"]
+visible = false
+
 [node name="DamageArea13" parent="Damage Walls" instance=ExtResource("4_nqjc1")]
-position = Vector2(610, 236)
+position = Vector2(603, 236)
 scale = Vector2(0.37931, 1.53692)
 damage_given = 20.0
+
+[node name="ColorRect" parent="Damage Walls/DamageArea13" index="0"]
+visible = false
 
 [node name="DamageArea7" parent="Damage Walls" instance=ExtResource("4_nqjc1")]
 position = Vector2(445, 253)
 scale = Vector2(0.37931, 4.45692)
 damage_given = 20.0
 
+[node name="ColorRect" parent="Damage Walls/DamageArea7" index="0"]
+visible = false
+
 [node name="DamageArea11" parent="Damage Walls" instance=ExtResource("4_nqjc1")]
-position = Vector2(577, 381)
-scale = Vector2(0.37931, 1.25693)
+position = Vector2(577, 379)
+scale = Vector2(0.409266, 1.35786)
 damage_given = 20.0
 
-[node name="DamageArea2" parent="Damage Walls" instance=ExtResource("4_nqjc1")]
-z_index = -5
-position = Vector2(85, 97)
-rotation = -1.57316
-scale = Vector2(0.37931, 2.41589)
-damage_given = 10.0
+[node name="ColorRect" parent="Damage Walls/DamageArea11" index="0"]
+visible = false
 
 [node name="DamageArea10" parent="Damage Walls" instance=ExtResource("4_nqjc1")]
 position = Vector2(669, 120)
@@ -80,11 +107,20 @@ rotation = -1.57316
 scale = Vector2(0.37931, 2.41589)
 damage_given = 20.0
 
+[node name="ColorRect" parent="Damage Walls/DamageArea10" index="0"]
+visible = false
+
 [node name="DamageArea12" parent="Damage Walls" instance=ExtResource("4_nqjc1")]
 position = Vector2(577, 380)
 rotation = -1.57316
-scale = Vector2(0.37931, 2.41589)
+scale = Vector2(0.337411, 2.06014)
 damage_given = 20.0
+
+[node name="ColorRect" parent="Damage Walls/DamageArea12" index="0"]
+visible = false
+
+[node name="CollisionShape2D" parent="Damage Walls/DamageArea12" index="1"]
+position = Vector2(19.9999, 20)
 
 [node name="DamageArea3" parent="Damage Walls" instance=ExtResource("4_nqjc1")]
 position = Vector2(101, 253)
@@ -92,23 +128,396 @@ rotation = -1.57316
 scale = Vector2(0.37931, 1.89551)
 damage_given = 20.0
 
+[node name="ColorRect" parent="Damage Walls/DamageArea3" index="0"]
+visible = false
+
 [node name="DamageArea5" parent="Damage Walls" instance=ExtResource("4_nqjc1")]
 position = Vector2(209, 161)
 rotation = -1.57316
 scale = Vector2(0.37932, 4.57422)
 damage_given = 20.0
 
+[node name="ColorRect" parent="Damage Walls/DamageArea5" index="0"]
+visible = false
+
 [node name="DamageArea8" parent="Damage Walls" instance=ExtResource("4_nqjc1")]
 position = Vector2(443, 252)
 rotation = -1.57316
-scale = Vector2(0.37932, 4.17384)
+scale = Vector2(0.390366, 3.99318)
 damage_given = 20.0
+
+[node name="ColorRect" parent="Damage Walls/DamageArea8" index="0"]
+visible = false
+
+[node name="CollisionShape2D" parent="Damage Walls/DamageArea8" index="1"]
+position = Vector2(19.434, 20.0365)
+scale = Vector2(0.971703, 1.04524)
 
 [node name="DamageArea6" parent="Damage Walls" instance=ExtResource("4_nqjc1")]
 position = Vector2(261, 354)
 rotation = -1.57316
 scale = Vector2(0.37932, 4.57422)
 damage_given = 20.0
+
+[node name="ColorRect" parent="Damage Walls/DamageArea6" index="0"]
+visible = false
+
+[node name="Goo" type="Node2D" parent="."]
+
+[node name="GooEnd3" type="Sprite2D" parent="Goo"]
+position = Vector2(181, 245)
+rotation = 1.57079
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_jr0rw")
+flip_v = true
+
+[node name="GooEnd4" type="Sprite2D" parent="Goo"]
+position = Vector2(396, 153)
+rotation = 1.57079
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_jr0rw")
+flip_v = true
+
+[node name="GooEnd13" type="Sprite2D" parent="Goo"]
+position = Vector2(649, 371)
+rotation = 1.57079
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_jr0rw")
+flip_v = true
+
+[node name="GooEnd5" type="Sprite2D" parent="Goo"]
+position = Vector2(204, 153)
+rotation = 1.57079
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_jr0rw")
+
+[node name="GooEnd8" type="Sprite2D" parent="Goo"]
+position = Vector2(268, 345)
+rotation = 1.57079
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_jr0rw")
+
+[node name="GooEnd12" type="Sprite2D" parent="Goo"]
+position = Vector2(676, 112)
+rotation = 1.57079
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_jr0rw")
+
+[node name="GooLine11" type="Sprite2D" parent="Goo"]
+position = Vector2(117, 245)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_6lcex")
+
+[node name="GooLine12" type="Sprite2D" parent="Goo"]
+position = Vector2(149, 245)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_6lcex")
+
+[node name="GooLine13" type="Sprite2D" parent="Goo"]
+position = Vector2(364, 153)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_6lcex")
+
+[node name="GooLine14" type="Sprite2D" parent="Goo"]
+position = Vector2(332, 153)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_6lcex")
+
+[node name="GooLine15" type="Sprite2D" parent="Goo"]
+position = Vector2(300, 153)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_6lcex")
+
+[node name="GooLine16" type="Sprite2D" parent="Goo"]
+position = Vector2(268, 153)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_6lcex")
+
+[node name="GooLine18" type="Sprite2D" parent="Goo"]
+position = Vector2(236, 153)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_6lcex")
+
+[node name="GooLine23" type="Sprite2D" parent="Goo"]
+position = Vector2(300, 345)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_6lcex")
+
+[node name="GooLine35" type="Sprite2D" parent="Goo"]
+position = Vector2(484, 243)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_6lcex")
+
+[node name="GooLine44" type="Sprite2D" parent="Goo"]
+position = Vector2(708, 112)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_6lcex")
+
+[node name="GooLine45" type="Sprite2D" parent="Goo"]
+position = Vector2(740, 112)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_6lcex")
+
+[node name="GooLine46" type="Sprite2D" parent="Goo"]
+position = Vector2(772, 112)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_6lcex")
+
+[node name="GooLine47" type="Sprite2D" parent="Goo"]
+position = Vector2(772, 112)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_6lcex")
+
+[node name="GooLine36" type="Sprite2D" parent="Goo"]
+position = Vector2(516, 243)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_6lcex")
+
+[node name="GooLine37" type="Sprite2D" parent="Goo"]
+position = Vector2(548, 243)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_6lcex")
+
+[node name="GooLine38" type="Sprite2D" parent="Goo"]
+position = Vector2(580, 243)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_6lcex")
+
+[node name="GooLine39" type="Sprite2D" parent="Goo"]
+position = Vector2(580, 243)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_6lcex")
+
+[node name="GooLine48" type="Sprite2D" parent="Goo"]
+position = Vector2(617, 371)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_6lcex")
+
+[node name="GooLine24" type="Sprite2D" parent="Goo"]
+position = Vector2(332, 345)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_6lcex")
+
+[node name="GooLine25" type="Sprite2D" parent="Goo"]
+position = Vector2(364, 345)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_6lcex")
+
+[node name="GooLine26" type="Sprite2D" parent="Goo"]
+position = Vector2(396, 345)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_6lcex")
+
+[node name="GooLine27" type="Sprite2D" parent="Goo"]
+position = Vector2(428, 345)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_6lcex")
+
+[node name="GooLine28" type="Sprite2D" parent="Goo"]
+position = Vector2(428, 345)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_6lcex")
+
+[node name="GooEnd" type="Sprite2D" parent="Goo"]
+position = Vector2(92, 417)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_jr0rw")
+
+[node name="GooEnd2" type="Sprite2D" parent="Goo"]
+position = Vector2(92, 97)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_jr0rw")
+flip_v = true
+
+[node name="GooEnd6" type="Sprite2D" parent="Goo"]
+position = Vector2(292, 16)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_jr0rw")
+flip_v = true
+
+[node name="GooEnd10" type="Sprite2D" parent="Goo"]
+position = Vector2(523, 8)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_jr0rw")
+flip_v = true
+
+[node name="GooEnd7" type="Sprite2D" parent="Goo"]
+position = Vector2(292, 208)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_jr0rw")
+
+[node name="GooEnd11" type="Sprite2D" parent="Goo"]
+position = Vector2(523, 168)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_jr0rw")
+
+[node name="GooEnd9" type="Sprite2D" parent="Goo"]
+position = Vector2(612, 275)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_jr0rw")
+flip_h = true
+
+[node name="GooLine" type="Sprite2D" parent="Goo"]
+position = Vector2(92, 385)
+rotation = -1.57079
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_6lcex")
+
+[node name="GooLine2" type="Sprite2D" parent="Goo"]
+position = Vector2(92, 353)
+rotation = -1.57079
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_6lcex")
+
+[node name="GooLine29" type="Sprite2D" parent="Goo"]
+position = Vector2(452, 371)
+rotation = -1.57079
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_6lcex")
+
+[node name="GooLine49" type="Sprite2D" parent="Goo"]
+position = Vector2(585, 403)
+rotation = -1.57079
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_6lcex")
+
+[node name="GooLine50" type="Sprite2D" parent="Goo"]
+position = Vector2(585, 435)
+rotation = -1.57079
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_6lcex")
+
+[node name="GooLine31" type="Sprite2D" parent="Goo"]
+position = Vector2(452, 339)
+rotation = -1.57079
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_6lcex")
+
+[node name="GooLine32" type="Sprite2D" parent="Goo"]
+position = Vector2(452, 307)
+rotation = -1.57079
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_6lcex")
+
+[node name="GooLine34" type="Sprite2D" parent="Goo"]
+position = Vector2(452, 275)
+rotation = -1.57079
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_6lcex")
+
+[node name="GooLine30" type="Sprite2D" parent="Goo"]
+position = Vector2(452, 403)
+rotation = -1.57079
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_6lcex")
+
+[node name="GooLine33" type="Sprite2D" parent="Goo"]
+position = Vector2(452, 435)
+rotation = -1.57079
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_6lcex")
+
+[node name="GooLine3" type="Sprite2D" parent="Goo"]
+position = Vector2(92, 321)
+rotation = -1.57079
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_6lcex")
+
+[node name="GooLine4" type="Sprite2D" parent="Goo"]
+position = Vector2(92, 289)
+rotation = -1.57079
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_6lcex")
+
+[node name="GooLine5" type="Sprite2D" parent="Goo"]
+position = Vector2(92, 257)
+rotation = -1.57079
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_6lcex")
+
+[node name="GooLine6" type="Sprite2D" parent="Goo"]
+position = Vector2(92, 225)
+rotation = -1.57079
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_6lcex")
+
+[node name="GooLine7" type="Sprite2D" parent="Goo"]
+position = Vector2(92, 193)
+rotation = -1.57079
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_6lcex")
+
+[node name="GooLine8" type="Sprite2D" parent="Goo"]
+position = Vector2(92, 161)
+rotation = -1.57079
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_6lcex")
+
+[node name="GooLine9" type="Sprite2D" parent="Goo"]
+position = Vector2(92, 129)
+rotation = -1.57079
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_6lcex")
+
+[node name="GooLine10" type="Sprite2D" parent="Goo"]
+position = Vector2(92, 129)
+rotation = -1.57079
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_6lcex")
+
+[node name="GooLine17" type="Sprite2D" parent="Goo"]
+position = Vector2(292, 48)
+rotation = -1.57079
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_6lcex")
+
+[node name="GooLine40" type="Sprite2D" parent="Goo"]
+position = Vector2(523, 40)
+rotation = -1.57079
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_6lcex")
+
+[node name="GooLine41" type="Sprite2D" parent="Goo"]
+position = Vector2(523, 136)
+rotation = -1.57079
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_6lcex")
+
+[node name="GooLine42" type="Sprite2D" parent="Goo"]
+position = Vector2(523, 104)
+rotation = -1.57079
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_6lcex")
+
+[node name="GooLine43" type="Sprite2D" parent="Goo"]
+position = Vector2(523, 72)
+rotation = -1.57079
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_6lcex")
+
+[node name="GooLine19" type="Sprite2D" parent="Goo"]
+position = Vector2(292, 80)
+rotation = -1.57079
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_6lcex")
+
+[node name="GooLine20" type="Sprite2D" parent="Goo"]
+position = Vector2(292, 112)
+rotation = -1.57079
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_6lcex")
+
+[node name="GooLine21" type="Sprite2D" parent="Goo"]
+position = Vector2(292, 144)
+rotation = -1.57079
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_6lcex")
+
+[node name="GooLine22" type="Sprite2D" parent="Goo"]
+position = Vector2(292, 176)
+rotation = -1.57079
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_6lcex")
 
 [node name="Healing Areas" type="Node" parent="."]
 
@@ -126,49 +535,62 @@ position = Vector2(318, 92)
 [node name="EnemyBase" parent="Enemies" instance=ExtResource("6_0qbvk")]
 position = Vector2(137, 390)
 
+[node name="PointLight2D" type="PointLight2D" parent="Enemies/EnemyBase"]
+position = Vector2(20, 20)
+scale = Vector2(0.710358, 0.708967)
+texture = ExtResource("12_udse3")
+
 [node name="EnemyBase2" parent="Enemies" instance=ExtResource("6_0qbvk")]
 position = Vector2(725, 155)
 
+[node name="PointLight2D" type="PointLight2D" parent="Enemies/EnemyBase2"]
+position = Vector2(20, 20)
+scale = Vector2(0.710358, 0.708967)
+texture = ExtResource("12_udse3")
+
 [node name="Materials" type="Node" parent="."]
 
-[node name="Material" parent="Materials" instance=ExtResource("6_506cn")]
-position = Vector2(338, 390)
+[node name="Food1" parent="Materials" instance=ExtResource("10_bfwth")]
+position = Vector2(14, 385)
 
-[node name="Material9" parent="Materials" node_paths=PackedStringArray("progress_bar") instance=ExtResource("6_506cn")]
-position = Vector2(520, 195)
-progress_bar = NodePath("../Material/Healthbar")
+[node name="Food" parent="Materials/Food1" index="3"]
+texture = ExtResource("11_efgn6")
 
-[node name="Material10" parent="Materials" node_paths=PackedStringArray("progress_bar") instance=ExtResource("6_506cn")]
-position = Vector2(275, 276)
-progress_bar = NodePath("../Material/Healthbar")
+[node name="Food2" parent="Materials" instance=ExtResource("11_diuee")]
+position = Vector2(108, 191)
 
-[node name="Material2" parent="Materials" node_paths=PackedStringArray("progress_bar") instance=ExtResource("6_506cn")]
-position = Vector2(324, 50)
-progress_bar = NodePath("../Material/Healthbar")
+[node name="Food3" parent="Materials" instance=ExtResource("12_hccoy")]
+position = Vector2(222, 106)
 
-[node name="Material3" parent="Materials" node_paths=PackedStringArray("progress_bar") instance=ExtResource("6_506cn")]
-position = Vector2(708, 44)
-progress_bar = NodePath("../Material/Healthbar")
+[node name="Food" parent="Materials/Food3" index="3"]
+texture = ExtResource("14_ady4t")
 
-[node name="Material4" parent="Materials" node_paths=PackedStringArray("progress_bar") instance=ExtResource("6_506cn")]
-position = Vector2(610, 397)
-progress_bar = NodePath("../Material/Healthbar")
+[node name="Food4" parent="Materials" instance=ExtResource("12_hccoy")]
+position = Vector2(319, 379)
 
-[node name="Material5" parent="Materials" node_paths=PackedStringArray("progress_bar") instance=ExtResource("6_506cn")]
-position = Vector2(33, 402)
-progress_bar = NodePath("../Material/Healthbar")
+[node name="Food5" parent="Materials" instance=ExtResource("11_diuee")]
+position = Vector2(265, 272)
 
-[node name="Material6" parent="Materials" node_paths=PackedStringArray("progress_bar") instance=ExtResource("6_506cn")]
-position = Vector2(117, 203)
-progress_bar = NodePath("../Material/Healthbar")
+[node name="Food" parent="Materials/Food5" index="3"]
+texture = ExtResource("14_ssblp")
 
-[node name="Material7" parent="Materials" node_paths=PackedStringArray("progress_bar") instance=ExtResource("6_506cn")]
-position = Vector2(243, 119)
-progress_bar = NodePath("../Material/Healthbar")
+[node name="Food6" parent="Materials" instance=ExtResource("10_bfwth")]
+position = Vector2(473, 267)
 
-[node name="Material8" parent="Materials" node_paths=PackedStringArray("progress_bar") instance=ExtResource("6_506cn")]
-position = Vector2(482, 275)
-progress_bar = NodePath("../Material/Healthbar")
+[node name="Food7" parent="Materials" instance=ExtResource("11_diuee")]
+position = Vector2(498, 188)
+
+[node name="Food" parent="Materials/Food7" index="3"]
+texture = ExtResource("14_ssblp")
+
+[node name="Food8" parent="Materials" instance=ExtResource("12_hccoy")]
+position = Vector2(602, 389)
+
+[node name="Food" parent="Materials/Food8" index="3"]
+texture = ExtResource("14_ady4t")
+
+[node name="Food9" parent="Materials" instance=ExtResource("10_bfwth")]
+position = Vector2(686, 35)
 
 [node name="Player" parent="." instance=ExtResource("2_i4tef")]
 z_index = 1
@@ -177,3 +599,40 @@ position = Vector2(24, 25)
 [node name="ControlLabels" parent="." node_paths=PackedStringArray("player") instance=ExtResource("8_qakrm")]
 position = Vector2(0, 347)
 player = NodePath("../Player")
+
+[node name="Food1" parent="." instance=ExtResource("11_diuee")]
+position = Vector2(312, 42)
+
+[node name="GooCorner" type="Sprite2D" parent="."]
+position = Vector2(452, 243)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("20_y714u")
+
+[node name="GooCorner3" type="Sprite2D" parent="."]
+position = Vector2(585, 371)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("20_y714u")
+
+[node name="GooCorner2" type="Sprite2D" parent="."]
+position = Vector2(612, 243)
+rotation = 1.57079
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("20_y714u")
+
+[editable path="Damage Walls/DamageArea"]
+[editable path="Damage Walls/DamageArea4"]
+[editable path="Damage Walls/DamageArea9"]
+[editable path="Damage Walls/DamageArea13"]
+[editable path="Damage Walls/DamageArea7"]
+[editable path="Damage Walls/DamageArea11"]
+[editable path="Damage Walls/DamageArea10"]
+[editable path="Damage Walls/DamageArea12"]
+[editable path="Damage Walls/DamageArea3"]
+[editable path="Damage Walls/DamageArea5"]
+[editable path="Damage Walls/DamageArea8"]
+[editable path="Damage Walls/DamageArea6"]
+[editable path="Materials/Food1"]
+[editable path="Materials/Food3"]
+[editable path="Materials/Food5"]
+[editable path="Materials/Food7"]
+[editable path="Materials/Food8"]

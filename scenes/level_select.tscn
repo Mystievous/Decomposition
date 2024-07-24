@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://4x6bq6bunn15"]
+[gd_scene load_steps=13 format=3 uid="uid://4x6bq6bunn15"]
 
 [ext_resource type="PackedScene" uid="uid://bdiny0oaheofm" path="res://players/player.tscn" id="1_4yxic"]
+[ext_resource type="PackedScene" uid="uid://8ys7bq3vv1nu" path="res://ui/menu_music.tscn" id="1_rs5o8"]
 [ext_resource type="PackedScene" uid="uid://dmq02gv70lruc" path="res://terrain/walls.tscn" id="2_evtug"]
 [ext_resource type="Texture2D" uid="uid://8s8cb1al2goq" path="res://assets/backgrounds/lvl_select.png" id="3_udwla"]
 [ext_resource type="PackedScene" uid="uid://twmibkg7fx38" path="res://interactables/level_entrances/level_3.tscn" id="5_a1t0h"]
@@ -8,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://expanbluqist" path="res://interactables/level_entrances/level_1.tscn" id="6_vo501"]
 [ext_resource type="PackedScene" uid="uid://24n17t0xxk5w" path="res://ui/control_labels.tscn" id="7_witwl"]
 [ext_resource type="PackedScene" uid="uid://b025vtbfpurlq" path="res://interactables/level_entrances/level_4.tscn" id="8_qjscb"]
+[ext_resource type="PackedScene" uid="uid://4i4c480ane4u" path="res://interactables/level_entrances/level_end.tscn" id="9_eqasj"]
 [ext_resource type="PackedScene" uid="uid://b0sxc47p3s8c8" path="res://interactables/level_entrances/level_5.tscn" id="9_onsbk"]
 
 [sub_resource type="GDScript" id="GDScript_7mw71"]
@@ -27,11 +29,13 @@ func _input(event):
 
 [node name="LevelSelect" type="Node2D" node_paths=PackedStringArray("levels_buttons")]
 script = SubResource("GDScript_7mw71")
-levels_buttons = [NodePath("Level1"), NodePath("Level2"), NodePath("Level3"), NodePath("Level4"), NodePath("Level5")]
+levels_buttons = [NodePath("Level1"), NodePath("Level2"), NodePath("Level3"), NodePath("Level4"), NodePath("Level5"), NodePath("Level6")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
 zoom = Vector2(2, 2)
+
+[node name="MenuMusic" parent="." instance=ExtResource("1_rs5o8")]
 
 [node name="Walls" parent="." instance=ExtResource("2_evtug")]
 
@@ -98,6 +102,12 @@ offset_top = 56.0
 offset_right = 124.0
 offset_bottom = 88.0
 text = "5: Order Matters"
+
+[node name="Level6" parent="." instance=ExtResource("9_eqasj")]
+visible = false
+position = Vector2(429, 212)
+scale = Vector2(1.80942, 1.80942)
+scene = "res://scenes/credits.tscn"
 
 [node name="ControlLabels" parent="." node_paths=PackedStringArray("player") instance=ExtResource("7_witwl")]
 player = NodePath("../Player")

@@ -1,5 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://c8o5kterpyx03"]
+[gd_scene load_steps=13 format=3 uid="uid://c8o5kterpyx03"]
 
+[ext_resource type="PackedScene" uid="uid://dqxuhnacgv5um" path="res://ui/level_music.tscn" id="1_g0oix"]
 [ext_resource type="PackedScene" uid="uid://dq46tamd7u53f" path="res://ui/pause_menu.tscn" id="1_grht4"]
 [ext_resource type="PackedScene" uid="uid://wj2kk0glf0q4" path="res://interactables/food/material.tscn" id="1_ifwu5"]
 [ext_resource type="PackedScene" uid="uid://b5w05w6pqtnyy" path="res://terrain/nature_background.tscn" id="2_1oomd"]
@@ -13,6 +14,8 @@
 [ext_resource type="PackedScene" uid="uid://bpl778fa7d2q3" path="res://interactables/level_exit.tscn" id="8_mp4iw"]
 
 [node name="Node2D" type="Node2D"]
+
+[node name="LevelMusic" parent="." instance=ExtResource("1_g0oix")]
 
 [node name="PauseMenu" parent="." instance=ExtResource("1_grht4")]
 

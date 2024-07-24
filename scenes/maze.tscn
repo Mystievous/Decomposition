@@ -1,7 +1,8 @@
-[gd_scene load_steps=39 format=3 uid="uid://vhkqqh4xyhin"]
+[gd_scene load_steps=40 format=3 uid="uid://vhkqqh4xyhin"]
 
 [ext_resource type="PackedScene" uid="uid://b5w05w6pqtnyy" path="res://terrain/nature_background.tscn" id="1_d4p6f"]
 [ext_resource type="PackedScene" uid="uid://dq46tamd7u53f" path="res://ui/pause_menu.tscn" id="1_glb84"]
+[ext_resource type="PackedScene" uid="uid://dqxuhnacgv5um" path="res://ui/level_music.tscn" id="1_xj1kj"]
 [ext_resource type="PackedScene" uid="uid://wj2kk0glf0q4" path="res://interactables/food/material.tscn" id="3_g3mrj"]
 [ext_resource type="PackedScene" uid="uid://dmq02gv70lruc" path="res://terrain/walls.tscn" id="3_kujf2"]
 [ext_resource type="PackedScene" uid="uid://je24kdeaqk27" path="res://ui/game_over_menu.tscn" id="4_e6rha"]
@@ -95,6 +96,8 @@ size = Vector2(10, 378)
 
 [node name="Node2D" type="Node2D"]
 
+[node name="LevelMusic" parent="." instance=ExtResource("1_xj1kj")]
+
 [node name="NatureLvl" parent="." instance=ExtResource("1_d4p6f")]
 position = Vector2(384, 216)
 scale = Vector2(0.6, 0.6)
@@ -116,7 +119,6 @@ position = Vector2(2, 45)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Maze/Walls/StaticBody2D"]
 position = Vector2(155.5, -17.4375)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_wkq3e")
 
 [node name="StaticBody2D11" type="StaticBody2D" parent="Maze/Walls"]
@@ -124,7 +126,6 @@ position = Vector2(380, 45)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Maze/Walls/StaticBody2D11"]
 position = Vector2(195.956, -17.4375)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_fy7di")
 
 [node name="StaticBody2D5" type="StaticBody2D" parent="Maze/Walls"]
@@ -336,6 +337,7 @@ position = Vector2(710, 82)
 
 [node name="LevelExit" parent="." instance=ExtResource("7_adk2n")]
 position = Vector2(337, 16)
+level_number = 2
 
 [node name="Minions" type="Node2D" parent="."]
 

@@ -2,6 +2,8 @@ extends Node
 
 var _transition_scene := preload("res://ui/level_transition.tscn")
 
+var has_loaded = false
+
 var transitioning: bool = false
 
 func transition_to(scene: String):

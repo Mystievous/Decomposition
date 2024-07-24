@@ -1,6 +1,7 @@
-[gd_scene load_steps=32 format=3 uid="uid://cnlg8q6j0fdq6"]
+[gd_scene load_steps=35 format=3 uid="uid://cnlg8q6j0fdq6"]
 
 [ext_resource type="PackedScene" uid="uid://dq46tamd7u53f" path="res://ui/pause_menu.tscn" id="1_3vwtr"]
+[ext_resource type="PackedScene" uid="uid://dqxuhnacgv5um" path="res://ui/level_music.tscn" id="1_piy1o"]
 [ext_resource type="PackedScene" uid="uid://dmq02gv70lruc" path="res://terrain/walls.tscn" id="2_8ece2"]
 [ext_resource type="PackedScene" uid="uid://je24kdeaqk27" path="res://ui/game_over_menu.tscn" id="2_usxje"]
 [ext_resource type="PackedScene" uid="uid://b5w05w6pqtnyy" path="res://terrain/nature_background.tscn" id="2_v3jve"]
@@ -53,10 +54,18 @@ size = Vector2(42, 49.9872)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mup2y"]
 size = Vector2(31, 41)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bn1dd"]
+size = Vector2(125, 31)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sxvao"]
 size = Vector2(40, 41)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pi7n5"]
+size = Vector2(123, 41)
+
 [node name="Node2D" type="Node2D"]
+
+[node name="LevelMusic" parent="." instance=ExtResource("1_piy1o")]
 
 [node name="PauseMenu" parent="." instance=ExtResource("1_3vwtr")]
 
@@ -163,6 +172,20 @@ shape = SubResource("RectangleShape2D_mup2y")
 [node name="Polygon2D" type="Polygon2D" parent="Door"]
 position = Vector2(1, -1)
 scale = Vector2(0.96875, 1.09756)
+color = Color(0.201482, 0.265051, 0.502763, 1)
+polygon = PackedVector2Array(0, 0, 32, 0, 32, 41, 0, 41, 0, 22.2963)
+
+[node name="Door3" parent="." node_paths=PackedStringArray("trigger") instance=ExtResource("9_thhbm")]
+position = Vector2(450, 100)
+trigger = NodePath("../PressurePlate2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door3"]
+position = Vector2(63.5, 15.5)
+shape = SubResource("RectangleShape2D_bn1dd")
+
+[node name="Polygon2D" type="Polygon2D" parent="Door3"]
+position = Vector2(1, -1)
+scale = Vector2(3.90625, 0.780488)
 color = Color(0.201482, 0.265051, 0.502763, 1)
 polygon = PackedVector2Array(0, 0, 32, 0, 32, 41, 0, 41, 0, 22.2963)
 
@@ -327,6 +350,22 @@ offset_bottom = 36.0
 mouse_filter = 2
 color = Color(0.054902, 0.819608, 0.937255, 0.431373)
 
+[node name="PressurePlate2" parent="." instance=ExtResource("6_4mvt8")]
+position = Vector2(459, 137)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PressurePlate2"]
+position = Vector2(54.5, 15.5)
+shape = SubResource("RectangleShape2D_pi7n5")
+
+[node name="ColorRect" type="ColorRect" parent="PressurePlate2"]
+show_behind_parent = true
+offset_left = -7.0
+offset_top = -5.0
+offset_right = 116.0
+offset_bottom = 36.0
+mouse_filter = 2
+color = Color(0.054902, 0.819608, 0.937255, 0.431373)
+
 [node name="DamageArea" parent="." instance=ExtResource("6_jgf51")]
 position = Vector2(379, 193)
 scale = Vector2(0.993094, 0.728025)
@@ -347,13 +386,13 @@ frame = 2
 position = Vector2(314, 135)
 
 [node name="Food2" parent="Materials" instance=ExtResource("13_bvhnm")]
-position = Vector2(460, 70)
+position = Vector2(460, 62)
 
 [node name="Food" parent="Materials/Food2" index="3"]
 texture = ExtResource("15_08oqq")
 
 [node name="Food3" parent="Materials" instance=ExtResource("14_6dxah")]
-position = Vector2(518, 52)
+position = Vector2(518, 36)
 
 [node name="Food4" parent="Materials" instance=ExtResource("13_jklrx")]
 position = Vector2(458, 11)
@@ -363,6 +402,7 @@ texture = ExtResource("17_kv8ea")
 
 [node name="LevelExit" parent="." instance=ExtResource("5_xee24")]
 position = Vector2(38, 30)
+level_number = 5
 
 [node name="Minions" type="Node2D" parent="."]
 

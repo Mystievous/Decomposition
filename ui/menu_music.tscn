@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://8ys7bq3vv1nu"]
+
+[ext_resource type="AudioStream" uid="uid://dirjlskj4phhw" path="res://assets/sounds/LevelFunky.ogg" id="1_qwifp"]
+
+[node name="MenuMusic" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_qwifp")
+autoplay = true
+attenuation = 1e-05
+panning_strength = 0.0
+bus = &"Music"
