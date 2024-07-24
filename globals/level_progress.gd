@@ -1,7 +1,10 @@
 extends Node
 
+var total_levels = 5
+var current_level = 1
+var avaible_levels: Array[bool]
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-	
+	for i in range(total_levels):
+		avaible_levels.append(false)
+	avaible_levels[0] = true

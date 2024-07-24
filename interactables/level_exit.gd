@@ -16,6 +16,10 @@ func _process(delta):
 func interact(_node):
 	if active:
 		Transitions.transition_to(scene)
+		if LevelProgress.current_level < LevelProgress.total_levels:
+			LevelProgress.avaible_levels[LevelProgress.current_level] = true
+			LevelProgress.current_level += 1
+		active = false
 
 func set_outline(enabled: bool):
 	outlined = enabled

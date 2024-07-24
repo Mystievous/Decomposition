@@ -13,13 +13,21 @@
 [sub_resource type="GDScript" id="GDScript_7mw71"]
 script/source = "extends Node2D
 
+@export var levels_buttons:Array[Area2D]
+
+func _ready():
+	for i in (range(LevelProgress.total_levels)):
+		if LevelProgress.avaible_levels[i]:
+			levels_buttons[i].show()
+
 func _input(event):
 	if (event.is_action_pressed(\"pause\")):
 		Transitions.transition_to(\"res://scenes/main_menu.tscn\")
 "
 
-[node name="LevelSelect" type="Node2D"]
+[node name="LevelSelect" type="Node2D" node_paths=PackedStringArray("levels_buttons")]
 script = SubResource("GDScript_7mw71")
+levels_buttons = [NodePath("Level1"), NodePath("Level2"), NodePath("Level3"), NodePath("Level4"), NodePath("Level5")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
@@ -32,63 +40,67 @@ scale = Vector2(0.45, 0.45)
 texture = ExtResource("3_udwla")
 centered = false
 
-[node name="OrderMatters" type="RichTextLabel" parent="."]
-offset_left = 364.0
-offset_top = 184.0
-offset_right = 521.0
-offset_bottom = 216.0
-text = "5: Order Matters"
-
-[node name="OrderMatters3" type="RichTextLabel" parent="."]
-offset_left = 312.0
-offset_top = 286.0
-offset_right = 446.0
-offset_bottom = 318.0
-text = "4: Gatekeep"
-
-[node name="SimpleStart" type="RichTextLabel" parent="."]
-offset_left = 73.0
-offset_top = 185.0
-offset_right = 207.0
-offset_bottom = 217.0
-text = "1: Simple Start"
-
-[node name="Maze" type="RichTextLabel" parent="."]
-offset_left = 182.0
-offset_top = 273.0
-offset_right = 246.0
-offset_bottom = 305.0
-text = "2: Maze"
-
-[node name="DamageMaze" type="RichTextLabel" parent="."]
-offset_left = 222.0
-offset_top = 174.0
-offset_right = 378.0
-offset_bottom = 223.0
-text = "3: Damage Maze"
-
 [node name="Level1" parent="." instance=ExtResource("6_vo501")]
 position = Vector2(99, 133)
 scene = "res://scenes/simple.tscn"
 
+[node name="SimpleStart" type="RichTextLabel" parent="Level1"]
+offset_left = -26.0
+offset_top = 52.0
+offset_right = 108.0
+offset_bottom = 84.0
+text = "1: Simple Start"
+
 [node name="Level2" parent="." instance=ExtResource("5_ffxlr")]
+visible = false
 position = Vector2(181, 213)
 scene = "res://scenes/maze.tscn"
 
+[node name="Maze" type="RichTextLabel" parent="Level2"]
+offset_left = 1.0
+offset_top = 60.0
+offset_right = 65.0
+offset_bottom = 92.0
+text = "2: Maze"
+
 [node name="Level3" parent="." instance=ExtResource("5_a1t0h")]
+visible = false
 position = Vector2(255, 119)
 scene = "res://scenes/damage_maze.tscn"
+
+[node name="DamageMaze" type="RichTextLabel" parent="Level3"]
+offset_left = -1.0
+offset_top = 55.0
+offset_right = 155.0
+offset_bottom = 104.0
+text = "3: Maze 2"
+
+[node name="Level4" parent="." instance=ExtResource("8_qjscb")]
+visible = false
+position = Vector2(327, 227)
+scene = "res://scenes/gate.tscn"
+
+[node name="OrderMatters3" type="RichTextLabel" parent="Level4"]
+offset_left = -15.0
+offset_top = 59.0
+offset_right = 119.0
+offset_bottom = 91.0
+text = "4: Gatekeep"
+
+[node name="Level5" parent="." instance=ExtResource("9_onsbk")]
+visible = false
+position = Vector2(397, 128)
+scene = "res://scenes/order_matters.tscn"
+
+[node name="OrderMatters" type="RichTextLabel" parent="Level5"]
+offset_left = -33.0
+offset_top = 56.0
+offset_right = 124.0
+offset_bottom = 88.0
+text = "5: Order Matters"
 
 [node name="ControlLabels" parent="." node_paths=PackedStringArray("player") instance=ExtResource("7_witwl")]
 player = NodePath("../Player")
 
 [node name="Player" parent="." instance=ExtResource("1_4yxic")]
 position = Vector2(40, 236)
-
-[node name="Level4" parent="." instance=ExtResource("8_qjscb")]
-position = Vector2(327, 227)
-scene = "res://scenes/gate.tscn"
-
-[node name="Level5" parent="." instance=ExtResource("9_onsbk")]
-position = Vector2(397, 128)
-scene = "res://scenes/order_matters.tscn"
