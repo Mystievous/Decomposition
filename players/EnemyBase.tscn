@@ -61,6 +61,7 @@ position = Vector2(-3, -10)
 max_health = 50.0
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
 one_shot = true
 
 [node name="damage_zone" type="Area2D" parent="."]
