@@ -10,10 +10,11 @@ config_version=5
 
 [application]
 
-config/name="Decomposition"
+config/name="Nuclear Noms"
 run/main_scene="res://scenes/main_menu.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
-config/icon="res://icon.svg"
+config/icon="res://assets/nuclear_noms.png"
+config/windows_native_icon="res://assets/icon.ico"
 
 [autoload]
 
