@@ -1,0 +1,91 @@
+[gd_scene load_steps=12 format=3 uid="uid://je24kdeaqk27"]
+
+[ext_resource type="Script" path="res://ui/game_over_menu.gd" id="1_i2hh4"]
+[ext_resource type="Texture2D" uid="uid://c8hgp5ggafsb1" path="res://assets/ui/game_over.png" id="2_e8awp"]
+[ext_resource type="Texture2D" uid="uid://b6dnb1bu5h581" path="res://assets/ui/exit.png" id="4_kliiv"]
+[ext_resource type="Texture2D" uid="uid://cv7syomkbkoih" path="res://assets/ui/exit_outline.png" id="5_y2fas"]
+[ext_resource type="Texture2D" uid="uid://dqxp0732iupm1" path="res://assets/ui/replay.png" id="6_8hnx4"]
+[ext_resource type="Texture2D" uid="uid://bq26tlpeh0f3j" path="res://assets/ui/replay_outline.png" id="7_v88sv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bamwp"]
+atlas = ExtResource("2_e8awp")
+region = Rect2(0, 0, 1280, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2d2j3"]
+atlas = ExtResource("2_e8awp")
+region = Rect2(1280, 0, 1280, 720)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bqyca"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bamwp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2d2j3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x4jke"]
+size = Vector2(254.761, 135.309)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ohs77"]
+size = Vector2(189.276, 153.917)
+
+[node name="LoseMenu" type="Node2D" groups=["lose_menu"]]
+process_mode = 3
+script = ExtResource("1_i2hh4")
+level_select = "res://scenes/level_select.tscn"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 2
+visible = false
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer"]
+scale = Vector2(0.9, 0.9)
+sprite_frames = SubResource("SpriteFrames_bqyca")
+centered = false
+
+[node name="Exit" type="Area2D" parent="CanvasLayer"]
+position = Vector2(537, 360)
+scale = Vector2(0.945985, 0.945985)
+
+[node name="Exit" type="Sprite2D" parent="CanvasLayer/Exit"]
+position = Vector2(137, 63)
+texture = ExtResource("4_kliiv")
+
+[node name="ExitOutline" type="Sprite2D" parent="CanvasLayer/Exit"]
+visible = false
+position = Vector2(137, 63)
+texture = ExtResource("5_y2fas")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Exit"]
+position = Vector2(145.351, 80.3395)
+shape = SubResource("RectangleShape2D_x4jke")
+
+[node name="Replay" type="Area2D" parent="CanvasLayer"]
+position = Vector2(-456, 128)
+scale = Vector2(0.961556, 0.961556)
+
+[node name="Replay" type="Sprite2D" parent="CanvasLayer/Replay"]
+position = Vector2(945, 309)
+texture = ExtResource("6_8hnx4")
+
+[node name="ReplayOutline" type="Sprite2D" parent="CanvasLayer/Replay"]
+visible = false
+position = Vector2(945, 309)
+texture = ExtResource("7_v88sv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Replay"]
+position = Vector2(946.383, 310.954)
+shape = SubResource("RectangleShape2D_ohs77")
+
+[connection signal="input_event" from="CanvasLayer/Exit" to="." method="_on_exit_input_event"]
+[connection signal="mouse_entered" from="CanvasLayer/Exit" to="." method="_on_exit_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/Exit" to="." method="_on_exit_mouse_exited"]
+[connection signal="input_event" from="CanvasLayer/Replay" to="." method="_on_replay_input_event"]
+[connection signal="mouse_entered" from="CanvasLayer/Replay" to="." method="_on_replay_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/Replay" to="." method="_on_replay_mouse_exited"]

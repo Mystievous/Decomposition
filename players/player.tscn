@@ -11,9 +11,8 @@
 [ext_resource type="Resource" uid="uid://cn45ipwwhi20w" path="res://globals/skins/millipede_skin.tres" id="8_cko1b"]
 [ext_resource type="PackedScene" uid="uid://bmn7ph7d8pufr" path="res://ui/healthbar.tscn" id="9_cobj4"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_miwgt"]
-radius = 11.5141
-height = 63.773
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_krg3f"]
+size = Vector2(23.0004, 63.8863)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ch15d"]
 size = Vector2(64, 23)
@@ -30,9 +29,10 @@ millipede_skin = ExtResource("8_cko1b")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 show_behind_parent = true
-position = Vector2(32, 11.5)
+position = Vector2(31.9432, 11.5)
 rotation = -1.57079
-shape = SubResource("CapsuleShape2D_miwgt")
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_krg3f")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1

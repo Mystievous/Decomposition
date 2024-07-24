@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://c8o5kterpyx03"]
+[gd_scene load_steps=12 format=3 uid="uid://c8o5kterpyx03"]
 
 [ext_resource type="PackedScene" uid="uid://dq46tamd7u53f" path="res://ui/pause_menu.tscn" id="1_grht4"]
 [ext_resource type="PackedScene" uid="uid://wj2kk0glf0q4" path="res://interactables/food/material.tscn" id="1_ifwu5"]
 [ext_resource type="PackedScene" uid="uid://b5w05w6pqtnyy" path="res://terrain/nature_background.tscn" id="2_1oomd"]
+[ext_resource type="PackedScene" uid="uid://je24kdeaqk27" path="res://ui/game_over_menu.tscn" id="2_2rcni"]
 [ext_resource type="PackedScene" uid="uid://dv33ktyaxcywa" path="res://terrain/HealingArea.tscn" id="2_p5i3k"]
 [ext_resource type="PackedScene" uid="uid://cr8q8bgpogqxh" path="res://players/EnemyBase.tscn" id="3_creu5"]
 [ext_resource type="PackedScene" uid="uid://dmq02gv70lruc" path="res://terrain/walls.tscn" id="3_or048"]
@@ -14,6 +15,8 @@
 [node name="Node2D" type="Node2D"]
 
 [node name="PauseMenu" parent="." instance=ExtResource("1_grht4")]
+
+[node name="LoseMenu" parent="." instance=ExtResource("2_2rcni")]
 
 [node name="NatureLvl" parent="." instance=ExtResource("2_1oomd")]
 

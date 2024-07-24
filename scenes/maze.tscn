@@ -327,6 +327,9 @@ position = Vector2(713, 385)
 [node name="Material6" parent="Materials" instance=ExtResource("3_g3mrj")]
 position = Vector2(710, 82)
 
+[node name="LevelExit" parent="." instance=ExtResource("7_adk2n")]
+position = Vector2(337, 16)
+
 [node name="Minions" type="Node2D" parent="."]
 
 [node name="Player" parent="." instance=ExtResource("4_ni57k")]
@@ -335,6 +338,3 @@ position = Vector2(408, 379)
 [node name="ControlLabels" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_bj3sg")]
 position = Vector2(6, 367)
 player = NodePath("../Player")
-
-[node name="LevelExit" parent="." instance=ExtResource("7_adk2n")]
-position = Vector2(337, 16)
