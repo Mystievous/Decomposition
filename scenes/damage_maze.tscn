@@ -1,12 +1,12 @@
 [gd_scene load_steps=23 format=3 uid="uid://cysy26gh5coe7"]
 
-[ext_resource type="PackedScene" uid="uid://dqxuhnacgv5um" path="res://ui/level_music.tscn" id="1_jjwgl"]
+[ext_resource type="PackedScene" path="res://ui/level_music.tscn" id="1_jjwgl"]
 [ext_resource type="PackedScene" uid="uid://dmq02gv70lruc" path="res://terrain/walls.tscn" id="1_jtagk"]
 [ext_resource type="PackedScene" uid="uid://dq46tamd7u53f" path="res://ui/pause_menu.tscn" id="2_30moa"]
-[ext_resource type="PackedScene" uid="uid://b5w05w6pqtnyy" path="res://terrain/nature_background.tscn" id="2_hqbmp"]
+[ext_resource type="PackedScene" path="res://terrain/nature_background.tscn" id="2_hqbmp"]
 [ext_resource type="PackedScene" uid="uid://bdiny0oaheofm" path="res://players/player.tscn" id="2_i4tef"]
 [ext_resource type="PackedScene" uid="uid://bpl778fa7d2q3" path="res://interactables/level_exit.tscn" id="2_o6o86"]
-[ext_resource type="PackedScene" uid="uid://je24kdeaqk27" path="res://ui/game_over_menu.tscn" id="3_dbfm2"]
+[ext_resource type="PackedScene" path="res://ui/game_over_menu.tscn" id="3_dbfm2"]
 [ext_resource type="PackedScene" uid="uid://s4d6n6jumbdv" path="res://terrain/DamageArea.tscn" id="4_nqjc1"]
 [ext_resource type="PackedScene" uid="uid://dv33ktyaxcywa" path="res://terrain/HealingArea.tscn" id="5_4bw76"]
 [ext_resource type="PackedScene" uid="uid://cr8q8bgpogqxh" path="res://players/EnemyBase.tscn" id="6_0qbvk"]
@@ -29,6 +29,7 @@
 color = Color(0.808998, 0.808998, 0.808998, 1)
 
 [node name="LevelMusic" parent="." instance=ExtResource("1_jjwgl")]
+bus = &"Master"
 
 [node name="NatureLvl" parent="." instance=ExtResource("2_hqbmp")]
 position = Vector2(380.667, 216.5)
@@ -557,7 +558,7 @@ frame = 1
 [node name="Enemies" type="Node" parent="."]
 
 [node name="EnemyBase" parent="Enemies" instance=ExtResource("6_0qbvk")]
-position = Vector2(137, 390)
+position = Vector2(102, 370)
 
 [node name="PointLight2D" type="PointLight2D" parent="Enemies/EnemyBase"]
 position = Vector2(20, 20)
@@ -565,9 +566,25 @@ scale = Vector2(0.710358, 0.708967)
 texture = ExtResource("12_udse3")
 
 [node name="EnemyBase2" parent="Enemies" instance=ExtResource("6_0qbvk")]
-position = Vector2(725, 155)
+position = Vector2(591, 302)
 
 [node name="PointLight2D" type="PointLight2D" parent="Enemies/EnemyBase2"]
+position = Vector2(20, 20)
+scale = Vector2(0.710358, 0.708967)
+texture = ExtResource("12_udse3")
+
+[node name="EnemyBase3" parent="Enemies" instance=ExtResource("6_0qbvk")]
+position = Vector2(413, 54)
+
+[node name="PointLight2D" type="PointLight2D" parent="Enemies/EnemyBase3"]
+position = Vector2(20, 20)
+scale = Vector2(0.710358, 0.708967)
+texture = ExtResource("12_udse3")
+
+[node name="EnemyBase4" parent="Enemies" instance=ExtResource("6_0qbvk")]
+position = Vector2(214, 205)
+
+[node name="PointLight2D" type="PointLight2D" parent="Enemies/EnemyBase4"]
 position = Vector2(20, 20)
 scale = Vector2(0.710358, 0.708967)
 texture = ExtResource("12_udse3")
