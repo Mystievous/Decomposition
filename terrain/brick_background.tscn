@@ -1,0 +1,62 @@
+[gd_scene load_steps=10 format=3 uid="uid://bg36abhrtr6gi"]
+
+[ext_resource type="Texture2D" uid="uid://b0axrg468tg7k" path="res://assets/backgrounds/city_win.png" id="1_pyqfx"]
+[ext_resource type="Script" path="res://terrain/nature_background.gd" id="2_ah14i"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qeuhx"]
+atlas = ExtResource("1_pyqfx")
+region = Rect2(0, 0, 1280, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_012vp"]
+atlas = ExtResource("1_pyqfx")
+region = Rect2(1280, 0, 1280, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_11ao1"]
+atlas = ExtResource("1_pyqfx")
+region = Rect2(2560, 0, 1280, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m105n"]
+atlas = ExtResource("1_pyqfx")
+region = Rect2(3840, 0, 1280, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kt8cb"]
+atlas = ExtResource("1_pyqfx")
+region = Rect2(5120, 0, 1280, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_posql"]
+atlas = ExtResource("1_pyqfx")
+region = Rect2(6400, 0, 1280, 720)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2qa86"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qeuhx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_012vp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_11ao1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m105n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kt8cb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_posql")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="BrickBackground" type="AnimatedSprite2D" groups=["background"]]
+position = Vector2(288, 162)
+scale = Vector2(0.45, 0.45)
+sprite_frames = SubResource("SpriteFrames_2qa86")
+script = ExtResource("2_ah14i")
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]
