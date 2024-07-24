@@ -1,20 +1,29 @@
-[gd_scene load_steps=6 format=3 uid="uid://4x6bq6bunn15"]
+[gd_scene load_steps=7 format=3 uid="uid://4x6bq6bunn15"]
 
 [ext_resource type="PackedScene" uid="uid://bdiny0oaheofm" path="res://players/player.tscn" id="1_4yxic"]
-[ext_resource type="PackedScene" uid="uid://dq46tamd7u53f" path="res://ui/pause_menu.tscn" id="1_triiu"]
 [ext_resource type="PackedScene" uid="uid://dmq02gv70lruc" path="res://terrain/walls.tscn" id="2_evtug"]
+[ext_resource type="PackedScene" uid="uid://b5w05w6pqtnyy" path="res://terrain/nature_background.tscn" id="2_ky0bh"]
 [ext_resource type="PackedScene" uid="uid://ccenlgxufauo2" path="res://interactables/level.tscn" id="2_vytpa"]
 [ext_resource type="PackedScene" uid="uid://24n17t0xxk5w" path="res://ui/control_labels.tscn" id="7_witwl"]
 
-[node name="LevelSelect" type="Node2D"]
+[sub_resource type="GDScript" id="GDScript_7mw71"]
+script/source = "extends Node2D
 
-[node name="PauseMenu" parent="." instance=ExtResource("1_triiu")]
+func _input(event):
+	if (event.is_action_pressed(\"pause\")):
+		Transitions.transition_to(\"res://scenes/main_menu.tscn\")
+"
+
+[node name="LevelSelect" type="Node2D"]
+script = SubResource("GDScript_7mw71")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
 zoom = Vector2(2, 2)
 
 [node name="Walls" parent="." instance=ExtResource("2_evtug")]
+
+[node name="NatureLvl" parent="." instance=ExtResource("2_ky0bh")]
 
 [node name="MainLabel" type="RichTextLabel" parent="."]
 offset_left = 196.0
@@ -68,6 +77,10 @@ scene = "res://scenes/main.tscn"
 
 [node name="PlaceMinions" parent="." instance=ExtResource("2_vytpa")]
 position = Vector2(341, 110)
+scene = "res://scenes/click_spawn.tscn"
+
+[node name="PlaceMinions2" parent="." instance=ExtResource("2_vytpa")]
+position = Vector2(428, 83)
 scene = "res://scenes/click_spawn.tscn"
 
 [node name="Light" parent="." instance=ExtResource("2_vytpa")]

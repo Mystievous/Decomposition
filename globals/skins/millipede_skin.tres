@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="SkinResource" load_steps=6 format=3 uid="uid://cn45ipwwhi20w"]
 
-[ext_resource type="SpriteFrames" uid="uid://byh2n6wri7r8v" path="res://assets/minions/millipede_minion.tres" id="1_fory4"]
+[ext_resource type="SpriteFrames" uid="uid://byh2n6wri7r8v" path="res://assets/sprites/millipede_minion.tres" id="1_fory4"]
 [ext_resource type="SpriteFrames" uid="uid://b1h4mufqyuutm" path="res://assets/players/millipede.tres" id="2_i6r48"]
 [ext_resource type="Script" path="res://resources/skin_resource.gd" id="3_eg3al"]
 [ext_resource type="Script" path="res://resources/stats_resource.gd" id="4_wg1a0"]

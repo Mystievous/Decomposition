@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bmn7ph7d8pufr"]
 
 [ext_resource type="Script" path="res://ui/healthbar.gd" id="1_kbavy"]
-[ext_resource type="Texture2D" uid="uid://c6jsmk40f4gmg" path="res://assets/loading_bar.png" id="2_tejhp"]
+[ext_resource type="Texture2D" uid="uid://c6jsmk40f4gmg" path="res://assets/health_bar.png" id="2_tejhp"]
 
 [node name="Healthbar" type="Node2D"]
 script = ExtResource("1_kbavy")

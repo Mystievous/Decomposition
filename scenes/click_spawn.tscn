@@ -1,12 +1,15 @@
-[gd_scene load_steps=12 format=3 uid="uid://bw5ekoqlrfoye"]
+[gd_scene load_steps=15 format=3 uid="uid://bw5ekoqlrfoye"]
 
 [ext_resource type="PackedScene" uid="uid://dq46tamd7u53f" path="res://ui/pause_menu.tscn" id="1_3ofx6"]
-[ext_resource type="PackedScene" uid="uid://wj2kk0glf0q4" path="res://interactables/material.tscn" id="1_5lc0p"]
+[ext_resource type="PackedScene" uid="uid://b5w05w6pqtnyy" path="res://terrain/nature_background.tscn" id="1_v2ssf"]
 [ext_resource type="PackedScene" uid="uid://bdiny0oaheofm" path="res://players/player.tscn" id="3_picsf"]
+[ext_resource type="PackedScene" uid="uid://cmpftm8qv5m03" path="res://interactables/food/food_2.tscn" id="5_4phqk"]
 [ext_resource type="PackedScene" uid="uid://cbndlk88l6e6g" path="res://ui/minion_area.tscn" id="5_icxkb"]
 [ext_resource type="PackedScene" uid="uid://bpl778fa7d2q3" path="res://interactables/level_exit.tscn" id="5_oteqr"]
 [ext_resource type="PackedScene" uid="uid://24n17t0xxk5w" path="res://ui/control_labels.tscn" id="5_t425n"]
+[ext_resource type="PackedScene" uid="uid://l8ad4qginv0h" path="res://interactables/food/food_3.tscn" id="6_0gclj"]
 [ext_resource type="PackedScene" uid="uid://dmq02gv70lruc" path="res://terrain/walls.tscn" id="6_wjvlu"]
+[ext_resource type="PackedScene" uid="uid://b4stent4ww4qk" path="res://interactables/food/food_1.tscn" id="8_xufd6"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_fjcaq"]
 vertices = PackedVector2Array(566, 314, 10, 314, 10, 10, 566, 10)
@@ -24,6 +27,8 @@ size = Vector2(153.006, 115.758)
 size = Vector2(133, 94)
 
 [node name="Node2D" type="Node2D"]
+
+[node name="NatureLvl" parent="." instance=ExtResource("1_v2ssf")]
 
 [node name="PauseMenu" parent="." instance=ExtResource("1_3ofx6")]
 
@@ -66,23 +71,14 @@ shape = SubResource("RectangleShape2D_pb4je")
 
 [node name="Materials" type="Node2D" parent="."]
 
-[node name="Material" parent="Materials" instance=ExtResource("1_5lc0p")]
-position = Vector2(198, 51)
+[node name="Food1" parent="Materials" instance=ExtResource("8_xufd6")]
+position = Vector2(119, 124)
 
-[node name="Material2" parent="Materials" instance=ExtResource("1_5lc0p")]
-position = Vector2(189, 223)
+[node name="Food2" parent="Materials" instance=ExtResource("5_4phqk")]
+position = Vector2(400, 219)
 
-[node name="Material3" parent="Materials" instance=ExtResource("1_5lc0p")]
-position = Vector2(461, 145)
-
-[node name="Material4" parent="Materials" instance=ExtResource("1_5lc0p")]
-position = Vector2(432, 261)
-
-[node name="Material5" parent="Materials" instance=ExtResource("1_5lc0p")]
-position = Vector2(350, 35)
-
-[node name="Material6" parent="Materials" instance=ExtResource("1_5lc0p")]
-position = Vector2(166, 44)
+[node name="Food3" parent="Materials" instance=ExtResource("6_0gclj")]
+position = Vector2(278, 26)
 
 [node name="LevelExit" parent="." instance=ExtResource("5_oteqr")]
 position = Vector2(515, 255)
@@ -91,6 +87,7 @@ position = Vector2(515, 255)
 
 [node name="Player" parent="." instance=ExtResource("3_picsf")]
 position = Vector2(20, 111)
+collision_layer = 2
 
 [node name="ControlLabels" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_t425n")]
 player = NodePath("../Player")

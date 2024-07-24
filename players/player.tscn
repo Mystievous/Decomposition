@@ -11,8 +11,9 @@
 [ext_resource type="Resource" uid="uid://cn45ipwwhi20w" path="res://globals/skins/millipede_skin.tres" id="8_cko1b"]
 [ext_resource type="PackedScene" uid="uid://bmn7ph7d8pufr" path="res://ui/healthbar.tscn" id="9_cobj4"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_cqwoj"]
-size = Vector2(64, 23)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_miwgt"]
+radius = 11.5141
+height = 63.773
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ch15d"]
 size = Vector2(64, 23)
@@ -27,9 +28,12 @@ sprite = NodePath("AnimatedSprite2D")
 worm_skin = ExtResource("7_wun7x")
 millipede_skin = ExtResource("8_cko1b")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+show_behind_parent = true
 position = Vector2(32, 11.5)
-shape = SubResource("RectangleShape2D_cqwoj")
+rotation = -1.57079
+scale = Vector2(1, 1)
+shape = SubResource("CapsuleShape2D_miwgt")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -38,6 +42,7 @@ sprite_frames = ExtResource("7_o3j1h")
 animation = &"idle"
 
 [node name="Area2D" type="Area2D" parent="."]
+show_behind_parent = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(32, 11.5)

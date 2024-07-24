@@ -1,7 +1,86 @@
-[gd_scene load_steps=2 format=3 uid="uid://dq46tamd7u53f"]
+[gd_scene load_steps=11 format=3 uid="uid://dq46tamd7u53f"]
 
 [ext_resource type="Script" path="res://ui/pause_menu.gd" id="1_lixve"]
+[ext_resource type="Texture2D" uid="uid://ckm1yhh3ng0e7" path="res://assets/ui/pause.png" id="2_ipurc"]
+[ext_resource type="Texture2D" uid="uid://cv7syomkbkoih" path="res://assets/ui/exit_outline.png" id="3_2mtdk"]
+[ext_resource type="Texture2D" uid="uid://r2qacuggb44w" path="res://assets/ui/pause_outline.png" id="3_cmjf2"]
+[ext_resource type="Texture2D" uid="uid://dqxp0732iupm1" path="res://assets/ui/replay.png" id="3_v5akb"]
+[ext_resource type="Texture2D" uid="uid://bq26tlpeh0f3j" path="res://assets/ui/replay_outline.png" id="4_i5u4s"]
+[ext_resource type="Texture2D" uid="uid://b6dnb1bu5h581" path="res://assets/ui/exit.png" id="4_o80dx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y1ngb"]
+size = Vector2(446, 570)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x4jke"]
+size = Vector2(294, 174)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ohs77"]
+size = Vector2(221, 181)
 
 [node name="PauseMenu" type="Node2D"]
+process_mode = 3
 script = ExtResource("1_lixve")
 level_select = "res://scenes/level_select.tscn"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 2
+visible = false
+
+[node name="Pause" type="Area2D" parent="CanvasLayer"]
+position = Vector2(364, 48)
+
+[node name="Pause" type="Sprite2D" parent="CanvasLayer/Pause"]
+position = Vector2(212, 276)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("2_ipurc")
+
+[node name="PauseOutline" type="Sprite2D" parent="CanvasLayer/Pause"]
+visible = false
+position = Vector2(212, 276)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("3_cmjf2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Pause"]
+position = Vector2(223, 285)
+shape = SubResource("RectangleShape2D_y1ngb")
+
+[node name="Exit" type="Area2D" parent="CanvasLayer"]
+position = Vector2(40, 232)
+
+[node name="Exit" type="Sprite2D" parent="CanvasLayer/Exit"]
+position = Vector2(137, 63)
+texture = ExtResource("4_o80dx")
+
+[node name="ExitOutline" type="Sprite2D" parent="CanvasLayer/Exit"]
+visible = false
+position = Vector2(137, 63)
+texture = ExtResource("3_2mtdk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Exit"]
+position = Vector2(147, 87)
+shape = SubResource("RectangleShape2D_x4jke")
+
+[node name="Replay" type="Area2D" parent="CanvasLayer"]
+
+[node name="Replay" type="Sprite2D" parent="CanvasLayer/Replay"]
+position = Vector2(945, 309)
+texture = ExtResource("3_v5akb")
+
+[node name="ReplayOutline" type="Sprite2D" parent="CanvasLayer/Replay"]
+visible = false
+position = Vector2(945, 309)
+texture = ExtResource("4_i5u4s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Replay"]
+position = Vector2(941.5, 313.5)
+shape = SubResource("RectangleShape2D_ohs77")
+
+[connection signal="input_event" from="CanvasLayer/Pause" to="." method="_on_pause_input_event"]
+[connection signal="mouse_entered" from="CanvasLayer/Pause" to="." method="_on_pause_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/Pause" to="." method="_on_pause_mouse_exited"]
+[connection signal="input_event" from="CanvasLayer/Exit" to="." method="_on_exit_input_event"]
+[connection signal="mouse_entered" from="CanvasLayer/Exit" to="." method="_on_exit_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/Exit" to="." method="_on_exit_mouse_exited"]
+[connection signal="input_event" from="CanvasLayer/Replay" to="." method="_on_replay_input_event"]
+[connection signal="mouse_entered" from="CanvasLayer/Replay" to="." method="_on_replay_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/Replay" to="." method="_on_replay_mouse_exited"]

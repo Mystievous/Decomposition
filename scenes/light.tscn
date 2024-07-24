@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://b4t152sgy6j6u"]
+[gd_scene load_steps=10 format=3 uid="uid://b4t152sgy6j6u"]
 
 [ext_resource type="PackedScene" uid="uid://dq46tamd7u53f" path="res://ui/pause_menu.tscn" id="1_3rwof"]
+[ext_resource type="PackedScene" uid="uid://b5w05w6pqtnyy" path="res://terrain/nature_background.tscn" id="2_cmwyc"]
 [ext_resource type="PackedScene" uid="uid://dmq02gv70lruc" path="res://terrain/walls.tscn" id="2_dwv3a"]
-[ext_resource type="PackedScene" uid="uid://wj2kk0glf0q4" path="res://interactables/material.tscn" id="2_e7v1s"]
+[ext_resource type="PackedScene" uid="uid://wj2kk0glf0q4" path="res://interactables/food/material.tscn" id="2_e7v1s"]
 [ext_resource type="Texture2D" uid="uid://drmrjjxgpoljt" path="res://assets/light.webp" id="2_hhe77"]
 [ext_resource type="PackedScene" uid="uid://bdiny0oaheofm" path="res://players/player.tscn" id="4_xg68c"]
 [ext_resource type="PackedScene" uid="uid://24n17t0xxk5w" path="res://ui/control_labels.tscn" id="6_1cuut"]
@@ -16,11 +17,9 @@ source_geometry_group_name = &"navigation_polygon_source_group"
 
 [node name="Node2D" type="Node2D"]
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_right = 576.0
-offset_bottom = 326.0
-
 [node name="PauseMenu" parent="." instance=ExtResource("1_3rwof")]
+
+[node name="NatureLvl" parent="." instance=ExtResource("2_cmwyc")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 scale = Vector2(-0.0793781, 1.37947)
@@ -59,9 +58,8 @@ position = Vector2(137, 148)
 color = Color(0.60933, 0.60933, 0.60933, 1)
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(148, 161)
-color = Color(0, 0.878431, 0.239216, 1)
-energy = 1.6
+position = Vector2(156, 164)
+energy = 0.72
 texture = ExtResource("2_hhe77")
 
 [node name="Player" parent="." instance=ExtResource("4_xg68c")]

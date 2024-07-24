@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="SkinResource" load_steps=6 format=3 uid="uid://dj1oh05ouwyvu"]
 
 [ext_resource type="Script" path="res://resources/skin_resource.gd" id="1_f7qly"]
-[ext_resource type="SpriteFrames" uid="uid://dih0e36r5a8hl" path="res://assets/minions/worm_minion.tres" id="1_n5lsf"]
+[ext_resource type="SpriteFrames" uid="uid://dih0e36r5a8hl" path="res://assets/sprites/worm_minion.tres" id="1_n5lsf"]
 [ext_resource type="SpriteFrames" uid="uid://chjmkqxgrhbxi" path="res://assets/players/worm.tres" id="2_qrhs1"]
 [ext_resource type="Script" path="res://resources/stats_resource.gd" id="4_ewxk2"]
 

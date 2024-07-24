@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://4m48o5inhxnm"
-path="res://.godot/imported/backstory3.png-3d598e191addd80115356f23dc5235a4.ctex"
+uid="uid://cod23te2xin2e"
+path="res://.godot/imported/millipede_minion.png-81eb66d6e545a94e3451f45c3035cb66.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/backstory3.png"
-dest_files=["res://.godot/imported/backstory3.png-3d598e191addd80115356f23dc5235a4.ctex"]
+source_file="res://assets/sprites/millipede_minion.png"
+dest_files=["res://.godot/imported/millipede_minion.png-81eb66d6e545a94e3451f45c3035cb66.ctex"]
 
 [params]
 

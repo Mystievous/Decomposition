@@ -1,0 +1,55 @@
+[gd_scene load_steps=9 format=3 uid="uid://b5w05w6pqtnyy"]
+
+[ext_resource type="Texture2D" uid="uid://defq7byvmtv7s" path="res://assets/backgrounds/nature_win.png" id="1_neesg"]
+[ext_resource type="Script" path="res://terrain/nature_background.gd" id="2_cvpij"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_prm3j"]
+atlas = ExtResource("1_neesg")
+region = Rect2(0, 0, 1280, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pqod6"]
+atlas = ExtResource("1_neesg")
+region = Rect2(1280, 0, 1280, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qdn8n"]
+atlas = ExtResource("1_neesg")
+region = Rect2(2560, 0, 1280, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ylbf"]
+atlas = ExtResource("1_neesg")
+region = Rect2(3840, 0, 1280, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jj3s8"]
+atlas = ExtResource("1_neesg")
+region = Rect2(5120, 0, 1280, 720)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6wek6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_prm3j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pqod6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qdn8n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ylbf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jj3s8")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="NatureLvl" type="AnimatedSprite2D" groups=["background"]]
+position = Vector2(288, 162)
+scale = Vector2(0.45, 0.45)
+sprite_frames = SubResource("SpriteFrames_6wek6")
+script = ExtResource("2_cvpij")
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]

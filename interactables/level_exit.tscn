@@ -1,25 +1,30 @@
-[gd_scene load_steps=3 format=3 uid="uid://bpl778fa7d2q3"]
+[gd_scene load_steps=5 format=3 uid="uid://bpl778fa7d2q3"]
 
 [ext_resource type="Script" path="res://interactables/level_exit.gd" id="1_rksjk"]
+[ext_resource type="Texture2D" uid="uid://cjbcny1vby33a" path="res://assets/sprites/exit.png" id="2_vlh14"]
+[ext_resource type="Texture2D" uid="uid://d3yt5o32ntowi" path="res://assets/sprites/exit_outline.png" id="3_horov"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ub8h1"]
+size = Vector2(37, 28)
 
 [node name="LevelExit" type="Area2D" groups=["level_exit"]]
 script = ExtResource("1_rksjk")
 
-[node name="Outline" type="ColorRect" parent="."]
-visible = false
-offset_left = -1.0
-offset_top = -1.0
-offset_right = 21.0
-offset_bottom = 21.0
-
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_right = 20.0
-offset_bottom = 20.0
-color = Color(0.594584, 0.31297, 0.00593077, 1)
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(10, 10)
+position = Vector2(18.5, 14)
 shape = SubResource("RectangleShape2D_ub8h1")
 debug_color = Color(0.791007, 0.0863483, 1, 0.42)
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Exit" type="Sprite2D" parent="."]
+position = Vector2(19, 12)
+texture = ExtResource("2_vlh14")
+
+[node name="Outline" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(19, 12)
+texture = ExtResource("3_horov")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

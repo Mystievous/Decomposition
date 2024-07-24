@@ -1,0 +1,39 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://cejlmvj0ilfaf"]
+
+[ext_resource type="Texture2D" uid="uid://5b3b82dm47rw" path="res://assets/sprites/environmentals.png" id="1_dhaxc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o2dvx"]
+atlas = ExtResource("1_dhaxc")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_py1qy"]
+atlas = ExtResource("1_dhaxc")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ncosg"]
+atlas = ExtResource("1_dhaxc")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2rb3l"]
+atlas = ExtResource("1_dhaxc")
+region = Rect2(192, 0, 64, 64)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o2dvx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_py1qy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ncosg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2rb3l")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

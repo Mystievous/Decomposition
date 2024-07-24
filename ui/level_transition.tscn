@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://ckh2w6vbo6wax"]
 
-[ext_resource type="Texture2D" uid="uid://4m48o5inhxnm" path="res://assets/backstory3.png" id="3_sq7bc"]
+[ext_resource type="Texture2D" uid="uid://4m48o5inhxnm" path="res://assets/backgrounds/backstory3.png" id="1_g7uxq"]
 
 [sub_resource type="GDScript" id="GDScript_pnmqc"]
 script/source = "extends CanvasLayer
@@ -20,51 +20,51 @@ func _on_animated_sprite_2d_animation_finished():
 "
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n8da3"]
-atlas = ExtResource("3_sq7bc")
+atlas = ExtResource("1_g7uxq")
 region = Rect2(12800, 0, 1280, 720)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q0jip"]
-atlas = ExtResource("3_sq7bc")
+atlas = ExtResource("1_g7uxq")
 region = Rect2(11520, 0, 1280, 720)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_heku0"]
-atlas = ExtResource("3_sq7bc")
+atlas = ExtResource("1_g7uxq")
 region = Rect2(10240, 0, 1280, 720)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qnybf"]
-atlas = ExtResource("3_sq7bc")
+atlas = ExtResource("1_g7uxq")
 region = Rect2(8960, 0, 1280, 720)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xjrio"]
-atlas = ExtResource("3_sq7bc")
+atlas = ExtResource("1_g7uxq")
 region = Rect2(5120, 0, 1280, 720)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ahade"]
-atlas = ExtResource("3_sq7bc")
+atlas = ExtResource("1_g7uxq")
 region = Rect2(3840, 0, 1280, 720)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5821d"]
-atlas = ExtResource("3_sq7bc")
+atlas = ExtResource("1_g7uxq")
 region = Rect2(8960, 0, 1280, 720)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x2h85"]
-atlas = ExtResource("3_sq7bc")
+atlas = ExtResource("1_g7uxq")
 region = Rect2(10240, 0, 1280, 720)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7n704"]
-atlas = ExtResource("3_sq7bc")
+atlas = ExtResource("1_g7uxq")
 region = Rect2(11520, 0, 1280, 720)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cw8vj"]
-atlas = ExtResource("3_sq7bc")
+atlas = ExtResource("1_g7uxq")
 region = Rect2(12800, 0, 1280, 720)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3hxiy"]
-atlas = ExtResource("3_sq7bc")
+atlas = ExtResource("1_g7uxq")
 region = Rect2(6400, 0, 1280, 720)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d0y7n"]
-atlas = ExtResource("3_sq7bc")
+atlas = ExtResource("1_g7uxq")
 region = Rect2(7680, 0, 1280, 720)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_e2km8"]
@@ -140,6 +140,7 @@ animations = [{
 }]
 
 [node name="LevelTransition" type="CanvasLayer"]
+process_mode = 3
 script = SubResource("GDScript_pnmqc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

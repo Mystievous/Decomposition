@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://wj2kk0glf0q4"]
 
-[ext_resource type="Script" path="res://interactables/material.gd" id="1_45a7l"]
+[ext_resource type="Script" path="res://interactables/food/material.gd" id="1_45a7l"]
 [ext_resource type="PackedScene" uid="uid://bmn7ph7d8pufr" path="res://ui/healthbar.tscn" id="2_32dg3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ub8h1"]

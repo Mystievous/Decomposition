@@ -1,83 +1,56 @@
-[gd_scene load_steps=27 format=3 uid="uid://cnlg8q6j0fdq6"]
+[gd_scene load_steps=26 format=3 uid="uid://cnlg8q6j0fdq6"]
 
 [ext_resource type="PackedScene" uid="uid://dq46tamd7u53f" path="res://ui/pause_menu.tscn" id="1_3vwtr"]
 [ext_resource type="PackedScene" uid="uid://dmq02gv70lruc" path="res://terrain/walls.tscn" id="2_8ece2"]
-[ext_resource type="Texture2D" uid="uid://dayat507akldv" path="res://assets/backgrounds/nature_lvl.png" id="2_narry"]
+[ext_resource type="PackedScene" uid="uid://b5w05w6pqtnyy" path="res://terrain/nature_background.tscn" id="2_v3jve"]
 [ext_resource type="PackedScene" uid="uid://cbndlk88l6e6g" path="res://ui/minion_area.tscn" id="3_fptt5"]
-[ext_resource type="PackedScene" uid="uid://wj2kk0glf0q4" path="res://interactables/material.tscn" id="4_4t3bi"]
 [ext_resource type="PackedScene" uid="uid://bpl778fa7d2q3" path="res://interactables/level_exit.tscn" id="5_xee24"]
 [ext_resource type="PackedScene" uid="uid://co1o6eetmhurn" path="res://terrain/pressure_plate.tscn" id="6_4mvt8"]
 [ext_resource type="PackedScene" uid="uid://bdiny0oaheofm" path="res://players/player.tscn" id="6_7y3bp"]
 [ext_resource type="PackedScene" uid="uid://s4d6n6jumbdv" path="res://terrain/DamageArea.tscn" id="6_jgf51"]
-[ext_resource type="Texture2D" uid="uid://5b3b82dm47rw" path="res://assets/environmentals.png" id="7_3mn3m"]
 [ext_resource type="PackedScene" uid="uid://24n17t0xxk5w" path="res://ui/control_labels.tscn" id="7_10jkh"]
+[ext_resource type="SpriteFrames" uid="uid://cejlmvj0ilfaf" path="res://assets/sprites/environmentals.tres" id="8_1k0uh"]
 [ext_resource type="PackedScene" uid="uid://csq8t2g3ee40r" path="res://terrain/door.tscn" id="9_thhbm"]
+[ext_resource type="PackedScene" uid="uid://cmpftm8qv5m03" path="res://interactables/food/food_2.tscn" id="13_bvhnm"]
+[ext_resource type="PackedScene" uid="uid://b4stent4ww4qk" path="res://interactables/food/food_1.tscn" id="13_jklrx"]
+[ext_resource type="PackedScene" uid="uid://l8ad4qginv0h" path="res://interactables/food/food_3.tscn" id="14_6dxah"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_fjcaq"]
-vertices = PackedVector2Array(566, 314, 10, 314, 10, 10, 566, 10)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(576, 0, 576, 324, 0, 324, 0, 0)])
+vertices = PackedVector2Array(416, 295, 383, 295, 384, 169, 417, 168, 133, 169, 133, 134, 456, 134, 573, 168, 573, 3, 456, 3)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(2, 4, 5, 6, 3), PackedInt32Array(7, 3, 6), PackedInt32Array(8, 7, 6, 9)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(129, 130, 129, 173, 380, 173, 379, 299, 420, 299, 421, 172, 577, 173, 577, -1, 452, -1, 452, 130)])
 source_geometry_group_name = &"navigation_polygon_source_group"
+agent_radius = 4.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_18m41"]
-size = Vector2(313, 17)
+size = Vector2(339, 131)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7jjvn"]
-size = Vector2(240, 17)
+size = Vector2(266, 150)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e4u31"]
-size = Vector2(31, 126)
+size = Vector2(156, 126)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cqurn"]
+size = Vector2(15, 43)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8koof"]
+size = Vector2(198, 24)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aid4e"]
 size = Vector2(31, 109)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o350w"]
-size = Vector2(128.955, 42.9873)
+size = Vector2(76, 42.9873)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i532v"]
-size = Vector2(37.955, 45.9745)
+size = Vector2(42, 49.9872)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mup2y"]
 size = Vector2(31, 41)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sxvao"]
 size = Vector2(40, 41)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_o2dvx"]
-atlas = ExtResource("7_3mn3m")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_py1qy"]
-atlas = ExtResource("7_3mn3m")
-region = Rect2(64, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ncosg"]
-atlas = ExtResource("7_3mn3m")
-region = Rect2(128, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2rb3l"]
-atlas = ExtResource("7_3mn3m")
-region = Rect2(192, 0, 64, 64)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_bc4b5"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_o2dvx")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_py1qy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ncosg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2rb3l")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
 
 [node name="Node2D" type="Node2D"]
 
@@ -88,10 +61,7 @@ scale = Vector2(-0.0793781, 1.37947)
 anchor_mode = 0
 zoom = Vector2(2, 2)
 
-[node name="NatureLvl" type="Sprite2D" parent="."]
-position = Vector2(288, 162)
-scale = Vector2(0.45, 0.45)
-texture = ExtResource("2_narry")
+[node name="NatureLvl" parent="." instance=ExtResource("2_v3jve")]
 
 [node name="Walls" parent="." instance=ExtResource("2_8ece2")]
 
@@ -104,12 +74,11 @@ navigation_polygon = SubResource("NavigationPolygon_fjcaq")
 [node name="StaticBody2D" type="StaticBody2D" parent="NavWalls"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NavWalls/StaticBody2D"]
-position = Vector2(294.5, 122.5)
+position = Vector2(281.5, 65.5)
 shape = SubResource("RectangleShape2D_18m41")
 
 [node name="ColorRect" type="ColorRect" parent="NavWalls/StaticBody2D"]
-offset_left = 138.0
-offset_top = 114.0
+offset_left = 112.0
 offset_right = 451.0
 offset_bottom = 131.0
 
@@ -117,27 +86,53 @@ offset_bottom = 131.0
 position = Vector2(0, 60)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NavWalls/StaticBody2D2"]
-position = Vector2(258, 122.5)
+position = Vector2(245, 189)
 shape = SubResource("RectangleShape2D_7jjvn")
 
 [node name="ColorRect" type="ColorRect" parent="NavWalls/StaticBody2D2"]
-offset_left = 138.0
+offset_left = 112.0
 offset_top = 114.0
 offset_right = 378.0
-offset_bottom = 131.0
+offset_bottom = 264.0
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="NavWalls"]
 position = Vector2(282, 60)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NavWalls/StaticBody2D3"]
-position = Vector2(153.5, 177)
+position = Vector2(216, 177)
 shape = SubResource("RectangleShape2D_e4u31")
 
 [node name="ColorRect" type="ColorRect" parent="NavWalls/StaticBody2D3"]
 offset_left = 138.0
 offset_top = 114.0
-offset_right = 169.0
+offset_right = 294.0
 offset_bottom = 240.0
+
+[node name="StaticBody2D5" type="StaticBody2D" parent="NavWalls"]
+position = Vector2(-26, 17)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NavWalls/StaticBody2D5"]
+position = Vector2(145.5, 135.5)
+shape = SubResource("RectangleShape2D_cqurn")
+
+[node name="ColorRect" type="ColorRect" parent="NavWalls/StaticBody2D5"]
+offset_left = 138.0
+offset_top = 114.0
+offset_right = 153.0
+offset_bottom = 157.0
+
+[node name="StaticBody2D6" type="StaticBody2D" parent="NavWalls"]
+position = Vector2(240, 186)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NavWalls/StaticBody2D6"]
+position = Vector2(237, 126)
+shape = SubResource("RectangleShape2D_8koof")
+
+[node name="ColorRect" type="ColorRect" parent="NavWalls/StaticBody2D6"]
+offset_left = 138.0
+offset_top = 114.0
+offset_right = 336.0
+offset_bottom = 138.0
 
 [node name="StaticBody2D4" type="StaticBody2D" parent="NavWalls"]
 position = Vector2(209, 60)
@@ -153,14 +148,23 @@ offset_right = 169.0
 offset_bottom = 240.0
 
 [node name="MinionArea" parent="." node_paths=PackedStringArray("minions", "control_labels") instance=ExtResource("3_fptt5")]
-position = Vector2(98, 138)
+position = Vector2(138, 138)
 max_minions = 3
 minions = NodePath("../Minions")
 control_labels = NodePath("../ControlLabels")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MinionArea"]
-position = Vector2(54, 14.5064)
+position = Vector2(27, 14.5064)
 shape = SubResource("RectangleShape2D_o350w")
+
+[node name="ColorRect" type="ColorRect" parent="MinionArea"]
+show_behind_parent = true
+offset_left = -11.0
+offset_top = -7.0
+offset_right = 65.0
+offset_bottom = 36.0
+mouse_filter = 2
+color = Color(0.94902, 0.568627, 0.964706, 0.698039)
 
 [node name="MinionArea2" parent="." node_paths=PackedStringArray("minions", "control_labels") instance=ExtResource("3_fptt5")]
 position = Vector2(386, 258)
@@ -168,8 +172,17 @@ max_minions = 2
 minions = NodePath("../Minions")
 control_labels = NodePath("../ControlLabels")
 
+[node name="ColorRect" type="ColorRect" parent="MinionArea2"]
+show_behind_parent = true
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 34.0
+offset_bottom = 42.0
+mouse_filter = 2
+color = Color(0.94902, 0.568627, 0.964706, 0.698039)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MinionArea2"]
-position = Vector2(13, 15)
+position = Vector2(13, 17.0064)
 shape = SubResource("RectangleShape2D_i532v")
 
 [node name="Door" parent="." node_paths=PackedStringArray("trigger") instance=ExtResource("9_thhbm")]
@@ -207,6 +220,15 @@ required_bodies = 3
 position = Vector2(13, 15.5)
 shape = SubResource("RectangleShape2D_sxvao")
 
+[node name="ColorRect" type="ColorRect" parent="PressurePlate"]
+show_behind_parent = true
+offset_left = -7.0
+offset_top = -5.0
+offset_right = 33.0
+offset_bottom = 36.0
+mouse_filter = 2
+color = Color(0.0542307, 0.820231, 0.938502, 0.698039)
+
 [node name="DamageArea" parent="." instance=ExtResource("6_jgf51")]
 position = Vector2(379, 193)
 scale = Vector2(0.993094, 0.728025)
@@ -217,22 +239,22 @@ visible = false
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="DamageArea"]
 position = Vector2(20.1391, 20.6037)
 scale = Vector2(0.706276, 0.706276)
-sprite_frames = SubResource("SpriteFrames_bc4b5")
+sprite_frames = ExtResource("8_1k0uh")
 frame = 2
 
 [node name="Materials" type="Node2D" parent="."]
 
-[node name="Material" parent="Materials" instance=ExtResource("4_4t3bi")]
-position = Vector2(337, 148)
+[node name="Food1" parent="Materials" instance=ExtResource("13_jklrx")]
+position = Vector2(314, 135)
 
-[node name="Material3" parent="Materials" instance=ExtResource("4_4t3bi")]
-position = Vector2(508, 87)
+[node name="Food2" parent="Materials" instance=ExtResource("13_bvhnm")]
+position = Vector2(464, 126)
 
-[node name="Material4" parent="Materials" instance=ExtResource("4_4t3bi")]
-position = Vector2(473, 101)
+[node name="Food3" parent="Materials" instance=ExtResource("14_6dxah")]
+position = Vector2(517, 74)
 
-[node name="Material6" parent="Materials" instance=ExtResource("4_4t3bi")]
-position = Vector2(464, 66)
+[node name="Food4" parent="Materials" instance=ExtResource("13_jklrx")]
+position = Vector2(458, 44)
 
 [node name="LevelExit" parent="." instance=ExtResource("5_xee24")]
 position = Vector2(38, 30)

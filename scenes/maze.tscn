@@ -1,7 +1,8 @@
-[gd_scene load_steps=35 format=3 uid="uid://vhkqqh4xyhin"]
+[gd_scene load_steps=36 format=3 uid="uid://vhkqqh4xyhin"]
 
+[ext_resource type="PackedScene" uid="uid://b5w05w6pqtnyy" path="res://terrain/nature_background.tscn" id="1_d4p6f"]
 [ext_resource type="PackedScene" uid="uid://dq46tamd7u53f" path="res://ui/pause_menu.tscn" id="1_glb84"]
-[ext_resource type="PackedScene" uid="uid://wj2kk0glf0q4" path="res://interactables/material.tscn" id="3_g3mrj"]
+[ext_resource type="PackedScene" uid="uid://wj2kk0glf0q4" path="res://interactables/food/material.tscn" id="3_g3mrj"]
 [ext_resource type="PackedScene" uid="uid://dmq02gv70lruc" path="res://terrain/walls.tscn" id="3_kujf2"]
 [ext_resource type="PackedScene" uid="uid://bdiny0oaheofm" path="res://players/player.tscn" id="4_ni57k"]
 [ext_resource type="PackedScene" uid="uid://24n17t0xxk5w" path="res://ui/control_labels.tscn" id="5_bj3sg"]
@@ -91,6 +92,10 @@ size = Vector2(10, 378)
 
 [node name="Node2D" type="Node2D"]
 
+[node name="NatureLvl" parent="." instance=ExtResource("1_d4p6f")]
+position = Vector2(384, 216)
+scale = Vector2(0.6, 0.6)
+
 [node name="Maze" type="Node2D" parent="."]
 position = Vector2(0, 44)
 scale = Vector2(1.00285, 1.00285)
@@ -129,7 +134,6 @@ position = Vector2(238, 347)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Maze/Walls/StaticBody2D10"]
 position = Vector2(37.5572, 5)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_xdvhw")
 
 [node name="StaticBody2D16" type="StaticBody2D" parent="Maze/Walls"]
@@ -151,7 +155,6 @@ position = Vector2(380, 347)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Maze/Walls/StaticBody2D21"]
 position = Vector2(75.9607, 5)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_ysbd8")
 
 [node name="StaticBody2D23" type="StaticBody2D" parent="Maze/Walls"]
@@ -166,7 +169,6 @@ position = Vector2(455, 271)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Maze/Walls/StaticBody2D20"]
 position = Vector2(38.8528, 5)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_j68ne")
 
 [node name="StaticBody2D13" type="StaticBody2D" parent="Maze/Walls"]
@@ -174,7 +176,6 @@ position = Vector2(682, 120)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Maze/Walls/StaticBody2D13"]
 position = Vector2(38.5306, 5.00002)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_chw5r")
 
 [node name="StaticBody2D26" type="StaticBody2D" parent="Maze/Walls"]
@@ -182,7 +183,6 @@ position = Vector2(606, 196)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Maze/Walls/StaticBody2D26"]
 position = Vector2(38.6384, 5)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_8fstc")
 
 [node name="StaticBody2D24" type="StaticBody2D" parent="Maze/Walls"]
@@ -190,7 +190,6 @@ position = Vector2(682, 347)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Maze/Walls/StaticBody2D24"]
 position = Vector2(38.5306, 5)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_5miia")
 
 [node name="StaticBody2D14" type="StaticBody2D" parent="Maze/Walls"]
@@ -198,7 +197,6 @@ position = Vector2(305, 120)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Maze/Walls/StaticBody2D14"]
 position = Vector2(155.126, 5.00002)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_2vi0n")
 
 [node name="StaticBody2D8" type="StaticBody2D" parent="Maze/Walls"]
@@ -241,7 +239,6 @@ position = Vector2(380, 348)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Maze/Walls/StaticBody2D22"]
 position = Vector2(5.46066, 42)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_mib4f")
 
 [node name="StaticBody2D6" type="StaticBody2D" parent="Maze/Walls"]
@@ -291,7 +288,6 @@ position = Vector2(607, 206)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Maze/Walls/StaticBody2D27"]
 position = Vector2(5.13843, 108.5)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_fkpuv")
 
 [node name="StaticBody2D12" type="StaticBody2D" parent="Maze/Walls"]

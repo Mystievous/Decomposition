@@ -20,12 +20,12 @@ func refresh_target():
 	var closest = null
 	var closest_distance = null
 	for interaction in interactions:
-		var distance := position.distance_squared_to(interaction.position)
+		var distance := position.distance_squared_to(interaction.position + Vector2(34/2, 50/2))
 		if not closest_distance or distance < closest_distance:
 			closest = interaction
 			closest_distance = distance
 	if (closest):
-		navigation_agent.target_position = closest.position
+		navigation_agent.target_position = closest.position + Vector2(34/2, 50/2)
 
 func _process(delta):
 	if current_interactables.is_empty():

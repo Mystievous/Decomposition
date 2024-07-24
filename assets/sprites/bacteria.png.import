@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bjr7c4nd2vo0s"
-path="res://.godot/imported/backstory2.png-ead8faed5730014b8f496c13ef04efc4.ctex"
+uid="uid://ch42pfoqn87nf"
+path="res://.godot/imported/bacteria.png-3c959aade6a6373e0ddee66b4d7abcfd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/backstory2.png"
-dest_files=["res://.godot/imported/backstory2.png-ead8faed5730014b8f496c13ef04efc4.ctex"]
+source_file="res://assets/sprites/bacteria.png"
+dest_files=["res://.godot/imported/bacteria.png-3c959aade6a6373e0ddee66b4d7abcfd.ctex"]
 
 [params]
 

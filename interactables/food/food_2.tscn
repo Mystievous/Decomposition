@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://cmpftm8qv5m03"]
+
+[ext_resource type="Script" path="res://interactables/food/material.gd" id="1_fnhhq"]
+[ext_resource type="PackedScene" uid="uid://bmn7ph7d8pufr" path="res://ui/healthbar.tscn" id="2_8r45t"]
+[ext_resource type="Texture2D" uid="uid://h2wpibs5sx1f" path="res://assets/sprites/food/food2_outline.png" id="3_bduvi"]
+[ext_resource type="Texture2D" uid="uid://b0gvmn210vjpu" path="res://assets/sprites/food/2.2.png" id="4_a7h6t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ub8h1"]
+size = Vector2(53, 36)
+
+[node name="Food1" type="Area2D" node_paths=PackedStringArray("progress_bar") groups=["minion_interact"]]
+script = ExtResource("1_fnhhq")
+progress_bar = NodePath("Healthbar")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(26.5, 18)
+shape = SubResource("RectangleShape2D_ub8h1")
+debug_color = Color(0.791007, 0.0863483, 1, 0.42)
+
+[node name="Healthbar" parent="." instance=ExtResource("2_8r45t")]
+position = Vector2(3, -12)
+max_health = 30.0
+
+[node name="Outline" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(27, 14)
+texture = ExtResource("3_bduvi")
+
+[node name="Food" type="Sprite2D" parent="."]
+position = Vector2(27, 14)
+texture = ExtResource("4_a7h6t")
+
+[connection signal="health_empty" from="Healthbar" to="." method="_on_healthbar_health_empty"]
