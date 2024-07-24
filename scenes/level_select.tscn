@@ -27,7 +27,7 @@ func _input(event):
 
 [node name="LevelSelect" type="Node2D" node_paths=PackedStringArray("levels_buttons")]
 script = SubResource("GDScript_7mw71")
-levels_buttons = [NodePath("Level1"), NodePath("Level2"), NodePath("Level3"), NodePath("Level4"), NodePath("Level5")]
+levels_buttons = [NodePath("Level1"), NodePath("Level2"), NodePath("Level3"), NodePath("Level4"), NodePath("Level5"), NodePath("Level6")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
@@ -98,6 +98,19 @@ offset_top = 56.0
 offset_right = 124.0
 offset_bottom = 88.0
 text = "5: Order Matters"
+
+[node name="Level6" parent="." instance=ExtResource("9_onsbk")]
+visible = false
+position = Vector2(460, 229)
+scene = "res://scenes/credits.tscn"
+
+[node name="Game Complete" type="RichTextLabel" parent="Level6"]
+offset_left = 13.0
+offset_top = 53.0
+offset_right = 170.0
+offset_bottom = 85.0
+text = "Finish
+"
 
 [node name="ControlLabels" parent="." node_paths=PackedStringArray("player") instance=ExtResource("7_witwl")]
 player = NodePath("../Player")
