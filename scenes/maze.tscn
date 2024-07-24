@@ -1,17 +1,22 @@
-[gd_scene load_steps=40 format=3 uid="uid://vhkqqh4xyhin"]
+[gd_scene load_steps=45 format=3 uid="uid://vhkqqh4xyhin"]
 
-[ext_resource type="PackedScene" uid="uid://b5w05w6pqtnyy" path="res://terrain/nature_background.tscn" id="1_d4p6f"]
 [ext_resource type="PackedScene" uid="uid://dq46tamd7u53f" path="res://ui/pause_menu.tscn" id="1_glb84"]
 [ext_resource type="PackedScene" uid="uid://dqxuhnacgv5um" path="res://ui/level_music.tscn" id="1_xj1kj"]
-[ext_resource type="PackedScene" uid="uid://wj2kk0glf0q4" path="res://interactables/food/material.tscn" id="3_g3mrj"]
+[ext_resource type="PackedScene" uid="uid://bg36abhrtr6gi" path="res://terrain/brick_background.tscn" id="2_radeh"]
 [ext_resource type="PackedScene" uid="uid://dmq02gv70lruc" path="res://terrain/walls.tscn" id="3_kujf2"]
 [ext_resource type="PackedScene" uid="uid://je24kdeaqk27" path="res://ui/game_over_menu.tscn" id="4_e6rha"]
 [ext_resource type="PackedScene" uid="uid://bdiny0oaheofm" path="res://players/player.tscn" id="4_ni57k"]
 [ext_resource type="PackedScene" uid="uid://24n17t0xxk5w" path="res://ui/control_labels.tscn" id="5_bj3sg"]
 [ext_resource type="Texture2D" uid="uid://h30bqp0js5n4" path="res://assets/maze_layout.png" id="6_62gyv"]
 [ext_resource type="PackedScene" uid="uid://bpl778fa7d2q3" path="res://interactables/level_exit.tscn" id="7_adk2n"]
+[ext_resource type="PackedScene" uid="uid://b4stent4ww4qk" path="res://interactables/food/food_1.tscn" id="7_qg2kw"]
+[ext_resource type="PackedScene" uid="uid://cmpftm8qv5m03" path="res://interactables/food/food_2.tscn" id="8_hthgg"]
+[ext_resource type="PackedScene" uid="uid://l8ad4qginv0h" path="res://interactables/food/food_3.tscn" id="9_7whar"]
+[ext_resource type="Texture2D" uid="uid://bas14rw1em5w5" path="res://assets/sprites/food/food2.png" id="9_53ltr"]
 [ext_resource type="Texture2D" uid="uid://bt2y110viw746" path="res://assets/sprites/blockades/rubble1.png" id="9_e3hkk"]
 [ext_resource type="Texture2D" uid="uid://bvwe1u6jyx7lv" path="res://assets/sprites/blockades/rubble3.png" id="10_lggmp"]
+[ext_resource type="Texture2D" uid="uid://ch4lpu8y07t5a" path="res://assets/sprites/food/3.3.png" id="11_n1iln"]
+[ext_resource type="Texture2D" uid="uid://cbwom0gw2t8a" path="res://assets/sprites/food/1.3.png" id="12_42rk8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wkq3e"]
 size = Vector2(311, 52.875)
@@ -98,7 +103,7 @@ size = Vector2(10, 378)
 
 [node name="LevelMusic" parent="." instance=ExtResource("1_xj1kj")]
 
-[node name="NatureLvl" parent="." instance=ExtResource("1_d4p6f")]
+[node name="BrickBackground" parent="." instance=ExtResource("2_radeh")]
 position = Vector2(384, 216)
 scale = Vector2(0.6, 0.6)
 
@@ -317,23 +322,32 @@ zoom = Vector2(1.5, 1.5)
 
 [node name="Materials" type="Node2D" parent="."]
 
-[node name="Material" parent="Materials" instance=ExtResource("3_g3mrj")]
-position = Vector2(36, 315)
+[node name="Food1" parent="Materials" instance=ExtResource("7_qg2kw")]
+position = Vector2(15, 306)
 
-[node name="Material2" parent="Materials" instance=ExtResource("3_g3mrj")]
-position = Vector2(338, 230)
+[node name="Food2" parent="Materials" instance=ExtResource("8_hthgg")]
+position = Vector2(320, 228)
 
-[node name="Material3" parent="Materials" instance=ExtResource("3_g3mrj")]
-position = Vector2(641, 237)
+[node name="Food" parent="Materials/Food2" index="3"]
+texture = ExtResource("9_53ltr")
 
-[node name="Material4" parent="Materials" instance=ExtResource("3_g3mrj")]
-position = Vector2(36, 79)
+[node name="Food3" parent="Materials" instance=ExtResource("9_7whar")]
+position = Vector2(16, 67)
 
-[node name="Material5" parent="Materials" instance=ExtResource("3_g3mrj")]
-position = Vector2(713, 385)
+[node name="Food4" parent="Materials" instance=ExtResource("9_7whar")]
+position = Vector2(623, 226)
 
-[node name="Material6" parent="Materials" instance=ExtResource("3_g3mrj")]
-position = Vector2(710, 82)
+[node name="Food" parent="Materials/Food4" index="3"]
+texture = ExtResource("11_n1iln")
+
+[node name="Food5" parent="Materials" instance=ExtResource("8_hthgg")]
+position = Vector2(695, 71)
+
+[node name="Food6" parent="Materials" instance=ExtResource("7_qg2kw")]
+position = Vector2(694, 376)
+
+[node name="Food" parent="Materials/Food6" index="3"]
+texture = ExtResource("12_42rk8")
 
 [node name="LevelExit" parent="." instance=ExtResource("7_adk2n")]
 position = Vector2(337, 16)
@@ -355,3 +369,7 @@ texture = ExtResource("9_e3hkk")
 [node name="Rubble3" type="Sprite2D" parent="."]
 position = Vector2(416, 21)
 texture = ExtResource("10_lggmp")
+
+[editable path="Materials/Food2"]
+[editable path="Materials/Food4"]
+[editable path="Materials/Food6"]
