@@ -46,6 +46,14 @@ offset_right = 313.0
 offset_bottom = 214.0
 text = "Maze"
 
+[node name="DamageMaze2" type="RichTextLabel" parent="."]
+offset_left = 406.0
+offset_top = 56.0
+offset_right = 485.0
+offset_bottom = 105.0
+text = "Damage
+Maze"
+
 [node name="PlaceMinionsLabel" type="RichTextLabel" parent="."]
 offset_left = 302.0
 offset_top = 133.0
@@ -90,6 +98,10 @@ scene = "res://scenes/light.tscn"
 [node name="Maze" parent="." instance=ExtResource("2_vytpa")]
 position = Vector2(272, 162)
 scene = "res://scenes/maze.tscn"
+
+[node name="DamageMaze" parent="." instance=ExtResource("2_vytpa")]
+position = Vector2(429, 34)
+scene = "res://scenes/damage_maze.tscn"
 
 [node name="OrderMattersTP" parent="." instance=ExtResource("2_vytpa")]
 position = Vector2(256, 34)
