@@ -31,3 +31,6 @@ func damage(amount: float):
 	if not $Healthbar.visible:
 		$Healthbar.visible = true
 	$Healthbar.decrement(amount)
+
+func _on_healthbar_health_empty():
+	queue_free()
