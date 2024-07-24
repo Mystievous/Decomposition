@@ -1,14 +1,20 @@
-[gd_scene load_steps=8 format=3 uid="uid://wiwhm4q7r3hr"]
+[gd_scene load_steps=10 format=3 uid="uid://cysy26gh5coe7"]
 
 [ext_resource type="PackedScene" uid="uid://dmq02gv70lruc" path="res://terrain/walls.tscn" id="1_jtagk"]
+[ext_resource type="PackedScene" uid="uid://b5w05w6pqtnyy" path="res://terrain/nature_background.tscn" id="2_hqbmp"]
 [ext_resource type="PackedScene" uid="uid://bdiny0oaheofm" path="res://players/player.tscn" id="2_i4tef"]
 [ext_resource type="PackedScene" uid="uid://bpl778fa7d2q3" path="res://interactables/level_exit.tscn" id="2_o6o86"]
 [ext_resource type="PackedScene" uid="uid://s4d6n6jumbdv" path="res://terrain/DamageArea.tscn" id="4_nqjc1"]
 [ext_resource type="PackedScene" uid="uid://dv33ktyaxcywa" path="res://terrain/HealingArea.tscn" id="5_4bw76"]
 [ext_resource type="PackedScene" uid="uid://cr8q8bgpogqxh" path="res://players/EnemyBase.tscn" id="6_0qbvk"]
-[ext_resource type="PackedScene" uid="uid://wj2kk0glf0q4" path="res://interactables/material.tscn" id="6_506cn"]
+[ext_resource type="PackedScene" uid="uid://wj2kk0glf0q4" path="res://interactables/food/material.tscn" id="6_506cn"]
+[ext_resource type="PackedScene" uid="uid://24n17t0xxk5w" path="res://ui/control_labels.tscn" id="8_qakrm"]
 
 [node name="Node2D" type="Node2D"]
+
+[node name="NatureLvl" parent="." instance=ExtResource("2_hqbmp")]
+position = Vector2(380.667, 216.5)
+scale = Vector2(0.604167, 0.604167)
 
 [node name="Walls2" parent="." instance=ExtResource("1_jtagk")]
 position = Vector2(-3, 0)
@@ -158,3 +164,7 @@ progress_bar = NodePath("../Material/Healthbar")
 
 [node name="Player" parent="." instance=ExtResource("2_i4tef")]
 position = Vector2(19, 17)
+
+[node name="ControlLabels" parent="." node_paths=PackedStringArray("player") instance=ExtResource("8_qakrm")]
+position = Vector2(0, 347)
+player = NodePath("../Player")

@@ -87,10 +87,6 @@ scene = "res://scenes/main.tscn"
 position = Vector2(341, 110)
 scene = "res://scenes/click_spawn.tscn"
 
-[node name="PlaceMinions2" parent="." instance=ExtResource("2_vytpa")]
-position = Vector2(428, 83)
-scene = "res://scenes/click_spawn.tscn"
-
 [node name="Light" parent="." instance=ExtResource("2_vytpa")]
 position = Vector2(438, 181)
 scene = "res://scenes/light.tscn"
